@@ -27,6 +27,16 @@
       margin-left: 270px; /* サイドバーの幅分左にマージン */
       padding: 20px;
     }
+    .scroll-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .scroll-buttons button {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -84,10 +94,42 @@
         <a href="#" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
+    <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">投稿タイトル 4</h5>
+          <p class="card-text">ここには投稿内容が入ります...</p>
+          <a href="#" class="btn btn-primary">もっと見る</a>
+        </div>
+      </div>
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title">投稿タイトル 5</h5>
+          <p class="card-text">ここには投稿内容が入ります...</p>
+          <a href="#" class="btn btn-primary">もっと見る</a>
+        </div>
+      </div>
   </div>
 
+  <!-- スクロールボタン -->
+  <div class="scroll-buttons">
+    <button class="btn btn-secondary" onclick="scrollToTop()">👆🏻</button>
+    <button class="btn btn-secondary" onclick="scrollToBottom()">👇🏻</button>
+  </div>
+
+  <!-- BootstrapおよびjQueryのJSファイルリンク -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- スクロール機能用のJavaScriptコード -->
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
