@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Sanctuary</title>
-  <!-- Bootstrap CSS 파일 링크 -->
+  <!-- Bootstrap CSS ファイルのリンク -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
@@ -14,7 +14,7 @@
     .sidebar {
       height: 100vh;
       position: fixed;
-      top: 56px; /* 네비게이션 바 높이만큼 아래로 */
+      top: 56px; /* ナビゲーションバーの高さ分下に */
       left: 0;
       width: 250px;
       background-color: #f8f9fa;
@@ -24,13 +24,13 @@
       padding: 10px;
     }
     .content {
-      margin-left: 270px; /* 사이드바 너비만큼 왼쪽 여백 */
+      margin-left: 270px; /* サイドバーの幅分左にマージン */
       padding: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- 네비게이션 바 -->
+  <!-- ナビゲーションバー -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Anime Sanctuary</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,54 +39,53 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">로그인</a>
+          <a class="nav-link" href="#">ログイン</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">회원가입</a>
+          <a class="nav-link" href="#">新規登録</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <!-- 사이드바 -->
+  <!-- サイドバー -->
   <div class="sidebar">
-    <h5>내 관심 주제</h5>
+    <h5>私の関心テーマ</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Naruto</li>
-      <li class="list-group-item">One Piece</li>
-      <li class="list-group-item">Attack on Titan</li>
-      <li class="list-group-item">My Hero Academia</li>
-      <li class="list-group-item">Demon Slayer</li>
+      <li class="list-group-item">ナルト</li>
+      <li class="list-group-item">ワンピース</li>
+      <li class="list-group-item">進撃の巨人</li>
+      <li class="list-group-item">僕のヒーローアカデミア</li>
+      <li class="list-group-item">鬼滅の刃</li>
     </ul>
   </div>
 
-  <!-- 메인 콘텐츠 -->
+  <!-- メインコンテンツ -->
   <div class="content">
-    <h2>인기 게시글</h2>
+    <h2>人気投稿</h2>
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">게시글 제목 1</h5>
-        <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
-        <a href="#" class="btn btn-primary">더 보기</a>
+        <h5 class="card-title">投稿タイトル 1</h5>
+        <p class="card-text">ここには投稿内容が入ります...</p>
+        <a href="#" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">게시글 제목 2</h5>
-        <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
-        <a href="#" class="btn btn-primary">더 보기</a>
+        <h5 class="card-title">投稿タイトル 2</h5>
+        <p class="card-text">ここには投稿内容が入ります...</p>
+        <a href="#" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">게시글 제목 3</h5>
-        <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
-        <a href="#" class="btn btn-primary">더 보기</a>
+        <h5 class="card-title">投稿タイトル 3</h5>
+        <p class="card-text">ここには投稿内容が入ります...</p>
+        <a href="#" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
   </div>
 
-  <!-- 부트스트랩 및 제이쿼리 JS 파일 링크 -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
