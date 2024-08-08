@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< Updated upstream
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Sanctuary</title>
@@ -27,5 +28,136 @@
         </section>
     </main>
     <script src="js/main.js"></script>
+=======
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Community</title>
+  <!-- Bootstrap CSS 파일 링크 -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      height: 100vh;
+      position: fixed;
+      top: 56px; /* 네비게이션 바 높이만큼 아래로 */
+      left: 0;
+      width: 250px;
+      background-color: #f8f9fa;
+      padding-top: 20px;
+    }
+    .sidebar h5 {
+      padding: 10px;
+    }
+    .content {
+      margin-left: 270px; /* 사이드바 너비만큼 왼쪽 여백 */
+      padding: 20px;
+    }
+    .scroll-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .scroll-buttons button {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 바 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Anime Community</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">로그인</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">회원가입</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 사이드바 -->
+  <div class="sidebar">
+    <h5>내 관심 주제</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Naruto</li>
+      <li class="list-group-item">One Piece</li>
+      <li class="list-group-item">Attack on Titan</li>
+      <li class="list-group-item">My Hero Academia</li>
+      <li class="list-group-item">Demon Slayer</li>
+    </ul>
+  </div>
+
+  <!-- 메인 콘텐츠 -->
+  <div class="content">
+    <h2>인기 게시글</h2>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">게시글 제목 1</h5>
+        <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
+        <a href="#" class="btn btn-primary">더 보기</a>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">게시글 제목 2</h5>
+        <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
+        <a href="#" class="btn btn-primary">더 보기</a>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">게시글 제목 3</h5>
+        <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
+        <a href="#" class="btn btn-primary">더 보기</a>
+      </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">게시글 제목 4</h5>
+          <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
+          <a href="#" class="btn btn-primary">더 보기</a>
+        </div>
+      </div>
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title">게시글 제목 5</h5>
+          <p class="card-text">여기에는 게시글 내용이 들어갑니다...</p>
+          <a href="#" class="btn btn-primary">더 보기</a>
+        </div>
+      </div>
+  </div>
+
+  <!-- 스크롤 버튼 -->
+  <div class="scroll-buttons">
+    <button class="btn btn-secondary" onclick="scrollToTop()">👆🏻</button>
+    <button class="btn btn-secondary" onclick="scrollToBottom()">👇🏻</button>
+  </div>
+
+  <!-- 부트스트랩 및 제이쿼리 JS 파일 링크 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- 스크롤 기능을 위한 JavaScript 코드 -->
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+>>>>>>> Stashed changes
 </body>
 </html>
