@@ -7,18 +7,103 @@
   <link rel="stylesheet" href="css/styles.css" />
   <!-- Bootstrap CSS ファイルのリンク -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  
+  <style>
+    .dropdown-menu .form-check {
+      margin: 0.5rem 0;
+    }
+    .dropdown-menu h5 {
+      margin: 0.5rem;
+    }
+    .form-check-label {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <!-- ナビゲーションバー -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Anime Sanctuary</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーション切替">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+      <!-- ナビゲーションリンク -->
+      <ul class="navbar-nav mr-auto">
+        <!-- ホームリンク -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">ホーム</a>
+        </li>
+        <!-- 掲示板のドロップダウン -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBoard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            掲示板
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownBoard">
+            <a class="dropdown-item" href="/api/categories">カテゴリー一覧</a>
+            <a class="dropdown-item" href="/api/posts/popular">人気投稿</a>
+            <a class="dropdown-item" href="/api/anime/new">新作アニメ情報</a>
+          </div>
+        </li>
+        <!-- プロフィールのドロップダウン -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            プロフィール
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+            <a class="dropdown-item" href="/api/users/{userId}">プロフィール閲覧</a>
+            <a class="dropdown-item" href="/api/users/{userId}/edit">プロフィール編集</a>
+            <a class="dropdown-item" href="/api/users/{userId}/scraps">スクラップ一覧</a>
+          </div>
+        </li>
+        <!-- ジャンルのドロップダウン -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGenre" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ジャンル
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownGenre">
+            <h5>ジャンル</h5>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre1">
+              <label class="form-check-label" for="genre1">異世界</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre2">
+              <label class="form-check-label" for="genre2">ファンタジー</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre3">
+              <label class="form-check-label" for="genre3">ロマンス</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre4">
+              <label class="form-check-label" for="genre4">学園物</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre5">
+              <label class="form-check-label" for="genre5">SF</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre6">
+              <label class="form-check-label" for="genre6">家族</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre7">
+              <label class="form-check-label" for="genre7">日常</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="genre8">
+              <label class="form-check-label" for="genre8">コメディ</label>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- 検索バーを中央に配置 -->
+      <form class="form-inline mx-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="検索..." aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+      </form>
+      <!-- ユーザーリンク -->
+      <ul class="navbar-nav ml-3">
         <li class="nav-item">
           <a class="nav-link" href="#">ログイン</a>
         </li>
@@ -77,8 +162,9 @@
           <h5 class="card-title">投稿タイトル 5</h5>
           <p class="card-text">ここには投稿内容が入ります...</p>
           <a href="#" class="btn btn-primary">もっと見る</a>
-        </div>
       </div>
+    </div>
+    <!-- 他のカード... -->
   </div>
 
   <!-- スクロールボタン -->
@@ -87,8 +173,8 @@
     <button class="btn btn-secondary" onclick="scrollToBottom()">👇🏻</button>
   </div>
 
-  <!-- Bootstrap-->
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -101,6 +187,13 @@
     function scrollToBottom() {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
+
+    document.querySelectorAll('.form-check-label').forEach(label => {
+      label.addEventListener('click', () => {
+        const checkbox = document.querySelector(`#${label.getAttribute('for')}`);
+        checkbox.checked = !checkbox.checked;
+      });
+    });
   </script>
 </body>
 </html>

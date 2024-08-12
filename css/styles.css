@@ -1,7 +1,9 @@
 
+/* 기존 스타일 */
 body {
     font-family: Arial, sans-serif;
 }
+
 .sidebar {
     height: 100vh;
     position: fixed;
@@ -11,13 +13,16 @@ body {
     background-color: #f8f9fa;
     padding-top: 20px;
 }
+
 .sidebar h5 {
     padding: 10px;
 }
+
 .content {
     margin-left: 270px; /* サイドバーの幅分左にマージン */
     padding: 20px;
 }
+
 .scroll-buttons {
     position: fixed;
     bottom: 20px;
@@ -25,6 +30,27 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .scroll-buttons button {
     margin-bottom: 10px;
+}
+
+/* 検索バースタイル */
+.navbar-search {
+    background-color: #f8f9fa; /* ナビゲーションバーと 동일 배경 색상 */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    position: fixed;
+    top: 56px; /* ナビゲーションバーの高さと 동일 */
+    right: 0;
+    width: calc(100% - 270px); /* 페이지 오른쪽에서 사이드바 너비를 제외한 나머지 공간 */
+    box-sizing: border-box; /* 패딩과 테두리를 너비 계산에 포함 */
+}
+
+.navbar-search .form-inline {
+    justify-content: flex-end; /* 검색창 오른쪽 정렬 */
+}
+
+.navbar-search .form-control {
+    width: 300px; /* 검색 입력 필드의 너비 조정 */
 }
