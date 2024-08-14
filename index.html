@@ -8,35 +8,7 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .sidebar {
-      height: 100vh;
-      position: fixed;
-      top: 56px; /* ナビゲーションバーの高さ分下に */
-      left: 0;
-      width: 250px;
-      background-color: #f8f9fa;
-      padding-top: 20px;
-    }
-    .sidebar h5 {
-      padding: 10px;
-    }
-    .content {
-      margin-left: 270px; /* サイドバーの幅分左にマージン */
-      padding: 20px;
-    }
-    .scroll-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    .scroll-buttons button {
-      margin-bottom: 10px;
-    }
+    
   </style>
 </head>
 <body>
@@ -60,56 +32,38 @@
 
   <!-- サイドバー -->
   <div class="sidebar">
-    <h5>私の関心テーマ</h5>
+    <h5>メインリスト</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ナルト</li>
-      <li class="list-group-item">ワンピース</li>
-      <li class="list-group-item">進撃の巨人</li>
-      <li class="list-group-item">僕のヒーローアカデミア</li>
-      <li class="list-group-item">鬼滅の刃</li>
+      <li class="list-group-item">アニメ</li>
+      <li class="list-group-item">漫画</li>
+      <li class="list-group-item">人気作品</li>
+      <li class="list-group-item">キャラクター</li>
+      <li class="list-group-item">フォーラム</li>
+      <li class="list-group-item">スケジュール</li>
     </ul>
   </div>
 
   <!-- メインコンテンツ -->
-  <div class="content">
-    <h2>人気投稿</h2>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">投稿タイトル 1</h5>
-        <p class="card-text">ここには投稿内容が入ります...</p>
-        <a href="#" class="btn btn-primary">もっと見る</a>
-      </div>
-    </div>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">投稿タイトル 2</h5>
-        <p class="card-text">ここには投稿内容が入ります...</p>
-        <a href="#" class="btn btn-primary">もっと見る</a>
-      </div>
-    </div>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">投稿タイトル 3</h5>
-        <p class="card-text">ここには投稿内容が入ります...</p>
-        <a href="#" class="btn btn-primary">もっと見る</a>
-      </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">投稿タイトル 4</h5>
-          <p class="card-text">ここには投稿内容が入ります...</p>
-          <a href="#" class="btn btn-primary">もっと見る</a>
-        </div>
-      </div>
-      <div class="card mb-5">
-        <div class="card-body">
-          <h5 class="card-title">投稿タイトル 5</h5>
-          <p class="card-text">ここには投稿内容が入ります...</p>
-          <a href="#" class="btn btn-primary">もっと見る</a>
-        </div>
-      </div>
+
+    <class="group">
+      <div class="rectangle"></div>
+      <div class="ellipse"></div>
+      <div class="rect-inner"></div>
+      <div class="title">テストのためのタイトルに近いやつなので注意。</div>
+      <div class="nishiharu">西春駅前</div>
+      <div class="date">3日前</div>
+      <div class="heart"> <img src="icon/heart-fill.svg"></div>
+      <div class="views">23</div>
+      <div class="bookmark"> <img src="icon/bookmark-plus-fill.svg"></div>
   </div>
 
+</div>
+
+
+
+
+
+<!--  Do not touch -->
   <!-- スクロールボタン -->
   <div class="scroll-buttons">
     <button class="btn btn-secondary" onclick="scrollToTop()">👆🏻</button>
