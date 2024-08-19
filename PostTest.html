@@ -21,6 +21,9 @@
       margin-left: 220px; /* 사이드바 너비를 고려한 여백 설정 */
       padding: 20px;
     }
+    .card-wrapper {
+      margin-bottom: 300px; /* 각 카드 섹션 아래에 마진 추가 */
+    }
   </style>
 </head>
 <body>
@@ -38,10 +41,10 @@
     </ul>
   </div>
 
-  <!-- 메인 콘텐츠 메인 구성 하단 복사 +a 페이지네이션 -->
+  <!-- 메인 콘텐츠 -->
   <div class="main-content">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row card-wrapper">
         <!-- 첫 번째 카드 -->
         <div class="col-md-4 col-lg-2">
           <div class="card shadow">
@@ -146,31 +149,32 @@
             </div>
           </div>
         </div>
-
       </div>
-    </div>
-  </div>
 
-  <!-- 스크롤 버튼 -->
-  <div class="scroll-buttons">
-    <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
-    <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
-  </div>
+      <!-- 새로운 카드 행 추가 -->
+      <div class="row card-wrapper">
+        <!-- 첫 번째 카드 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="card shadow">
+            <img src="/image/assete.png" class="card-img-top">
+            <div class="card-body">
+              <span class="badge rounded-pill bg-primary">News</span>
+              <h4 class="mt-2">Blog Post Title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="d-flex p-3">
+              <div class="flex-shrink-0">
+                <img src="/image/assete.png" width="20px" height="20px">
+              </div>
+              <div class="flex-grow-1 ms-3 mt-1">
+                <h6 class="fw-bold mb-0">西春駅前</h6>
+                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
+              </div>
+            </div>
+              <!-- 두 번째 카드 -->
+               
+              <!-- 세 번째 카드 -->
+              <!-- 네 번째 카드 -->
+              <!-- 다섯 번째 카드 -->
 
-  <!-- BootstrapおよびjQueryのJSファイルリンク -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- 스크롤 기능용의 JavaScript 코드 -->
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
-</body>
-</html>
+         
