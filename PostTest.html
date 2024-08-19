@@ -8,13 +8,24 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    
+    .sidebar {
+      width: 200px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      padding-top: 20px;
+      background-color: #f8f9fa;
+    }
+    .main-content {
+      margin-left: 220px; /* 사이드바 너비를 고려한 여백 설정 */
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
 
-
-  <!-- サイドバー -->
+  <!-- 사이드바 -->
   <div class="sidebar">
     <h5>メインリスト</h5>
     <ul class="list-group list-group-flush">
@@ -27,112 +38,120 @@
     </ul>
   </div>
 
-  <!-- メインコンテンツ -->
+  <!-- 메인 콘텐츠 메인 구성 하단 복사 +a 페이지네이션 -->
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- 첫 번째 카드 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="card shadow">
+            <img src="/image/assete.png" class="card-img-top">
+            <div class="card-body">
+              <span class="badge rounded-pill bg-primary">News</span>
+              <h4 class="mt-2">Blog Post Title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="d-flex p-3">
+              <div class="flex-shrink-0">
+                <img src="/image/assete.png" width="20px" height="20px">
+              </div>
+              <div class="flex-grow-1 ms-3 mt-1">
+                <h6 class="fw-bold mb-0">西春駅前</h6>
+                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <class="group">
-      <div class="rectangle"></div>
-      <div class="ellipse"></div>
-      <div class="rect-inner"></div>
-      <div class="title">テストのためのタイトルに近いやつなので注意。</div>
-      <div class="nishiharu">西春駅前</div>
-      <div class="date">3日前</div>
-      <div class="heart"> <img src="icon/heart-fill.svg"></div>
-      <div class="views">23</div>
-      <div class="bookmark"> <img src="icon/bookmark-plus-fill.svg"></div>
+        <!-- 두 번째 카드 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="card shadow">
+            <img src="/image/assete.png" class="card-img-top">
+            <div class="card-body">
+              <span class="badge rounded-pill bg-primary">News</span>
+              <h4 class="mt-2">Blog Post Title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="d-flex p-3">
+              <div class="flex-shrink-0">
+                <img src="/image/assete.png" width="20px" height="20px">
+              </div>
+              <div class="flex-grow-1 ms-3 mt-1">
+                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
+                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 세 번째 카드 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="card shadow">
+            <img src="/image/assete.png" class="card-img-top">
+            <div class="card-body">
+              <span class="badge rounded-pill bg-primary">News</span>
+              <h4 class="mt-2">Blog Post Title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="d-flex p-3">
+              <div class="flex-shrink-0">
+                <img src="/image/assete.png" width="20px" height="20px">
+              </div>
+              <div class="flex-grow-1 ms-3 mt-1">
+                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
+                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 네 번째 카드 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="card shadow">
+            <img src="/image/assete.png" class="card-img-top">
+            <div class="card-body">
+              <span class="badge rounded-pill bg-primary">News</span>
+              <h4 class="mt-2">Blog Post Title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="d-flex p-3">
+              <div class="flex-shrink-0">
+                <img src="/image/assete.png" width="20px" height="20px">
+              </div>
+              <div class="flex-grow-1 ms-3 mt-1">
+                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
+                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 다섯 번째 카드 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="card shadow">
+            <img src="/image/assete.png" class="card-img-top">
+            <div class="card-body">
+              <span class="badge rounded-pill bg-primary">News</span>
+              <h4 class="mt-2">Blog Post Title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="d-flex p-3">
+              <div class="flex-shrink-0">
+                <img src="/image/assete.png" width="20px" height="20px">
+              </div>
+              <div class="flex-grow-1 ms-3 mt-1">
+                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
+                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
-</div>
-
-
-
-
-<!-- 콘텐츠 --> 
-<div class="container">
-  <div class="row">
-  <div class="col-md-6 col-lg-3"><div class="container">
-    <div class="card shadow">
-      <img src="/image/assete.png" class="card-img-top">
-      <div class="card-body">
-        <span class="badge rounded-pill bg-primary">News</span>
-        <h4 class="mt-2">Blog Post Title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="d-flex p-3">
-        <div class="flex-shrink-0">
-          <img src="/image/assete.png" width="20px" height="20px">
-        </div>
-        <div class="flex-grow-1 ms-3 mt-1"> 
-          <h6 class="fw-bold mb-0">西春駅前 </h6>
-          <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-        </div>
-      </div>
-    </div>
-</div> 
-</div>
-  <div class="col-md-6"><div class="container">
-    <div class="card shadow">
-      <img src="/image/assete.png" class="card-img-top">
-      <div class="card-body">
-        <span class="badge rounded-pill bg-primary">News</span>
-        <h4 class="mt-2">Blog Post Title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="d-flex p-3">
-        <div class="flex-shrink-0">
-          <img src="/image/assete.png" width="20px" height="20px">
-        </div>
-        <div class="flex-grow-1 ms-3 mt-1">
-          <h6 class="fw-bold mb-0">Kelly Rowan </h6>
-          <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-        </div>
-      </div>
-    </div>
- </div> 
-</div>
-  <div class="col-md-6"><div class="container">
-    <div class="card shadow">
-      <img src="/image/assete.png" class="card-img-top">
-      <div class="card-body">
-        <span class="badge rounded-pill bg-primary">News</span>
-        <h4 class="mt-2">Blog Post Title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="d-flex p-3">
-        <div class="flex-shrink-0">
-          <img src="/image/assete.png" width="20px" height="20px" border-radius="50%">
-        </div>
-        <div class="flex-grow-1 ms-3 mt-1">
-          <h6 class="fw-bold mb-0"> Kelly Rowan </h6>
-          <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-        </div>
-      </div>
-    </div>
-  <div class="col-md-6"><div class="card shadow">
-    <img src="/image/assete.png" class="card-img-top">
-    <div class="card-body">
-      <span class="badge rounded-pill bg-primary">News</span>
-      <h4 class="mt-2">Blog Post Title</h4>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <div class="d-flex p-3">
-      <div class="flex-shrink-0">
-        <img src="/image/assete.png" width="20px" height="20px" border-radius="50%">
-      </div>
-      <div class="flex-grow-1 ms-3 mt-1">
-        <h6 class="fw-bold mb-0"> Kelly Rowan </h6>
-        <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-      </div>
-    </div>
-  </div></div>
-  <div class="col-md-6">hello</div>
-  <div class="col-md-6">hello</div>
-  </div>
-</div> 
-
-
-
-<!--  Do not touch -->
-  <!-- スクロールボタン -->
+  <!-- 스크롤 버튼 -->
   <div class="scroll-buttons">
     <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
     <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
@@ -143,7 +162,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- スクロール機能用のJavaScriptコード -->
+  <!-- 스크롤 기능용의 JavaScript 코드 -->
   <script>
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
