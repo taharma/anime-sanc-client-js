@@ -5,104 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Sanctuary</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- Bootstrap CSS ファイルのリンク -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .dropdown-menu .form-check {
-      margin: 0.5rem 0;
+    /* 상단 네비게이션 바 스타일 */
+    .navbar-search {
+        flex-grow: 1;
+        text-align: center;
     }
-    .dropdown-menu h5 {
-      margin: 0.5rem;
+    
+    .custom-search-input {
+        width: 70%; /* 검색창의 넓이 조절 */
     }
-    .form-check-label {
-      cursor: pointer;
+    
+    .scroll-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .scroll-buttons .btn {
+        margin: 5px;
+    }
+
+    /* 사이드바 스타일 */
+    .sidebar {
+        height: 100vh;
+        position: fixed;
+        top: 56px; /* 네비게이션 바 높이만큼 아래 */
+        left: 0;
+        width: 250px;
+        background-color: #f8f9fa;
+        padding-top: 20px;
+        overflow-y: auto;
+        border-right: 1px solid #ddd;
+    }
+
+    /* 사이드바 항목 스타일 */
+    .sidebar h5 {
+        padding: 10px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #ddd;
+        font-size: 1.25rem;
+        background-color: #e9ecef;
+    }
+
+    /* 사이드바 항목 리스트 */
+    .sidebar .list-group {
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar .list-group .nav-item {
+        position: relative;
+    }
+
+    .sidebar .list-group .nav-link {
+        display: block;
+        padding: 10px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .sidebar .list-group .nav-link:hover {
+        background-color: #e9ecef;
+    }
+
+    .sidebar .list-group .dropdown-menu {
+        padding-left: 15px;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        background-color: #f8f9fa;
+    }
+
+    .sidebar .list-group .dropdown-menu a {
+        padding: 10px;
+        color: #000;
+    }
+
+    .sidebar .list-group .dropdown-menu a:hover {
+        background-color: #e9ecef;
+    }
+
+    /* 콘텐츠 영역 스타일 */
+    .content {
+        margin-left: 270px; /* 사이드바의 너비와 여백을 추가 */
+        padding: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- ナビゲーションバー -->
+  <!-- 상단 네비게이션 바 -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Anime Sanctuary</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーション切替">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- ナビゲーションリンク -->
-      <ul class="navbar-nav mr-auto">
-        <!-- ホームリンク -->
-        <li class="nav-item">
-          <a class="nav-link" href="#">ホーム</a>
-        </li>
-        <!-- 掲示板のドロップダウン -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBoard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            掲示板
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownBoard">
-            <a class="dropdown-item" href="/api/categories">カテゴリー一覧</a>
-            <a class="dropdown-item" href="/api/posts/popular">人気投稿</a>
-            <a class="dropdown-item" href="/api/anime/new">新作アニメ情報</a>
-          </div>
-        </li>
-        <!-- プロフィールのドロップダウン -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            プロフィール
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-            <a class="dropdown-item" href="/api/users/{userId}">プロフィール閲覧</a>
-            <a class="dropdown-item" href="/api/users/{userId}/edit">プロフィール編集</a>
-            <a class="dropdown-item" href="/api/users/{userId}/scraps">スクラップ一覧</a>
-          </div>
-        </li>
-        <!-- ジャンルのドロップダウン -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGenre" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ジャンル
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownGenre">
-            <h5>ジャンル</h5>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre1">
-              <label class="form-check-label" for="genre1">異世界</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre2">
-              <label class="form-check-label" for="genre2">ファンタジー</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre3">
-              <label class="form-check-label" for="genre3">ロマンス</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre4">
-              <label class="form-check-label" for="genre4">学園物</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre5">
-              <label class="form-check-label" for="genre5">SF</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre6">
-              <label class="form-check-label" for="genre6">家族</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre7">
-              <label class="form-check-label" for="genre7">日常</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="genre8">
-              <label class="form-check-label" for="genre8">コメディ</label>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <!-- 検索バーを中央に配置 -->
-      <form class="form-inline mx-auto">
-        <input class="form-control mr-sm-2" type="search" placeholder="検索..." aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-      </form>
-      <!-- ユーザーリンク -->
+      <div class="navbar-search">
+        <form class="form-inline">
+          <input class="form-control custom-search-input" type="search" placeholder="検索..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+        </form>
+      </div>
       <ul class="navbar-nav ml-3">
         <li class="nav-item">
           <a class="nav-link" href="#">ログイン</a>
@@ -114,19 +121,49 @@
     </div>
   </nav>
 
-  <!-- サイドバー -->
+  <!-- 사이드바 -->
   <div class="sidebar">
-    <h5>私の関心テーマ</h5>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">ナルト</li>
-      <li class="list-group-item">ワンピース</li>
-      <li class="list-group-item">進撃の巨人</li>
-      <li class="list-group-item">僕のヒーローアカデミア</li>
-      <li class="list-group-item">鬼滅の刃</li>
+    <h5>メニュー</h5>
+    <ul class="list-group">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          掲示板
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a href="/api/categories" class="dropdown-item">カテゴリー一覧</a>
+          <a href="/api/posts/popular" class="dropdown-item">人気投稿</a>
+          <a href="/api/anime/new" class="dropdown-item">新作アニメ情報</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          プロフィール
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <a href="/api/users/{userId}" class="dropdown-item">プロフィール閲覧</a>
+          <a href="/api/users/{userId}/edit" class="dropdown-item">プロフィール編集</a>
+          <a href="/api/users/{userId}/scraps" class="dropdown-item">スクラップ一覧</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ジャンル
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+          <a href="#" class="dropdown-item">異世界</a>
+          <a href="#" class="dropdown-item">ファンタジー</a>
+          <a href="#" class="dropdown-item">ロマンス</a>
+          <a href="#" class="dropdown-item">学園物</a>
+          <a href="#" class="dropdown-item">SF</a>
+          <a href="#" class="dropdown-item">家族</a>
+          <a href="#" class="dropdown-item">日常</a>
+          <a href="#" class="dropdown-item">コメディ</a>
+        </div>
+      </li>
     </ul>
   </div>
 
-  <!-- メインコンテンツ -->
+  <!-- 콘텐츠 영역 -->
   <div class="content">
     <h2>人気投稿</h2>
     <div class="card mb-3">
@@ -143,7 +180,7 @@
         <a href="#" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
-    <div class="card mb-3">
+    <div class="card mb-3">  
       <div class="card-body">
         <h5 class="card-title">投稿タイトル 3</h5>
         <p class="card-text">ここには投稿内容が入ります...</p>
@@ -164,21 +201,17 @@
           <a href="#" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
-    <!-- 他のカード... -->
   </div>
 
-  <!-- スクロールボタン -->
+  <!-- 스크롤 버튼 -->
   <div class="scroll-buttons">
     <button class="btn btn-secondary" onclick="scrollToTop()">👆🏻</button>
     <button class="btn btn-secondary" onclick="scrollToBottom()">👇🏻</button>
   </div>
 
-  <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- スクロール機能用のJavaScriptコード -->
   <script>
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -187,13 +220,6 @@
     function scrollToBottom() {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
-
-    document.querySelectorAll('.form-check-label').forEach(label => {
-      label.addEventListener('click', () => {
-        const checkbox = document.querySelector(`#${label.getAttribute('for')}`);
-        checkbox.checked = !checkbox.checked;
-      });
-    });
   </script>
 </body>
 </html>
