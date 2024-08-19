@@ -1,31 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Sanctuary</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Sanctuary</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* 상단 네비게이션 바 스타일 */
+    .navbar-search {
+        flex-grow: 1;
+        text-align: center;
+    }
+    
+    .custom-search-input {
+        width: 70%; /* 검색창의 넓이 조절 */
+    }
+    
+    .scroll-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .scroll-buttons .btn {
+        margin: 5px;
+    }
+
+    /* 사이드바 스타일 */
+    .sidebar {
+        height: 100vh;
+        position: fixed;
+        top: 56px; /* 네비게이션 바 높이만큼 아래 */
+        left: 0;
+        width: 250px;
+        background-color: #f8f9fa;
+        padding-top: 20px;
+        overflow-y: auto;
+        border-right: 1px solid #ddd;
+    }
+
+    /* 사이드바 항목 스타일 */
+    .sidebar h5 {
+        padding: 10px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #ddd;
+        font-size: 1.25rem;
+        background-color: #e9ecef;
+    }
+
+    /* 사이드바 항목 리스트 */
+    .sidebar .list-group {
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar .list-group .nav-item {
+        position: relative;
+    }
+
+    .sidebar .list-group .nav-link {
+        display: block;
+        padding: 10px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .sidebar .list-group .nav-link:hover {
+        background-color: #e9ecef;
+    }
+
+    .sidebar .list-group .dropdown-menu {
+        padding-left: 15px;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        background-color: #f8f9fa;
+    }
+
+    .sidebar .list-group .dropdown-menu a {
+        padding: 10px;
+        color: #000;
+    }
+
+    .sidebar .list-group .dropdown-menu a:hover {
+        background-color: #e9ecef;
+    }
+
+    /* 콘텐츠 영역 스타일 */
+    .content {
+        margin-left: 270px; /* 사이드바의 너비와 여백을 추가 */
+        padding: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Anime Sanctuary</h1>
-    </header>
-    <main>
-        <section id="auth-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
-                <button type="submit">Login</button>
-            </form>
-        </section>
-        <section id="posts-section">
-            <h2>Posts</h2>
-            <div id="posts-list"></div>
-        </section>
-    </main>
-    <script src="js/main.js"></script>
+  <!-- 상단 네비게이션 바 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Anime Sanctuary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-search">
+        <form class="form-inline">
+          <input class="form-control custom-search-input" type="search" placeholder="検索..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+        </form>
+      </div>
+      <ul class="navbar-nav ml-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#">ログイン</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">新規登録</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 사이드바 -->
+  <div class="sidebar">
+    <h5>メニュー</h5>
+    <ul class="list-group">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          掲示板
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a href="/api/categories" class="dropdown-item">カテゴリー一覧</a>
+          <a href="/api/posts/popular" class="dropdown-item">人気投稿</a>
+          <a href="/api/anime/new" class="dropdown-item">新作アニメ情報</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          プロフィール
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <a href="/api/users/{userId}" class="dropdown-item">プロフィール閲覧</a>
+          <a href="/api/users/{userId}/edit" class="dropdown-item">プロフィール編集</a>
+          <a href="/api/users/{userId}/scraps" class="dropdown-item">スクラップ一覧</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ジャンル
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+          <a href="#" class="dropdown-item">異世界</a>
+          <a href="#" class="dropdown-item">ファンタジー</a>
+          <a href="#" class="dropdown-item">ロマンス</a>
+          <a href="#" class="dropdown-item">学園物</a>
+          <a href="#" class="dropdown-item">SF</a>
+          <a href="#" class="dropdown-item">家族</a>
+          <a href="#" class="dropdown-item">日常</a>
+          <a href="#" class="dropdown-item">コメディ</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 콘텐츠 영역 -->
+  <div class="content">
+    <h2>人気投稿</h2>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">投稿タイトル 1</h5>
+        <p class="card-text">ここには投稿内容が入ります...</p>
+        <a href="#" class="btn btn-primary">もっと見る</a>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">投稿タイトル 2</h5>
+        <p class="card-text">ここには投稿内容が入ります...</p>
+        <a href="#" class="btn btn-primary">もっと見る</a>
+      </div>
+    </div>
+    <div class="card mb-3">  
+      <div class="card-body">
+        <h5 class="card-title">投稿タイトル 3</h5>
+        <p class="card-text">ここには投稿内容が入ります...</p>
+        <a href="#" class="btn btn-primary">もっと見る</a>
+      </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">投稿タイトル 4</h5>
+          <p class="card-text">ここには投稿内容が入ります...</p>
+          <a href="#" class="btn btn-primary">もっと見る</a>
+        </div>
+      </div>
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title">投稿タイトル 5</h5>
+          <p class="card-text">ここには投稿内容が入ります...</p>
+          <a href="#" class="btn btn-primary">もっと見る</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 스크롤 버튼 -->
+  <div class="scroll-buttons">
+    <button class="btn btn-secondary" onclick="scrollToTop()">👆🏻</button>
+    <button class="btn btn-secondary" onclick="scrollToBottom()">👇🏻</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>

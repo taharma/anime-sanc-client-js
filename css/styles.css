@@ -1,0 +1,139 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 상단 네비게이션 바 스타일 */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* 상단에 고정 */
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .navbar-brand {
+    margin-right: 20px;
+  }
+  
+  .navbar-search {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  /* 기존 검색 입력 필드 너비 설정 */
+.navbar-search input {
+    width: 300px; /* 기존 너비 설정 */
+  }
+  
+  /* 새로운 커스텀 클래스 추가 */
+  .custom-search-input {
+    width: 700px; /* 원하는 너비로 설정 */
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 15px;
+  }
+  
+  /* 사이드바 스타일 */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 56px; /* 네비게이션 바 높이만큼 아래 */
+    left: 0;
+    width: 250px;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+}
+
+/* 사이드바 항목 스타일 */
+.sidebar h5 {
+    padding: 10px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.25rem;
+    background-color: #e9ecef;
+}
+
+/* 사이드바 항목 리스트 */
+.sidebar .list-group {
+    padding: 0;
+    margin: 0;
+}
+
+/* 드롭다운 메뉴 기본 펼쳐진 상태 */
+.sidebar .dropdown-menu {
+    display: block;
+    padding-left: 15px;
+    margin: 0;
+}
+
+.sidebar .dropdown-menu a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px;
+    display: block;
+}
+
+.sidebar .dropdown-menu a:hover {
+    background-color: #e9ecef;
+}
+
+/* 드롭다운 메뉴 스타일 */
+.sidebar .dropdown-toggle::after {
+    content: ""; /* 기본 화살표 아이콘 제거 */
+}
+
+.sidebar .nav-item {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar .nav-link {
+    display: block;
+    padding: 10px;
+    color: #000;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.sidebar .nav-item.active .nav-link {
+    background-color: #007bff;
+    color: #fff;
+}
+
+  
+  /* 본문 콘텐츠 스타일 */
+  .content {
+    margin-left: 270px; /* 사이드바의 너비 만큼 여백 */
+    padding: 20px;
+  }
+  
+  /* 스크롤 버튼 스타일 */
+  .scroll-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .scroll-buttons button {
+    margin-bottom: 10px;
+  }
+  
