@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <style>
     
+    
   </style>
 </head>
 <body>
@@ -19,6 +20,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-search">
+        <form class="form-inline">
+          <input class="form-control custom-search-input" type="search" placeholder="検索..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+        </form>
+      </div>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">ログイン</a>
@@ -33,13 +40,42 @@
   <!-- サイドバー -->
   <div class="sidebar">
     <h5>メインリスト</h5>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">アニメ</li>
-      <li class="list-group-item">漫画</li>
-      <li class="list-group-item">人気作品</li>
-      <li class="list-group-item">キャラクター</li>
-      <li class="list-group-item">フォーラム</li>
-      <li class="list-group-item">スケジュール</li>
+    <ul class="list-group">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          掲示板
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a href="/api/categories" class="dropdown-item">カテゴリー一覧</a>
+          <a href="/api/posts/popular" class="dropdown-item">人気投稿</a>
+          <a href="/api/anime/new" class="dropdown-item">新作アニメ情報</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          プロフィール
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <a href="/api/users/{userId}" class="dropdown-item">プロフィール閲覧</a>
+          <a href="/api/users/{userId}/edit" class="dropdown-item">プロフィール編集</a>
+          <a href="/api/users/{userId}/scraps" class="dropdown-item">スクラップ一覧</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ジャンル
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+          <a href="#" class="dropdown-item">異世界</a>
+          <a href="#" class="dropdown-item">ファンタジー</a>
+          <a href="#" class="dropdown-item">ロマンス</a>
+          <a href="#" class="dropdown-item">学園物</a>
+          <a href="#" class="dropdown-item">SF</a>
+          <a href="#" class="dropdown-item">家族</a>
+          <a href="#" class="dropdown-item">日常</a>
+          <a href="#" class="dropdown-item">コメディ</a>
+        </div>
+      </li>
     </ul>
   </div>
 
