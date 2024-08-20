@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="viewport" content="width=device-width, initial-scale=1.0">
   <title>AS/board</title>
-  <!-- Bootstrap CSS ファイルのリンク -->
+  <!-- Bootstrap CSS 파일의 링크 -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
@@ -18,38 +17,63 @@
       background-color: #f8f9fa;
     }
     .main-content {
-      margin-left: 220px; /* 사이드바 너비를 고려한 여백 설정 */
+      margin-left: 220px;
       padding: 20px;
     }
     .card-wrapper {
-      margin-bottom: 100px; /* 각 카드 섹션 아래에 마진 추가 */
+      margin-bottom: 100px;
       margin-top: 30px;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+    .carousel-control-next {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+    .carousel-control-next-icon {
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M2.02 0L0 2l4 2-4 2 2 2 6-4-6-4z"/%3E%3C/svg%3E');
+    }
+    .card-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .card {
+      min-width: 200px;
+      margin-right: 10px;
+      transition: transform 0.5s ease;
+    }
+    .card:nth-child(3) {
+      transform: scale(1.1);
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-
-
-  <!-- ナビゲーションバー -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Anime Sanctuary</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">ログイン</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">新規登録</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-
+    <!-- 네비게이션 바 /로그인 회원등록 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Anime Sanctuary</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">ログイン</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">新規登録</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
   <!-- 사이드바 -->
   <div class="sidebar">
@@ -60,249 +84,120 @@
       <li class="list-group-item">人気作品</li>
       <li class="list-group-item">キャラクター</li>
       <li class="list-group-item">フォーラム</li>
-      <li class="list-group-item">スケジュール</li>
+    
     </ul>
   </div>
 
   <!-- 메인 콘텐츠 -->
   <div class="main-content">
     <div class="container-fluid">
-      <div class="boardName1" ><h2>テストネーム</h2></div>
-      <div class="boardName1" ><h4>もっと見る</h4></div>
-      <!-- 첫 번째 카드 행 -->
-      <div class="row card-wrapper">
-        <!-- 첫 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">西春駅前</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 두 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 세 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 네 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 다섯 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<!-- 첫 번째 카드 행 끝-->
-
-      <!-- 두 번째 카드 행 -->
-      <div class="boardName2" ><h2>テストネーム2</h2></div>
-      <div class="boardName2" ><h4>もっと見る</h4></div>
-
-      <div class="row card-wrapper">
-        <!-- 첫 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">西春駅前</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 두 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 세 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 네 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 다섯 번째 카드 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="card shadow">
-            <img src="/image/assete.png" class="card-img-top">
-            <div class="card-body">
-              <span class="badge rounded-pill bg-primary">News</span>
-              <h4 class="mt-2">Blog Post Title</h4>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="d-flex p-3">
-              <div class="flex-shrink-0">
-                <img src="/image/assete.png" width="20px" height="20px">
-              </div>
-              <div class="flex-grow-1 ms-3 mt-1">
-                <h6 class="fw-bold mb-0">Kelly Rowan</h6>
-                <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <!-- 카드 행을 생성할 위치 -->
+      <div id="card-rows"></div>
     </div>
   </div>
-  <!-- 두 번째 카드 끝 -->
 
-  <!-- 스크롤 버튼 -->
-  <div class="scroll-buttons">
-    <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
-    <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
-  </div>
-
-  <!-- BootstrapおよびjQueryのJSファイルリンク -->
+  <!-- Bootstrap 및 jQuery의 JS 파일 링크 -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- 동적 카드 행 생성을 위한 JavaScript 코드 -->
+  <script>
+    const images = [
+      '/image/random6.jpg', '/image/random7.jpg', '/image/random8.jpg',
+      '/image/random9.jpg',  '/image/random3.jpg'
+    ];
+
+    // ☆ 2, 3, 4, 5열의 카테고리 이름을 설정합니다.☆
+    const categoryNames = [
+    "<button class='category-button'>Anime</button>", //1열
+  "<button class='category-button'>Manga</button>", //2열
+  "<button class='category-button'>Popular Works</button>", //3열
+  "<button class='category-button'>Characters</button>", //4열
+  "<button class='category-button'>Forum</button>" //5열
+    ];
+
+    function createCard(image, title, description, author, date) {
+      return `
+        <div class="card shadow">
+          <img src="${image}" class="card-img-top">  <!-- ☆ 여기에 있는 image 변수를 수정하여 각 열의 이미지를 바꿀 수 있습니다.☆ -->
+          <div class="card-body">
+            <span class="badge rounded-pill bg-primary">News</span>
+            <h4 class="mt-2">${title}</h4>  <!-- ☆ 여기에 있는 title 변수를 수정하여 각 열의 카드 제목을 바꿀 수 있습니다.☆ -->
+            <p class="card-text">${description}</p>  <!-- ☆ 여기에 있는 description 변수를 수정하여 각 열의 카드 설명을 바꿀 수 있습니다.☆ -->
+          </div>
+          <div class="d-flex p-3">
+            <div class="flex-shrink-0">
+              <img src="/image/assete.png" width="20px" height="20px">
+            </div>
+            <div class="flex-grow-1 ms-3 mt-1">
+              <h6 class="fw-bold mb-0">${author}</h6>  <!-- ☆ 여기에 있는 author 변수를 수정하여 각 열의 저자를 바꿀 수 있습니다.☆ -->
+              <p class="text-muted"><img src="icon/heart-fill.svg"> ${date} <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>  <!-- ☆ 여기에 있는 date 변수를 수정하여 각 열의 날짜를 바꿀 수 있습니다.☆ -->
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function createCardRow(rowId, cards, categoryName) {
+      return `
+        <h3>${categoryName}</h3>
+        <div class="card-wrapper" id="wrapper-${rowId}">
+          <div class="card-container">
+            ${cards.join('')}
+          </div>
+          <a class="carousel-control-next" href="javascript:void(0);" role="button" onclick="rotateCarousel(${rowId})">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      `;
+    }
+
+    function rotateCarousel(rowId) {
+      const container = document.querySelector(`#wrapper-${rowId} .card-container`);
+      const cards = container.querySelectorAll('.card');
+
+      // 먼저 모든 카드의 크기를 원래대로 되돌림
+      cards.forEach(card => card.style.transform = 'scale(1)');
+
+      // 첫 번째 카드를 마지막으로 이동
+      const firstCard = container.querySelector('.card:first-child');
+      container.appendChild(firstCard.cloneNode(true));
+      container.removeChild(firstCard);
+
+      // 다시 카드들을 가져와서 가운데 카드만 확대
+      const updatedCards = container.querySelectorAll('.card');
+      updatedCards[2].style.transform = 'scale(1.1)';  // 가운데 카드만 확대
+    }
+
+    function initialize() {
+      const cardRows = [];
+      for (let i = 0; i < categoryNames.length; i++) {  // categoryNames 배열 길이만큼 반복합니다.
+        const cards = [];
+        for (let j = 0; j < 5; j++) {
+          cards.push(createCard(
+            images[j],  // ☆ 이곳에서 각 열의 이미지를 조정할 수 있습니다.☆
+            `Blog Post ${j + 1}`,  // ☆ 이곳에서 각 열의 카드 제목을 조정할 수 있습니다.☆
+            `これはテスト用のテキストです。`,  // ☆ 이곳에서 각 열의 카드 설명을 조정할 수 있습니다.☆
+            `Author ${j + 1}`,  // ☆ 이곳에서 각 열의 저자를 조정할 수 있습니다.☆
+            `March 12, 2024`  // ☆ 이곳에서 각 열의 날짜를 조정할 수 있습니다.☆
+          ));
+        }
+        cardRows.push(createCardRow(i, cards, categoryNames[i]));
+      }
+      document.getElementById('card-rows').innerHTML = cardRows.join('');
+
+      // 초기 로드시 각 카드 행에서 가운데 카드를 확대
+      for (let i = 0; i < categoryNames.length; i++) {
+        const container = document.querySelector(`#wrapper-${i} .card-container`);
+        const cards = container.querySelectorAll('.card');
+        cards[2].style.transform = 'scale(1.1)';  // 가운데 카드만 확대
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initialize);
+  </script>
 
   <!-- 스크롤 기능용의 JavaScript 코드 -->
   <script>
@@ -314,5 +209,31 @@
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   </script>
+
+<!--  Do not touch -->
+  <!-- スクロールボタン(스크롤버튼) -->
+  <div class="scroll-buttons">
+    <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
+    <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
+  </div>
+
+  <!-- BootstrapおよびjQueryのJSファイルリンク -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- スクロール機能用のJavaScriptコード -->
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+
+
+
 </body>
 </html>
