@@ -46,7 +46,10 @@
       transition: transform 0.5s ease;
     }
     .card {
-      min-width: 200px;
+      min-width: 200px; /* 카드의 최소 너비를 설정합니다. */
+      max-width: 400px; /* 카드의 최대 너비를 설정합니다. */
+      min-height: 250px; /* 카드의 최소 높이를 설정합니다. */
+      max-height: 450px; /* 카드의 최대 높이를 설정합니다. */
       margin-right: 10px;
       transition: transform 0.5s ease;
     }
@@ -54,6 +57,39 @@
       transform: scale(1.1);
       z-index: 1;
     }
+     /* 카드 속 이미지의 크기를 고정하는 CSS */
+    .card-img-top {
+      width: 100%; /* 카드의 너비에 맞춰 이미지를 조정합니다. */
+      height: 150px; /* 고정된 높이를 설정합니다. */
+      object-fit: cover; /* 이미지를 잘라서(잘라낸 부분을 숨기고) 크기에 맞춥니다. */
+    }
+    .card-body {
+      padding: 15px; /* 카드 내용에 대한 패딩을 추가하여 겹치는 문제를 해결합니다. */
+    }
+    .card-text {
+      margin-bottom: 0; /* 카드 텍스트의 아래쪽 마진을 제거하여 겹치는 문제를 해결합니다. */
+    }
+
+  /* 버튼의 기본 스타일을 제거하는 CSS */
+  .icon-button {
+      border: none; /* ☆ 버튼의 테두리를 제거합니다. ☆ */
+      background-color: transparent; /* ☆ 버튼의 배경색을 투명하게 설정합니다. ☆ */
+      cursor: pointer; /* ☆ 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. ☆ */
+      padding: 0; /* ☆ 버튼의 기본 패딩을 제거합니다. ☆ */
+    }
+
+    /* 버튼 클릭 시 색상을 변경하는 CSS */
+    .icon-button.clicked {
+      color: rgb(0, 26, 255); /* ☆ 클릭 시 아이콘의 색상을 변경합니다. 원하는 색상으로 바꾸세요. ☆ */
+    }
+
+    /* 아이콘 크기를 조정하는 CSS */
+    .icon-button img {
+      width: 20px; /* 아이콘의 크기를 설정합니다. */
+      height: 20px; /* 아이콘의 크기를 설정합니다. */
+    }
+
+
   </style>
 </head>
 <body>
@@ -102,6 +138,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- 동적 카드 행 생성을 위한 JavaScript 코드 -->
+
   <script>
     const images = [
       '/image/random6.jpg', '/image/random7.jpg', '/image/random8.jpg',
@@ -132,7 +169,11 @@
             </div>
             <div class="flex-grow-1 ms-3 mt-1">
               <h6 class="fw-bold mb-0">${author}</h6>  <!-- ☆ 여기에 있는 author 변수를 수정하여 각 열의 저자를 바꿀 수 있습니다.☆ -->
-              <p class="text-muted"><img src="icon/heart-fill.svg"> ${date} <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>  <!-- ☆ 여기에 있는 date 변수를 수정하여 각 열의 날짜를 바꿀 수 있습니다.☆ -->
+            <br>
+              ${date}  6 min read</p>  <!-- ☆ 여기에 있는 date 변수를 수정하여 각 열의 날짜를 바꿀 수 있습니다.☆ -->
+            
+              <button class="icon-button" onclick="toggleIcon(this)"><img src="icon/heart-fill.svg"></button>
+              <button class="icon-button" onclick="toggleIcon(this)"><img src="/icon/bookmark-plus-fill.svg"></button>
             </div>
           </div>
         </div>
@@ -195,12 +236,10 @@
         cards[2].style.transform = 'scale(1.1)';  // 가운데 카드만 확대
       }
     }
-
     document.addEventListener('DOMContentLoaded', initialize);
-  </script>
 
-  <!-- 스크롤 기능용의 JavaScript 코드 -->
-  <script>
+  // <!-- 스크롤 기능용의 JavaScript 코드 -->
+  
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -209,6 +248,16 @@
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   </script>
+
+
+
+
+
+
+
+
+
+
 
 <!--  Do not touch -->
   <!-- スクロールボタン(스크롤버튼) -->
