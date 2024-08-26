@@ -1,0 +1,222 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search-container {
+  display: flex;
+  width: 40%;
+}
+
+.search-bar {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+}
+
+.search-button {
+  padding: 8px 12px;
+  background-color: #03914f;
+  color: white;
+  border: 1px solid #ddd;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-icons .icon {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.header-icons img {
+  width: 25px; /* 이미지의 가로 크기를 25px로 설정 */
+  height: 25px; /* 이미지의 세로 크기를 25px로 설정 */
+  object-fit: cover;
+  border-radius: 50%; /* 원형으로 표시 */
+}
+
+.post-button {
+  padding: 8px 12px;
+  background-color: #03914f;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px solid #eef0f5;
+  display: flex; /* Flexbox 레이아웃 사용 */
+  flex-direction: column; /* 아이템들을 세로로 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.profile-img img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.follow-info, .profile-name {
+  margin-bottom: 20px;
+}
+
+.bold-number {
+  font-weight: bold;
+}
+
+.settings-button {
+  padding: 8px 12px;
+  background-color: transparent;
+  color: #2f2f2f;
+  border: 1.5px solid #dfdfdf;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.welcome-section {
+  text-align: center;
+}
+
+.welcome-section img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.start-writing-button {
+  padding: 10px 20px;
+  background-color: #03914f;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 10pt;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.category-menu {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 2px solid #ddd;
+  gap: 20px;
+}
+
+.category-menu button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #838383;
+}
+
+.category-menu button:hover {
+  color: #03914f;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  right: 0;
+  top: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  background-color: #fff;
+  border-radius: 4px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.content-section {
+  display: none;
+  color: #838383;
+  margin-top: 100px; /* 콘텐츠 상단에 100px의 여백 추가 */
+}
+
+.content-section.active {
+  display: block;
+}
+
+.welcome-section img {
+width:150px;
+height: 150px;
+}
+
+.header-icons .icon1 {
+margin-right: 20px; /* icon2와의 간격을 20px로 설정 */
+
+}
+

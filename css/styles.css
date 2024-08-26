@@ -2,21 +2,24 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 .navbar-brand{
 font-weight: bolder;
+font-size:18pt;
+
 }
 .sidebar {
   height: 100vh;
   position: fixed;
   top: 56px; /* ナビゲーションバーの高さ分下に */
   left: 0;
-  width: 200px;
+  width: 70px;
   color:#626262;
-  background-color: #f0f0f0;
-  padding-top: 20px;
+  background-color: #ffffff;
+  padding-top: 80px;
+  border: 1.5px solid #f6f6f6;
 }
 .sidebar h5 {
   font-weight: bold;
@@ -69,12 +72,12 @@ font-weight: bolder;
     color: #FF1D1D;
 }
 
-.bookmark {
+/* .bookmark {
     left: 313px;
     top: 336px;
     color: #45A6FF;
     cursor: pointer;
-}
+} */
 
 .ellipse {
     position: absolute;
@@ -159,22 +162,133 @@ font-weight: bolder;
 }
 
 <style>
-  #searchInput {
+#searchInput {
     width: 250px; /* 검색창의 너비 */
     border-radius: 5px; /* 검색창의 모서리 둥글게 */
     color: #45A6FF;
-  }
+}
 
-  .dropdown-menu {
+.dropdown-menu {
     max-height: 200px; /* 드롭다운 최대 높이 */
     overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
     border-radius: 0 0 5px 5px; /* 드롭다운의 모서리 둥글게 */
-  }
+}
 
-  .dropdown-item:hover {
+.dropdown-item:hover {
     background-color: #f8f9fa; /* 마우스를 올렸을 때의 배경색 */
-  }
+}
+/*테스트용 끝*/
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
+    width: 40%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons .icon {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.post-button {
+    padding: 8px 12px;
+    background-color: #34a853;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    padding-right: 20;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-img {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.follow-info {
+    margin-bottom: 20px;
+}
+
+.settings-button {
+    padding: 8px 12px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.main-content {
+    width: 75%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.welcome-section {
+    text-align: center;
+}
+
+.welcome-section img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.start-writing-button {
+    padding: 10px 20px;
+    background-color: #34a853;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
 </style>
-
-
-/* 테스트용 끝 */

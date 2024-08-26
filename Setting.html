@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS/Account Settings</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-container {
+    display: flex;
+    width: 40%;
+}
+
+.search-bar {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}
+
+.search-button {
+    padding: 8px 12px;
+    background-color: #03914f;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header-icons .icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.header-icons img {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.post-button {
+    padding: 8px 12px;
+    background-color: #03914f;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #eef0f5;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 1px solid #eef0f5;
+}
+
+.account-info .info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.account-info .info-item .label {
+    font-weight: bold;
+    color: #333;
+}
+
+.account-info .info-item .value {
+    color: #666;
+}
+
+footer {
+    padding: 10px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+
+
+</style>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Anime Sanctuary</div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
+            <button class="search-button">検索</button>
+        </div>
+        <div class="header-icons">
+            <div class="icon1"><img src="/icon/free-icon-alarm-bell-6367716.png"></div>
+            <div class="icon2">
+                <img src="/icon/user.png" onclick="toggleDropdown()">
+            
+            </div>
+            <button class="post-button">投稿</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li>アカウント</li>
+                <li>通知</li>
+                <li>リアクション</li>
+                <li>購入・サポート履歴</li>
+                <li>ポイント管理</li>
+                <li>カード情報</li>
+                <li>お支払先</li>
+                <li>プレミアム</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2>アカウント</h2>
+            <div class="account-info">
+                <div class="info-item">
+                    <span class="label">クリエイター名</span>
+                    <span class="value">정연</span>
+                    <a href="#">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">note ID</span>
+                    <span class="value">kirr0578</span>
+                    <a href="#">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">メールアドレス</span>
+                    <span class="value">yurumu59@gmail.com</span>
+                    <a href="#">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">パスワード</span>
+                    <span class="value">********</span>
+                    <a href="#">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">法人・団体としてnoteを利用する</span>
+                    <span class="value">未登録</span>
+                    <a href="#">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">インボイス発行事業者の登録番号</span>
+                    <span class="value">未登録</span>
+                    <a href="#">登録</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">ソーシャル連携</span>
+                    <span class="value">X (Twitter)</span>
+                    <a href="#">連携</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>yurumu59@gmail.com宛に認証メールを送信しました。認証をすませてください。技術・購入・コメントを利用しましょう！</p>
+        </div>
+    </footer>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

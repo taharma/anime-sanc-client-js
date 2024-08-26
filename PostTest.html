@@ -3,14 +3,13 @@
 <head>
   <meta charset="viewport" content="width=device-width, initial-scale=1.0">
   <title>AS/board</title>
-  <!-- Bootstrap CSS 파일의 링크 -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .sidebar {
       width: 200px;
       position: fixed;
-      top: 0;
+      top: 6%;
       left: 0;
       height: 100%;
       padding-top: 20px;
@@ -46,10 +45,7 @@
       transition: transform 0.5s ease;
     }
     .card {
-      min-width: 200px; /* 카드의 최소 너비를 설정합니다. */
-      max-width: 400px; /* 카드의 최대 너비를 설정합니다. */
-      min-height: 250px; /* 카드의 최소 높이를 설정합니다. */
-      max-height: 450px; /* 카드의 최대 높이를 설정합니다. */
+      min-width: 200px;
       margin-right: 10px;
       transition: transform 0.5s ease;
     }
@@ -57,42 +53,49 @@
       transform: scale(1.1);
       z-index: 1;
     }
-     /* 카드 속 이미지의 크기를 고정하는 CSS */
-    .card-img-top {
-      width: 100%; /* 카드의 너비에 맞춰 이미지를 조정합니다. */
-      height: 150px; /* 고정된 높이를 설정합니다. */
-      object-fit: cover; /* 이미지를 잘라서(잘라낸 부분을 숨기고) 크기에 맞춥니다. */
-    }
-    .card-body {
-      padding: 15px; /* 카드 내용에 대한 패딩을 추가하여 겹치는 문제를 해결합니다. */
-    }
-    .card-text {
-      margin-bottom: 0; /* 카드 텍스트의 아래쪽 마진을 제거하여 겹치는 문제를 해결합니다. */
+
+    .icon-container {
+      position: absolute;
+      bottom: 20px; /* 카드의 하단에서 10px 위로 위치 */
+      left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+      display: flex;
+      align-items:center;
+      gap: 20px; /* 아이콘 간의 간격 */
     }
 
-  /* 버튼의 기본 스타일을 제거하는 CSS */
-  .icon-button {
-      border: none; /* ☆ 버튼의 테두리를 제거합니다. ☆ */
-      background-color: transparent; /* ☆ 버튼의 배경색을 투명하게 설정합니다. ☆ */
-      cursor: pointer; /* ☆ 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. ☆ */
-      padding: 0; /* ☆ 버튼의 기본 패딩을 제거합니다. ☆ */
-    }
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
 
-    /* 버튼 클릭 시 색상을 변경하는 CSS */
-    .icon-button.clicked {
-      color: rgb(0, 26, 255); /* ☆ 클릭 시 아이콘의 색상을 변경합니다. 원하는 색상으로 바꾸세요. ☆ */
-    }
+.icon-button img {
+  width: 20px; /* 아이콘의 크기를 설정합니다. */
+  height: 20px; /* 아이콘의 크기를 설정합니다. */
+}
 
-    /* 아이콘 크기를 조정하는 CSS */
-    .icon-button img {
-      width: 20px; /* 아이콘의 크기를 설정합니다. */
-      height: 20px; /* 아이콘의 크기를 설정합니다. */
-    }
+/* heart 아이콘 클릭 시 빨간색으로 변경 */
+.icon-button.heart.clicked img {
+  filter: invert(20%) sepia(97%) saturate(7450%) hue-rotate(355deg) brightness(97%) contrast(105%);
+  /* 클릭 시 heart 아이콘의 색상을 빨간색으로 변경 */
+}
 
+/* bookmark 아이콘 클릭 시 파란색으로 변경 */
+.icon-button.bookmark.clicked img {
+  filter: invert(32%) sepia(70%) saturate(1931%) hue-rotate(177deg) brightness(97%) contrast(101%);
+  /* 클릭 시 bookmark 아이콘의 색상을 파란색으로 변경 */
+}
 
   </style>
+
+
+
 </head>
 <body>
+
+
     <!-- 네비게이션 바 /로그인 회원등록 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Anime Sanctuary</a>
@@ -120,7 +123,6 @@
       <li class="list-group-item">人気作品</li>
       <li class="list-group-item">キャラクター</li>
       <li class="list-group-item">フォーラム</li>
-    
     </ul>
   </div>
 
@@ -132,157 +134,7 @@
     </div>
   </div>
 
-  <!-- Bootstrap 및 jQuery의 JS 파일 링크 -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- 동적 카드 행 생성을 위한 JavaScript 코드 -->
-
-  <script>
-    const images = [
-      '/image/random6.jpg', '/image/random7.jpg', '/image/random8.jpg',
-      '/image/random9.jpg',  '/image/random3.jpg'
-    ];
-
-    // ☆ 2, 3, 4, 5열의 카테고리 이름을 설정합니다.☆
-    const categoryNames = [
-    "<button class='category-button'>Anime</button>", //1열
-  "<button class='category-button'>Manga</button>", //2열
-  "<button class='category-button'>Popular Works</button>", //3열
-  "<button class='category-button'>Characters</button>", //4열
-  "<button class='category-button'>Forum</button>" //5열
-    ];
-
-    function createCard(image, title, description, author, date) {
-      return `
-        <div class="card shadow">
-          <img src="${image}" class="card-img-top">  <!-- ☆ 여기에 있는 image 변수를 수정하여 각 열의 이미지를 바꿀 수 있습니다.☆ -->
-          <div class="card-body">
-            <span class="badge rounded-pill bg-primary">News</span>
-            <h4 class="mt-2">${title}</h4>  <!-- ☆ 여기에 있는 title 변수를 수정하여 각 열의 카드 제목을 바꿀 수 있습니다.☆ -->
-            <p class="card-text">${description}</p>  <!-- ☆ 여기에 있는 description 변수를 수정하여 각 열의 카드 설명을 바꿀 수 있습니다.☆ -->
-          </div>
-          <div class="d-flex p-3">
-            <div class="flex-shrink-0">
-              <img src="/image/assete.png" width="20px" height="20px">
-            </div>
-            <div class="flex-grow-1 ms-3 mt-1">
-              <h6 class="fw-bold mb-0">${author}</h6>  <!-- ☆ 여기에 있는 author 변수를 수정하여 각 열의 저자를 바꿀 수 있습니다.☆ -->
-            <br>
-              ${date}  6 min read</p>  <!-- ☆ 여기에 있는 date 변수를 수정하여 각 열의 날짜를 바꿀 수 있습니다.☆ -->
-            
-              <button class="icon-button" onclick="toggleIcon(this)"><img src="icon/heart-fill.svg"></button>
-              <button class="icon-button" onclick="toggleIcon(this)"><img src="/icon/bookmark-plus-fill.svg"></button>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function createCardRow(rowId, cards, categoryName) {
-      return `
-        <h3>${categoryName}</h3>
-        <div class="card-wrapper" id="wrapper-${rowId}">
-          <div class="card-container">
-            ${cards.join('')}
-          </div>
-          <a class="carousel-control-next" href="javascript:void(0);" role="button" onclick="rotateCarousel(${rowId})">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      `;
-    }
-
-    function rotateCarousel(rowId) {
-      const container = document.querySelector(`#wrapper-${rowId} .card-container`);
-      const cards = container.querySelectorAll('.card');
-
-      // 먼저 모든 카드의 크기를 원래대로 되돌림
-      cards.forEach(card => card.style.transform = 'scale(1)');
-
-      // 첫 번째 카드를 마지막으로 이동
-      const firstCard = container.querySelector('.card:first-child');
-      container.appendChild(firstCard.cloneNode(true));
-      container.removeChild(firstCard);
-
-      // 다시 카드들을 가져와서 가운데 카드만 확대
-      const updatedCards = container.querySelectorAll('.card');
-      updatedCards[2].style.transform = 'scale(1.1)';  // 가운데 카드만 확대
-    }
-
-    function initialize() {
-      const cardRows = [];
-      for (let i = 0; i < categoryNames.length; i++) {  // categoryNames 배열 길이만큼 반복합니다.
-        const cards = [];
-        for (let j = 0; j < 5; j++) {
-          cards.push(createCard(
-            images[j],  // ☆ 이곳에서 각 열의 이미지를 조정할 수 있습니다.☆
-            `Blog Post ${j + 1}`,  // ☆ 이곳에서 각 열의 카드 제목을 조정할 수 있습니다.☆
-            `これはテスト用のテキストです。`,  // ☆ 이곳에서 각 열의 카드 설명을 조정할 수 있습니다.☆
-            `Author ${j + 1}`,  // ☆ 이곳에서 각 열의 저자를 조정할 수 있습니다.☆
-            `March 12, 2024`  // ☆ 이곳에서 각 열의 날짜를 조정할 수 있습니다.☆
-          ));
-        }
-        cardRows.push(createCardRow(i, cards, categoryNames[i]));
-      }
-      document.getElementById('card-rows').innerHTML = cardRows.join('');
-
-      // 초기 로드시 각 카드 행에서 가운데 카드를 확대
-      for (let i = 0; i < categoryNames.length; i++) {
-        const container = document.querySelector(`#wrapper-${i} .card-container`);
-        const cards = container.querySelectorAll('.card');
-        cards[2].style.transform = 'scale(1.1)';  // 가운데 카드만 확대
-      }
-    }
-    document.addEventListener('DOMContentLoaded', initialize);
-
-  // <!-- 스크롤 기능용의 JavaScript 코드 -->
-  
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-<!--  Do not touch -->
-  <!-- スクロールボタン(스크롤버튼) -->
-  <div class="scroll-buttons">
-    <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
-    <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
-  </div>
-
-  <!-- BootstrapおよびjQueryのJSファイルリンク -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- スクロール機能用のJavaScriptコード -->
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
-
-
-
+  <!-- 외부 JavaScript 파일 로드 -->
+  <script src="javascript/mainUI.js"></script>
 </body>
 </html>
