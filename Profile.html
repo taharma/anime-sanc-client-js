@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS/Profile</title>
+    <link rel="stylesheet" href="css/profilestyle.css"> <!-- CSS 파일 연결 -->
+</head>
+<body>
+    <header>
+        <div class="logo">Anime Sanctuary</div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
+            <button class="search-button">検索</button>
+        </div>
+        <div class="header-icons">
+            <div class="icon1"><img src="/icon/free-icon-alarm-bell-6367716.png"></div>
+            <!-- ㄴ 알람 아이콘 svg 파일로 구해서 갈아끼우기-->
+            <div class="icon2">
+                <img src="/icon/user.png" onclick="toggleDropdown()">
+                <div id="dropdown" class="dropdown-content">
+                    <a href="#">プロフィール</a>
+                    <a href="#">設定</a>
+                    <a href="#">お知らせ</a>
+                    <a href="#">メッセージ</a>
+                    <a href="#">ログアウト</a>
+                </div>
+            </div>
+            <button class="post-button">投稿</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-img"><img src="/icon/user.png"></div>
+            <div class="profile-name">정연</div>
+            <div class="follow-info"><span class="bold-number">1</span> フォロー <span class="bold-number">0</span> フォロワー</div>
+            <button class="settings-button">設定</button>
+        </aside>
+
+        <main class="main-content">
+            <div class="category-menu">
+                <button onclick="showContent('home')">ホーム</button>
+                <button onclick="showContent('articles')">記事</button>
+                <button onclick="showContent('membership')">メンバーシップ</button>
+                <button onclick="showContent('magazine')">マガジン</button>
+                <button onclick="showContent('suki')">スキ</button>
+            </div>
+
+            <div id="home" class="content-section active">
+                <div class="welcome-section">
+                    <img src="/icon/drawing.png" alt="home image">
+                    <p>まだメンバーシップは開設されていません</p>
+                    <button class="start-writing-button">書きはじめる</button>
+                </div>
+            </div>
+
+            <div id="articles" class="content-section">
+                <div class="welcome-section">
+                    <img src="/icon/drawing2.png" alt="articles image">
+                    <p>記事の内容がここに表示されます。</p>
+                    <button class="start-writing-button">書きはじめる</button>
+                </div>
+            </div>
+
+            <div id="membership" class="content-section">
+                <div class="welcome-section">
+                    <img src="/icon/drawing3.png" alt="membership image">
+                    <p>メンバーシップの内容がここに表示されます。</p>
+                    <button class="start-writing-button">書きはじめる</button>
+                </div>
+            </div>
+
+            <div id="magazine" class="content-section">
+                <div class="welcome-section">
+                    <img src="/icon/drawing4.png" alt="magazine image">
+                    <p>マガジンの内容がここに表示されます。</p>
+                    <button class="start-writing-button">書きはじめる</button>
+                </div>
+            </div>
+
+            <div id="suki" class="content-section">
+                <div class="welcome-section">
+                    <img src="/icon/drawing5.png" alt="suki image">
+                    <p>スキの内容がここに表示されます。</p>
+                    <button class="start-writing-button">書きはじめる</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="javascript/profileUI.js"></script>
+</body>
+</html>
