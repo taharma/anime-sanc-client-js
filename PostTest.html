@@ -1,20 +1,120 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="viewport" content="width=device-width, initial-scale=1.0">
   <title>AS/board</title>
-  <!-- Bootstrap CSS ファイルのリンク -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    
+    .sidebar {
+      width: 200px;
+      position: fixed;
+      top: 6%;
+      left: 0;
+      height: 100%;
+      padding-top: 20px;
+      background-color: #f8f9fa;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .card-wrapper {
+      margin-bottom: 100px;
+      margin-top: 30px;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+    .carousel-control-next {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+    .carousel-control-next-icon {
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M2.02 0L0 2l4 2-4 2 2 2 6-4-6-4z"/%3E%3C/svg%3E');
+    }
+    .card-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .card {
+      min-width: 200px;
+      margin-right: 10px;
+      transition: transform 0.5s ease;
+    }
+    .card:nth-child(3) {
+      transform: scale(1.1);
+      z-index: 1;
+    }
+
+    .icon-container {
+      position: absolute;
+      bottom: 20px; /* 카드의 하단에서 10px 위로 위치 */
+      left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+      display: flex;
+      align-items:center;
+      gap: 20px; /* 아이콘 간의 간격 */
+    }
+
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
+
+.icon-button img {
+  width: 20px; /* 아이콘의 크기를 설정합니다. */
+  height: 20px; /* 아이콘의 크기를 설정합니다. */
+}
+
+/* heart 아이콘 클릭 시 빨간색으로 변경 */
+.icon-button.heart.clicked img {
+  filter: invert(20%) sepia(97%) saturate(7450%) hue-rotate(355deg) brightness(97%) contrast(105%);
+  /* 클릭 시 heart 아이콘의 색상을 빨간색으로 변경 */
+}
+
+/* bookmark 아이콘 클릭 시 파란색으로 변경 */
+.icon-button.bookmark.clicked img {
+  filter: invert(32%) sepia(70%) saturate(1931%) hue-rotate(177deg) brightness(97%) contrast(101%);
+  /* 클릭 시 bookmark 아이콘의 색상을 파란색으로 변경 */
+}
+
   </style>
+
+
+
 </head>
 <body>
 
 
-  <!-- サイドバー -->
+    <!-- 네비게이션 바 /로그인 회원등록 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Anime Sanctuary</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">ログイン</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">新規登録</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  <!-- 사이드바 -->
   <div class="sidebar">
     <h5>メインリスト</h5>
     <ul class="list-group list-group-flush">
@@ -23,135 +123,18 @@
       <li class="list-group-item">人気作品</li>
       <li class="list-group-item">キャラクター</li>
       <li class="list-group-item">フォーラム</li>
-      <li class="list-group-item">スケジュール</li>
     </ul>
   </div>
 
-  <!-- メインコンテンツ -->
-
-    <class="group">
-      <div class="rectangle"></div>
-      <div class="ellipse"></div>
-      <div class="rect-inner"></div>
-      <div class="title">テストのためのタイトルに近いやつなので注意。</div>
-      <div class="nishiharu">西春駅前</div>
-      <div class="date">3日前</div>
-      <div class="heart"> <img src="icon/heart-fill.svg"></div>
-      <div class="views">23</div>
-      <div class="bookmark"> <img src="icon/bookmark-plus-fill.svg"></div>
+  <!-- 메인 콘텐츠 -->
+  <div class="main-content">
+    <div class="container-fluid">
+      <!-- 카드 행을 생성할 위치 -->
+      <div id="card-rows"></div>
+    </div>
   </div>
 
-</div>
-
-
-
-
-<!-- 콘텐츠 --> 
-<div class="container">
-  <div class="row">
-  <div class="col-md-6 col-lg-3"><div class="container">
-    <div class="card shadow">
-      <img src="/image/assete.png" class="card-img-top">
-      <div class="card-body">
-        <span class="badge rounded-pill bg-primary">News</span>
-        <h4 class="mt-2">Blog Post Title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="d-flex p-3">
-        <div class="flex-shrink-0">
-          <img src="/image/assete.png" width="20px" height="20px">
-        </div>
-        <div class="flex-grow-1 ms-3 mt-1"> 
-          <h6 class="fw-bold mb-0">西春駅前 </h6>
-          <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-        </div>
-      </div>
-    </div>
-</div> 
-</div>
-  <div class="col-md-6"><div class="container">
-    <div class="card shadow">
-      <img src="/image/assete.png" class="card-img-top">
-      <div class="card-body">
-        <span class="badge rounded-pill bg-primary">News</span>
-        <h4 class="mt-2">Blog Post Title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="d-flex p-3">
-        <div class="flex-shrink-0">
-          <img src="/image/assete.png" width="20px" height="20px">
-        </div>
-        <div class="flex-grow-1 ms-3 mt-1">
-          <h6 class="fw-bold mb-0">Kelly Rowan </h6>
-          <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-        </div>
-      </div>
-    </div>
- </div> 
-</div>
-  <div class="col-md-6"><div class="container">
-    <div class="card shadow">
-      <img src="/image/assete.png" class="card-img-top">
-      <div class="card-body">
-        <span class="badge rounded-pill bg-primary">News</span>
-        <h4 class="mt-2">Blog Post Title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="d-flex p-3">
-        <div class="flex-shrink-0">
-          <img src="/image/assete.png" width="20px" height="20px" border-radius="50%">
-        </div>
-        <div class="flex-grow-1 ms-3 mt-1">
-          <h6 class="fw-bold mb-0"> Kelly Rowan </h6>
-          <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-        </div>
-      </div>
-    </div>
-  <div class="col-md-6"><div class="card shadow">
-    <img src="/image/assete.png" class="card-img-top">
-    <div class="card-body">
-      <span class="badge rounded-pill bg-primary">News</span>
-      <h4 class="mt-2">Blog Post Title</h4>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <div class="d-flex p-3">
-      <div class="flex-shrink-0">
-        <img src="/image/assete.png" width="20px" height="20px" border-radius="50%">
-      </div>
-      <div class="flex-grow-1 ms-3 mt-1">
-        <h6 class="fw-bold mb-0"> Kelly Rowan </h6>
-        <p class="text-muted"><img src="icon/heart-fill.svg"> March 12, 2021 <img src="/icon/bookmark-plus-fill.svg"> 6 min read</p>
-      </div>
-    </div>
-  </div></div>
-  <div class="col-md-6">hello</div>
-  <div class="col-md-6">hello</div>
-  </div>
-</div> 
-
-
-
-<!--  Do not touch -->
-  <!-- スクロールボタン -->
-  <div class="scroll-buttons">
-    <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
-    <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
-  </div>
-
-  <!-- BootstrapおよびjQueryのJSファイルリンク -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- スクロール機能用のJavaScriptコード -->
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
+  <!-- 외부 JavaScript 파일 로드 -->
+  <script src="javascript/mainUI.js"></script>
 </body>
 </html>
