@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事エディター</title>
+    <link rel="stylesheet" href="css/PostWritingstyle.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="menu">
+            <button class="menu-button">・・・</button>
+            <ul class="dropdown-menu">
+                <li><a href="#">共有用リンクをコピー</a></li>
+                <li><a href="#">プレビュー</a></li>
+                <li><a href="#">変更履歴</a></li>
+            </ul>
+        </div>
+        <button class="save-draft">下書き保存</button>
+        <button class="publish">公開に進む</button>
+    </div>
+
+    <!-- Article Editor -->
+    <div class="editor-container">
+        <div class="title-area">
+            <h1 contenteditable="true" id="article-title" class="article-title">記事タイトル</h1>
+        </div>
+        <div class="content-area">
+            <p contenteditable="true" id="article-content">ここに記事の内容を入力してください...</p>
+        </div>
+        <div class="word-count">0文字</div>
+    </div>
+
+    <script src="javascript/PostWriting.js"></script>
+</body>
+</html>
