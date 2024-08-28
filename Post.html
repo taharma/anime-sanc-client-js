@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note 게시물</title>
+    <title>AS/Post</title>
     <link rel="stylesheet" href="css/postStyle.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
   </div>
   
   <header>
-      <div class="logo">Anime Sanctuary</div>
+      <div class="logo"><a href="/index.html">Anime Sanctuary</a></div>
       <div class="search-container">
           <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
           <button class="search-button">検索</button>
@@ -56,21 +56,53 @@
               <div class="dropdown-menu">
                 <button>目標</button>
                 <div class="dropdown-menu-content">
-                    <a href="#">Option 1</a>
-                    <a href="#">Option 2</a>
-                    <a href="#">Option 3</a>
-                    <a href="#">Option 4</a>
-                    <a href="#">Option 5</a>
+                    <a href="#">List text 1</a>
+                    <a href="#">List text 2</a>
+                    <a href="#">List text 3</a>
+                    <a href="#">List text 4</a>
+                    <a href="#">List text 5</a>
                 </div>
+                <p>これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。
+                </p>
             </div>
-          </div>
-      </section>
-  </main>
-  <script>
-      function toggleSandbox() {
-          const sandbox = document.querySelector('.dropdown-sandbox');
-          sandbox.classList.toggle('open');
-      }
-  </script>
+        </div>
+    </section>
+    <div class="post-icons">
+        <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon" onclick="toggleIconColor(this)">
+        <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon" onclick="toggleIconColor(this)">
+        <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon" onclick="toggleIconColor(this)">
+        <img src="/icon/etc.svg" alt="More Icon" class="post-icon" onclick="toggleIconColor(this)">
+    </div>
+
+</main>
+
+<script>
+    function toggleSandbox() {
+        const sandbox = document.querySelector('.dropdown-sandbox');
+        sandbox.classList.toggle('open');
+    }   
+function toggleSandbox() {
+    const sandbox = document.querySelector('.dropdown-sandbox');
+    sandbox.classList.toggle('open');
+}
+
+// 아이콘 색상을 토글하는 함수
+function toggleIconColor(icon) {
+    const activeColor = '#ff0000'; // 클릭 후 활성화 상태의 색상
+    const defaultColor = '#000000'; // 기본 색상
+    if (icon.style.filter === `invert(0)`) {
+        icon.style.filter = `invert(25%) sepia(83%) saturate(1820%) hue-rotate(348deg) brightness(91%) contrast(101%)`;
+    } else {
+        icon.style.filter = `invert(0)`;
+    }
+}
+// ㄴ 아이콘 색상표현방식 const  확인해보고 CSS로 돌릴 방법 있는지 확인해둘것. 
+
+</script>
 </body>
 </html>

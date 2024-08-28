@@ -220,3 +220,21 @@ header {
 .follow-button i {
     margin-right: 10px;
 }
+
+.post-icons {
+    display: flex; /* Align icons in a row */
+    align-items: center; /* Align icons vertically centered */
+    gap: 10px; /* Space between icons */
+    margin: 20px 0; /* Add some space around the icons */
+}
+
+.post-icon {
+    width: 24px; /* Set the desired width for all icons */
+    height: 24px; /* Set the desired height for all icons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Optional: If you want to change the icon's appearance when hovering */
+.post-icon:hover {
+    opacity: 0.8; /* Slightly reduce opacity on hover for a visual effect */
+}
