@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Sanctuary</title>
-  <!-- Bootstrap CSS ファイルのリンク -->
+  <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AS/board</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/indexStyle.css">
 </head>
 <body>
-  <!-- ナビゲーションバー -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Anime Sanctuary</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">ログイン</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">新規登録</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <!-- 네비게이션 바 /로그인 회원등록 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Anime Sanctuary</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">ログイン</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">新規登録</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <!-- サイドバー -->
+  <!-- 사이드바 -->
   <div class="sidebar">
     <h5>メインリスト</h5>
     <ul class="list-group list-group-flush">
@@ -36,47 +35,18 @@
       <li class="list-group-item">人気作品</li>
       <li class="list-group-item">キャラクター</li>
       <li class="list-group-item">フォーラム</li>
-      <li class="list-group-item">スケジュール</li>
     </ul>
   </div>
 
-  <!-- メインコンテンツ -->
-
-    <class="group">
-      <div class="rectangle"></div>
-      <div class="ellipse"></div>
-      <div class="rect-inner"></div>
-      <div class="title">テストのためのタイトルに近いやつなので注意。</div>
-      <div class="nishiharu">西春駅前</div>
-      <div class="date">3日前</div>
-      <div class="heart"> <img src="icon/heart-fill.svg" alt="heart-icon"></div>
-      <div class="views">23</div>
-      <div class="bookmark"> <img src="icon/bookmark-plus-fill.svg" alt="bookmark-icon"></div>
+  <!-- 메인 콘텐츠 -->
+  <div class="main-content">
+    <div class="container-fluid">
+      <!-- 카드 행을 생성할 위치 -->
+      <div id="card-rows"></div>
+    </div>
   </div>
 
-</div>
-
-<!--  Do not touch -->
-  <!-- スクロールボタン -->
-  <div class="scroll-buttons">
-    <button class="btn btn-secondary" onclick="scrollToTop()">▲</button>
-    <button class="btn btn-secondary" onclick="scrollToBottom()">▼</button>
-  </div>
-
-  <!-- BootstrapおよびjQueryのJSファイルリンク -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- スクロール機能用のJavaScriptコード -->
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
+  <!-- 외부 JavaScript 파일 로드 -->
+  <script src="javascript/mainUI.js"></script>
 </body>
 </html>
