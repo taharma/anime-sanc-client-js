@@ -4,236 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note 게시물</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .search-container {
-            display: flex;
-            width: 40%;
-        }
-
-        .search-bar {
-            flex-grow: 1;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            border-right: none;
-        }
-
-        .search-button {
-            padding: 8px 12px;
-            background-color: #03914f;
-            color: white;
-            border: 1px solid #ddd;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .header-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-icons .icon {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-        }
-
-        .header-icons img {
-            width: 25px;
-            height: 25px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .post {
-            background-color: #fff;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 620px;
-            width: 100%;
-        }
-
-        .post-image img {
-            width: 100%;
-           
-            margin-top: 20px;
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .profile-info h3 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        .profile-info p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .post-content h2 {
-            font-size: 24px;
-            margin: 20px 0 10px;
-        }
-
-        .dropdown-menu {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .dropdown-menu button {
-            width: 100%;
-            background-color: #eeeeee;
-            color: rgb(115, 115, 115);
-            padding: 8px 16px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .dropdown-menu-content {
-            display: none;
-            width: 100%;
-            position: absolute;
-            background-color: #ffffff;
-            box-shadow: 0px 8px 16px rgba(125, 125, 125, 0.2);
-            z-index: 1;
-            border-radius: 4px;
-            left: 0;
-            margin-top: 10px;
-            padding-top: 10px;
-        }
-
-        .dropdown-menu-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-menu-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown-menu:hover .dropdown-menu-content {
-            display: block;
-        }
-
-        .post-meta {
-            display: flex;
-            gap: 20px;
-            color: #999;
-            font-size: 14px;
-        }
-
-        .post-content {
-            margin-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        .dropdown-sandbox {
-            position: fixed;
-            top: 60px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .dropdown-sandbox button {
-            background-color: #03914f;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 16px;
-            transform: rotate(90deg);
-        }
-
-        .sandbox-content {
-            display: none;
-            width: 200px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 10px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .dropdown-sandbox.open .sandbox-content {
-            display: block;
-        }
-
-        .sandbox-content img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .follow-button {
-            width: 95px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            background-color: #03914f;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        .follow-button i {
-            margin-right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/postStyles.css">
 </head>
 <body>
   <div class="dropdown-sandbox">
       <button onclick="toggleSandbox()">&#9664;</button>
       <div class="sandbox-content">
-          <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
+          <img src="/icon/user.png" alt="Profile-dummyPic" class="profile-pic">
           <h3>インティメート・マージャーのData Driven NOTE</h3>
           <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
           <button class="follow-button">フォロー</button>
@@ -247,9 +24,11 @@
           <button class="search-button">検索</button>
       </div>
       <div class="header-icons">
-          <div class="icon1"><img src="/icon/free-icon-alarm-bell-6367716.png"></div>
+          <div class="icon1">
+            <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1">
+        </div>
           <div class="icon2">
-              <img src="/icon/user.png" onclick="toggleDropdown()">
+              <img src="/icon/user.png" onclick="toggleDropdown()" alt="icon2-user">
           </div>
           <button class="post-button">投稿</button>
       </div>
