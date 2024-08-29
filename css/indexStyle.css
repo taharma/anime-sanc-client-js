@@ -64,20 +64,39 @@
   outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
 }
 
+.icon-container {
+    position: absolute;
+    bottom: 20px; /* 카드의 하단에서 10px 위로 위치 */
+    left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+    display: flex;
+    align-items: center;
+}
+
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
+
 .icon-button img {
   width: 20px; /* 아이콘의 크기를 설정합니다. */
   height: 20px; /* 아이콘의 크기를 설정합니다. */
 }
 
+/* 아이콘 간격 조정을 위해 추가 */
+.icon-button.bookmark {
+  margin-left: 50px; /* heart 아이콘 기준으로 오른쪽으로 20px 떨어지도록 설정 */
+  margin-bottom: 3px;
+}
+
 /* heart 아이콘 클릭 시 빨간색으로 변경 */
 .icon-button.heart.clicked img {
   filter: invert(20%) sepia(97%) saturate(7450%) hue-rotate(355deg) brightness(97%) contrast(105%);
-  /* 클릭 시 heart 아이콘의 색상을 빨간색으로 변경 */
 }
 
 /* bookmark 아이콘 클릭 시 파란색으로 변경 */
 .icon-button.bookmark.clicked img {
   filter: invert(32%) sepia(70%) saturate(1931%) hue-rotate(177deg) brightness(97%) contrast(101%);
-  /* 클릭 시 bookmark 아이콘의 색상을 파란색으로 변경 */
 }
-
