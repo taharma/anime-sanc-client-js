@@ -1,4 +1,9 @@
 /* 리셋 스타일: 브라우저 기본 스타일 초기화 */
+<head>
+
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
+
 * {
     margin: 0;
     padding: 0;
