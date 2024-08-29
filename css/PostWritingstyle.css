@@ -1,8 +1,7 @@
 /* 리셋 스타일: 브라우저 기본 스타일 초기화 */
-<head>
-
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
-</head>
+head {
+    link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+}
 
 * {
     margin: 0;
@@ -99,7 +98,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.title-area {
+.editor-header {
     margin-bottom: 20px;
 }
 
@@ -112,7 +111,7 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.content-area {
+.editor-content {
     margin-top: 10px;
 }
 
@@ -121,4 +120,107 @@ body {
     margin-top: 10px;
     color: #aaa;
     font-size: 14px;
+}
+
+/* 제목 입력 필드 스타일 */
+.article-title {
+    width: 100%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* 에디터 컨테이너와 제목 입력 필드 사이의 여백 조정 */
+.editor-header {
+    margin-bottom: 20px;
+}
+/* 기존 스타일에 추가 */
+.submit-post {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-post:hover {
+    background-color: #0056b3;
+}
+
+.post-preview {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* 기존 스타일에 추가 */
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* 버튼을 양쪽으로 배치 */
+    margin-top: 20px;
+}
+
+/* 미리보기 버튼 스타일 */
+.preview-post {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.preview-post:hover {
+    background-color: #218838;
+}
+
+/* 임시 저장 버튼 스타일 */
+.save-draft-button {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.save-draft-button:hover {
+    background-color: #e0a800;
+}
+
+/* 게시글 등록 버튼 스타일 */
+.submit-post {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-post:hover {
+    background-color: #0056b3;
+}
+
+/* 미리보기 영역 스타일 */
+.post-preview {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }

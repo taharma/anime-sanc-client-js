@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>記事エディター</title>
     <link rel="stylesheet" href="css/PostWritingstyle.css">
-
-    <!-- Toast UI Editor CSS (CDN 사용) -->
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
 </head>
 <body>
@@ -27,64 +25,24 @@
 
     <!-- Article Editor -->
     <div class="editor-container">
-        <div class="title-area">
-            <h1 contenteditable="true" class="article-title" id="article-title">記事タイトル</h1>
+        <div class="editor-header">
+            <h1 id="article-title" class="article-title" contenteditable="true">記事タイトル</h1>
         </div>
-        <div class="content-area">
-            <div id="editor-content"></div>
+        <div class="editor-content">
+            <div id="editor-content" name="editorContent"></div>
         </div>
         <div class="word-count">0文字</div>
+        <!-- 버튼들 추가 -->
+        <div class="button-container">
+            <button id="preview-post" class="preview-post">미리보기</button>
+            <button id="save-draft" class="save-draft-button">임시 저장</button>
+            <button id="submit-post" class="submit-post">게시글 등록</button>
+        </div>
+        <!-- 미리보기 영역 추가 -->
+        <div id="post-preview" class="post-preview"></div>
     </div>
 
-    <!-- Toast UI Editor JS (CDN 사용) -->
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-
-    <!-- Inline JavaScript -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 제목과 내용을 담을 Toast UI Editor 초기화
-            const titleElement = document.getElementById("article-title");
-            const editorContentElement = document.getElementById("editor-content");
-
-            // 기본 제목 텍스트
-            const defaultTitleText = "記事タイトル";
-            titleElement.textContent = defaultTitleText;
-
-            // 제목 클릭 시 기본 텍스트 지우기
-            titleElement.addEventListener("click", function() {
-                if (titleElement.textContent === defaultTitleText) {
-                    titleElement.textContent = '';
-                }
-            });
-
-            // 포커스를 잃었을 때 텍스트가 비어 있으면 기본 텍스트 복원
-            titleElement.addEventListener("blur", function() {
-                if (titleElement.textContent.trim() === '') {
-                    titleElement.textContent = defaultTitleText;
-                }
-            });
-
-            // Toast UI Editor 초기화
-            const editor = new toastui.Editor({
-                el: editorContentElement,
-                height: '400px',
-                initialEditType: 'markdown',
-                previewStyle: 'vertical',
-                initialValue: 'ここに記事の内容を入力してください...',
-                events: {
-                    focus: function() {
-                        if (editor.getMarkdown() === 'ここに記事の内容を入力してください...') {
-                            editor.setMarkdown('');
-                        }
-                    },
-                    blur: function() {
-                        if (editor.getMarkdown().trim() === '') {
-                            editor.setMarkdown('ここに記事の内容を入力してください...');
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="javascript/PostWriting.js"></script>
 </body>
 </html>
