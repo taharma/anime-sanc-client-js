@@ -5,165 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AS/Post</title>
     <link rel="stylesheet" href="css/postStyle.css">
-    <style>
-        /* 아이콘 컨테이너를 텍스트 아래 좌측에 정렬 */
-        .post-icons {
-            display: flex;
-            justify-content: flex-start; /* 왼쪽 정렬 */
-            align-items: center; /* 아이콘 수직 정렬 */
-            gap: 10px; /* 아이콘 사이의 간격 */
-            margin-top: 10px; /* 텍스트와 아이콘 사이의 간격 */
-            margin-left: 0; /* 왼쪽에 맞춰 정렬 */
-        }
-
-        /* 아이콘 기본 스타일 */
-        .post-icon {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            transition: filter 0.3s;
-        }
-
-        /* 아이콘 클릭 시 활성화 상태의 색상 */
-        .post-icon.like.active {
-            filter: invert(28%) sepia(95%) saturate(7493%) hue-rotate(1deg) brightness(94%) contrast(118%); /* 빨간색 */
-        }
-
-        .post-icon.share.active {
-            filter: invert(36%) sepia(98%) saturate(723%) hue-rotate(82deg) brightness(94%) contrast(91%); /* 초록색 */
-        }
-
-        .post-icon.bookmark.active {
-            filter: invert(51%) sepia(82%) saturate(3659%) hue-rotate(186deg) brightness(92%) contrast(104%); /* 파란색 */
-        }
-
-        .post-icon.more.active {
-            filter: invert(61%) sepia(28%) saturate(2311%) hue-rotate(292deg) brightness(88%) contrast(90%); /* 보라색 */
-        }
-
-        /* 추가 컨텐츠 스타일 */
-        .additional-content {
-            margin-top: 20px; /* 추가 콘텐츠와 아이콘 사이의 간격 */
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .content-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px; /* 각 항목 사이의 간격 */
-        }
-
-        .content-item div {
-            font-size: 14px;
-        }
-
-        .view-all {
-            text-align: center;
-            font-size: 14px;
-            color: #333333;
-            cursor: pointer;
-        }
-
-           /* 이미지 섬네일과 텍스트를 포함하는 섹션 */
-           .thumbnail-section {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .thumbnail-image {
-            width: 80px;
-            height: 80px;
-            margin-right: 10px;
-            border-radius: 8px;
-        }
-
-        /* 아이콘 기본 스타일 */
-        .post-icons {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .post-icon {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            transition: filter 0.3s;
-        }
-
-        /* 활성화된 아이콘 색상 */
-        .post-icon.like.active {
-            filter: invert(28%) sepia(95%) saturate(7493%) hue-rotate(1deg) brightness(94%) contrast(118%);
-        }
-
-        /* 인기 기사 섹션 스타일 */
-        .popular-articles {
-            margin-top: 20px;
-        }
-
-        .content-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .additional-content {
-            margin-top: 20px;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .view-all {
-            text-align: center;
-            font-size: 14px;
-            color: #333333;
-            cursor: pointer;
-        }
-
-          /* 새로운 섹션을 위한 스타일 */
-          .profile-section {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .profile-thumbnail {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .profile-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .follow-button {
-            background-color: #00b894;
-            color: white;
-            border: none;
-            padding: 5px 15px;
-            font-size: 14px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .follow-button.active {
-            background-color: white;
-            color: black;
-            border: 1px solid black;
-        }
-
-
+   
     </style>
 </head>
 <body>
@@ -269,8 +111,8 @@
             
         </div>
 <!--수정하세요-->
-          <!-- 이미지 섬네일과 텍스트 섹션 -->
-          <div class="profile-section">
+        <!-- 이미지 섬네일과 텍스트 섹션 -->
+        <div class="profile-section">
             <img src="/image/userimage.png" alt="Thumbnail Image" class="profile-thumbnail">
             <div class="profile-info">
                 <h4>AnimeSantuary公式</h4>
@@ -307,7 +149,7 @@
             </div>
         </div>
         <br>
-       
+    
     </section>
 
 

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/indexStyle.css">
 </head>
 <body>
+  
     <!-- 네비게이션 바 /로그인 회원등록 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Anime Sanctuary</a>
@@ -25,7 +26,13 @@
         </ul>
       </div>
     </nav>
-
+        <!-- 검색 바 추가 및 중앙 고정 -->
+        <form class="form-inline" id="search-form">
+          <input class="form-control" type="search" placeholder="キーワードやクリエイターで検索" aria-label="Search" id="search-input">
+          <button class="btn btn-outline-success" type="submit" id="search-button">検索</button>
+        </form>
+        <!-- 검색 바 끝 -->
+    
   <!-- 사이드바 -->
   <div class="sidebar">
     <h5>メインリスト</h5>

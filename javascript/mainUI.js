@@ -32,6 +32,7 @@ function createCard(image, title, description, author, date) {
         <button class="icon-button heart" onclick="toggleIcon(event, this)">
           <img src="icon/heart-fill.svg">
         </button>
+        <span class="like-count">235</span> <!-- 좋아요 개수 추가 ☆ -->
         <button class="icon-button bookmark" onclick="toggleIcon(event, this)">
           <img src="/icon/bookmark-plus-fill.svg">
         </button>
