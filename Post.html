@@ -156,15 +156,14 @@
 </main>
 
 <script>
-    function toggleSandbox() {
-        const sandbox = document.querySelector('.dropdown-sandbox');
-        sandbox.classList.toggle('active');
+   function toggleSandbox() {
+        const sandbox = document.querySelector('.sandbox-content');
+        sandbox.classList.toggle('open'); // "open" 클래스를 올바르게 토글
     }
 
     function toggleIconColor(iconElement, iconType) {
         iconElement.classList.toggle('active');
 
-        // 클릭된 아이콘의 색상 변경
         const icons = document.querySelectorAll(`.post-icon.${iconType}`);
         icons.forEach(icon => {
             if (icon !== iconElement) {
@@ -172,19 +171,6 @@
             }
         });
     }
-
-    function toggleIconColor(iconElement, iconType) {
-        iconElement.classList.toggle('active');
-
-        // 클릭된 아이콘의 색상 변경
-        const icons = document.querySelectorAll(`.post-icon.${iconType}`);
-        icons.forEach(icon => {
-            if (icon !== iconElement) {
-                icon.classList.remove('active');
-            }
-        });
-    }
-
 
     function toggleFollow(button) {
         button.classList.toggle('active');
@@ -194,7 +180,6 @@
             button.textContent = 'フォロー';
         }
     }
-
 </script>
 
 </body>
