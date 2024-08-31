@@ -118,3 +118,22 @@ body {
     font-weight: bold;
     color: black;
 }
+.gender-selection {
+    margin: 10px 0;
+    display: flex; /* Flexbox 사용하여 가로 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    gap: 20px; /* 남성과 여성 사이의 간격 */
+}
+
+/* 체크박스와 텍스트 정렬 */
+.gender-option {
+    display: flex; /* 가로 정렬 */
+    align-items: center; /* 텍스트와 체크박스 수직 가운데 정렬 */
+    gap: 5px; /* 텍스트와 체크박스 사이의 간격 */
+}
+
+/* 체크박스 수직 정렬 */
+.gender-option input[type="radio"] {
+    vertical-align: middle; /* 체크박스를 텍스트와 중간 정렬 */
+    margin: 0; /* 기본 여백 제거 */
+}
