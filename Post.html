@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AS/Post</title>
     <link rel="stylesheet" href="css/postStyle.css">
-   
-    </style>
 </head>
 <body>
   <div class="dropdown-sandbox">
@@ -15,7 +13,6 @@
           <img src="/icon/user.png" alt="Profile-dummyPic" class="profile-pic">
           <h3>インティメート・マージャーのData Driven NOTE</h3>
           <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
-         
       </div>
   </div>
   
@@ -28,9 +25,17 @@
       <div class="header-icons">
           <div class="icon1">
             <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1">
-        </div>
+          </div>
           <div class="icon2">
               <img src="/icon/user.png" onclick="toggleDropdown()" alt="icon2-user">
+              <!-- 드롭다운 메뉴 추가 -->
+              <div id="dropdown" class="dropdown-content">
+                  <a href="#">プロフィール</a>
+                  <a href="#">設定</a>
+                  <a href="#">お知らせ</a>
+                  <a href="#">メッセージ</a>
+                  <a href="#">ログアウト</a>
+              </div>
           </div>
           <button class="post-button">投稿</button>
       </div>
@@ -39,7 +44,7 @@
   <main class="container">
       <section class="post">
           <div class="post-image">
-              <img src="/image/random7.jpg" alt="Post Image">
+              <img src="/image/random8.jpg" alt="Post Image">
           </div>
           <div class="post-header">
               <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
@@ -73,8 +78,6 @@
                 </p>
             </div>
 
-            <!-- 아이콘들이 텍스트 아래에 위치하고 왼쪽 정렬 -->
-
             <br>
             <div class="post-icons">
                 <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
@@ -84,8 +87,7 @@
                 <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
             </div>            
         </div>
-<!--수정하세요-->
-        <!-- 이미지 섬네일과 텍스트 섹션 -->
+
         <div class="profile-section">
             <img src="/image/userimage.png" alt="Thumbnail Image" class="profile-thumbnail">
             <div class="profile-info">
@@ -94,10 +96,8 @@
                 <button class="follow-button" onclick="toggleFollow(this)">フォロー</button>
             </div>
         </div>
-        <!--수정하세요-->
     </div>
 
-    
     <!-- 인기 기사 섹션 -->
     <div class="additional-content">
         <h3>人気記事</h3>
@@ -120,7 +120,6 @@
             <div class="post-icons">
                 <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
                 <div>3,509</div>
-                
             </div>
         </div>
         <br>
@@ -153,6 +152,25 @@
             button.textContent = 'フォロー中';
         } else {
             button.textContent = 'フォロー';
+        }
+    }
+
+    // 드롭다운 기능 추가
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    // 드롭다운을 클릭 외부 클릭 시 닫기
+    window.onclick = function(event) {
+        if (!event.target.matches('.icon2 img')) {
+            const dropdowns = document.getElementsByClassName('dropdown-content');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
         }
     }
 </script>
