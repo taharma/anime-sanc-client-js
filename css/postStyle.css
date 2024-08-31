@@ -143,6 +143,7 @@ header {
     height: 50px;
     border-radius: 50%;
     margin-right: 15px;
+    margin-top: 20px;
 }
 
 .profile-section {
@@ -152,24 +153,29 @@ header {
     margin-top: 20px;
 }
 
+
 .profile-info {
     display: flex;
-    flex-direction: column; /* 수직 정렬 */
-    max-width: 60%; /* 텍스트 최대 너비 */
+    flex-direction: column;
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    margin-right: auto; /* 버튼과 텍스트 사이의 여백 조정 */
 }
 
 .follow-button {
-    margin-left: auto; /* 오른쪽 정렬 */
+    margin-right: auto; /* 오른쪽 정렬 */
+    margin-top: 1%;
 }
 
 
 .profile-info h3 {
-    margin: 0;
-    font-size: 18px;
+    margin: 5px;
+    font-size: 20px;
+    margin-top: 5%;
+    font-weight: bold;
 }
 
 .profile-info p {
-    margin: 5px 0;
+    margin: 5px ;
     color: #666;
     font-size: 14px;
 }
@@ -178,14 +184,7 @@ header {
     display: flex;
     flex-direction: column; /* 수직으로 정렬 */
     align-items: flex-start; /* 왼쪽 정렬 */
-    margin-bottom: 10px; /* 각 항목 사이 간격 */
-}
-
-.post-icons {
-    display: flex;
-    align-items: center; /* 아이콘 수직 가운데 정렬 */
-    gap: 5px; /* 아이콘과 숫자 사이 간격 */
-    margin-top: 5px; /* 텍스트와 아이콘 사이 간격 */
+    margin-bottom: 5px; /* 각 항목 사이 간격 */
 }
 
 .post-content h2 {
@@ -328,13 +327,6 @@ header {
     margin-right: 10px;
 }
 
-.post-icons {
-    display: flex; /* Align icons in a row */
-    align-items: center; /* Align icons vertically centered */
-    gap: 10px; /* Space between icons */
-    margin: 20px 0; /* Add some space around the icons */
-}
-
 .post-icon {
     width: 24px; /* Set the desired width for all icons */
     height: 24px; /* Set the desired height for all icons */
@@ -346,15 +338,6 @@ header {
     opacity: 0.8; /* Slightly reduce opacity on hover for a visual effect */
 }
 
-
-
-/* 아이콘 기본 스타일 */
-.post-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    transition: filter 0.3s;
-}
 
 /* 아이콘 클릭 시 활성화 상태의 색상 */
 .post-icon.like.active {
@@ -404,15 +387,15 @@ header {
 /* 아이콘 기본 스타일 */
 .post-icons {
     display: flex;
-    justify-content: right;
+    justify-content: left;
     align-items: center;
     gap: 10px;
     margin-top: 10px;
 }
 
 .post-icon {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     transition: filter 0.3s;
 }
@@ -432,7 +415,7 @@ header {
 .view-all {
     text-align: center;
     font-size: 14px;
-    color: #333333;
+    color: #9f9f9f;
     cursor: pointer;
 }
 
@@ -447,7 +430,7 @@ header {
 .sandbox-content {
     display: none; /* 기본적으로 감춤 */
     width: 200px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     margin-top: 10px;
@@ -469,10 +452,12 @@ header {
     background-color: #4483ff;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 12px;
+    padding: 5px 20px;
+    font-size: 10px;
     border-radius: 5px;
     cursor: pointer;    
+    width: 80px;
+    height: 30px;
 }
 
 .follow-button.active {
