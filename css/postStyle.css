@@ -98,7 +98,10 @@ header {
 .logo a {
     font-size: 24px;
     font-weight: bold;
+    color: #000000;
     text-transform: none; /* 모든 글자가 대문자로 변하지 않도록 설정 */
+        text-decoration: none; /* 밑줄 제거 */
+    
 }
 
 .search-container {
