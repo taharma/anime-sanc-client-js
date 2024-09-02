@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", initialize);
 
+
+
+
 const images = [
   "/image/random6.jpg",
   "/image/random7.jpg",
@@ -9,13 +12,66 @@ const images = [
 ];
 
 const categoryNames = [
-  "<button class='category-button'>Anime</button>", // 1열
-  "<button class='category-button'>Manga</button>", // 2열
-  "<button class='category-button'>Popular Works</button>", // 3열
-  "<button class='category-button'>Characters</button>", // 4열
-  "<button class='category-button'>Forum</button>", // 5열
+  "<button class='category-button'>Anime</button> <a href='#' class='see-all-link'>すべて見る</a>", // 1열
+  "<button class='category-button'>Manga</button> <a href='#' class='see-all-link'>すべて見る</a>", // 2열
+  "<button class='category-button'>Popular Works</button> <a href='#' class='see-all-link'>すべて見る</a>", // 3열
+  "<button class='category-button'>Characters</button> <a href='#' class='see-all-link'>すべて見る</a>", // 4열
+  "<button class='category-button'>Forum</button> <a href='#' class='see-all-link'>すべて見る</a>", // 5열
 ];
 
+let posts = []; // 모든 게시물 데이터를 저장할 배열
+const currentIndexes = Array(categoryNames.length).fill(0); // 각 열의 현재 인덱스를 저장하는 배열
+
+// 서버에서 게시물 데이터를 가져오는 함수
+async function fetchPosts() {
+  try {
+    const response = await fetch("http://localhost:9000/api/notes");
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    posts = await response.json(); // 서버로부터 게시물 데이터를 JSON 형식으로 가져옴
+    displayPosts(); // 처음으로 게시물 데이터를 표시
+  } catch (error) {
+    console.error("Error fetching posts:", error); // 오류를 콘솔에 출력
+  }
+}
+
+// 게시물 데이터를 카드로 표시하는 함수
+function displayPosts() {
+  const cardRows = [];
+
+  // 5개의 열을 생성하고, 각 열마다 5개의 카드를 생성
+  for (let i = 0; i < categoryNames.length; i++) {
+    const cards = [];
+    for (let j = 0; j < 5; j++) {
+      const index = (currentIndexes[i] + j) % posts.length; // 각 열에 대한 현재 인덱스에서 시작
+      const post = posts[index]; // 서버에서 가져온 게시물 데이터
+      cards.push(
+        createCard(
+          images[index % images.length], // 이미지는 순환하면서 사용
+          post.title || "Default Title", // 게시물 제목 (없을 시 기본값 사용)
+          post.contents || "Default Content", // 게시물 내용 (없을 시 기본값 사용)
+          `Author ${index + 1}`, // 저자 이름은 임의로 설정
+          `Date ${index + 1}` // 날짜는 임의로 설정
+        )
+      );
+    }
+    cardRows.push(createCardRow(i, cards, categoryNames[i]));
+  }
+
+  document.getElementById("card-rows").innerHTML = cardRows.join(""); // 모든 카드 행을 HTML에 추가
+
+  // 각 행의 중간 카드를 강조하는 스타일 적용
+  for (let i = 0; i < categoryNames.length; i++) {
+    const container = document.querySelector(`#wrapper-${i} .card-container`);
+    const cards = container.querySelectorAll(".card");
+    if (cards[2]) {
+      cards[2].style.transform = "scale(1.1)"; // 중간 카드를 강조하는 효과
+    }
+  }
+}
+
+// 카드 요소를 생성하는 함수
 function createCard(image, title, description, author, date) {
   return `
     <div class="card shadow" style="position: relative;" onclick="redirectToPost()">
@@ -32,7 +88,7 @@ function createCard(image, title, description, author, date) {
         <button class="icon-button heart" onclick="toggleIcon(event, this)">
           <img src="icon/heart-fill.svg">
         </button>
-        <span class="like-count">235</span> <!-- 좋아요 개수 추가 ☆ -->
+        <span class="like-count">235</span>
         <button class="icon-button bookmark" onclick="toggleIcon(event, this)">
           <img src="/icon/bookmark-plus-fill.svg">
         </button>
@@ -41,18 +97,21 @@ function createCard(image, title, description, author, date) {
   `;
 }
 
-function toggleIcon(button) {
-  button.classList.toggle("clicked");
-}
-
+// 카드 행을 생성하는 함수
 function createCardRow(rowId, cards, categoryName) {
   return `
     <h3>${categoryName}</h3>
     <div class="card-wrapper" id="wrapper-${rowId}">
+      <!-- 왼쪽 방향 회전 버튼 추가 -->
+      <a class="carousel-control-prev" href="javascript:void(0);" role="button" onclick="rotateCarousel(${rowId}, -1)">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
       <div class="card-container">
         ${cards.join("")}
       </div>
-      <a class="carousel-control-next" href="javascript:void(0);" role="button" onclick="rotateCarousel(${rowId})">
+      <!-- 기존 오른쪽 방향 회전 버튼 -->
+      <a class="carousel-control-next" href="javascript:void(0);" role="button" onclick="rotateCarousel(${rowId}, 1)">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -60,43 +119,35 @@ function createCardRow(rowId, cards, categoryName) {
   `;
 }
 
-function rotateCarousel(rowId) {
+// 회전 카루셀 기능
+function rotateCarousel(rowId, direction) {
+  // 클릭된 열에 대한 인덱스를 증가 또는 감소시켜 다음 게시물을 보여줌
+  currentIndexes[rowId] = (currentIndexes[rowId] + direction + posts.length) % posts.length; // 클릭된 열의 인덱스를 증가시키되, 전체 게시물 수를 초과하지 않도록 함
+  displayPosts(); // 게시물 재표시
+
+  // 회전 효과 설정
   const container = document.querySelector(`#wrapper-${rowId} .card-container`);
   const cards = container.querySelectorAll(".card");
 
-  cards.forEach((card) => (card.style.transform = "scale(1)"));
+  // 모든 카드에서 크기 관련 클래스를 제거
+  cards.forEach((card) => {
+    card.classList.remove("scaled");
+    card.classList.remove("card-normal");
+  });
 
-  const firstCard = container.querySelector(".card:first-child");
-  container.appendChild(firstCard.cloneNode(true));
-  container.removeChild(firstCard);
+  // 2번째 카드를 기본 크기로 설정
+  if (cards[1]) {
+    cards[1].classList.add("card-normal"); // 2번째 카드는 기본 크기
+  }
 
-  const updatedCards = container.querySelectorAll(".card");
-  updatedCards[2].style.transform = "scale(1.1)";
+  // 3번째 카드를 확대 크기로 설정
+  if (cards[2]) {
+    cards[2].classList.add("scaled"); // 3번째 카드를 확대
+  }
 }
-
+// 초기화 함수
 function initialize() {
-  const cardRows = [];
-  for (let i = 0; i < categoryNames.length; i++) {
-    const cards = [];
-    for (let j = 0; j < 5; j++) {
-      cards.push(
-        createCard(
-          images[j],
-          `Blog Post ${j + 1}`,
-          `これはテスト用のテキストです。`,
-          `Author ${j + 1}`
-        )
-      );
-    }
-    cardRows.push(createCardRow(i, cards, categoryNames[i]));
-  }
-  document.getElementById("card-rows").innerHTML = cardRows.join("");
-
-  for (let i = 0; i < categoryNames.length; i++) {
-    const container = document.querySelector(`#wrapper-${i} .card-container`);
-    const cards = container.querySelectorAll(".card");
-    cards[2].style.transform = "scale(1.1)";
-  }
+  fetchPosts(); // 서버에서 게시물 데이터를 가져오는 함수 호출
 }
 
 function scrollToTop() {
