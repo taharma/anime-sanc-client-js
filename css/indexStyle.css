@@ -1,0 +1,190 @@
+
+.sidebar {
+    width: 200px;
+    position: fixed;
+    top: 6%;
+    left: 0;
+    height: 100%;
+    padding-top: 20px;
+    background-color: #f8f9fa;
+}
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+}
+.card-wrapper {
+    margin-bottom: 100px;
+    margin-top: 30px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M2.02 0L0 2l4 2-4 2 2 2 6-4-6-4z"/%3E%3C/svg%3E');
+}
+.card-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+.card {
+  min-width: 200px;
+  margin-right: 10px;
+  transition: transform 0.5s ease;
+  height: 600px; /* 카드 높이를 콘텐츠에 맞추도록 설정 */
+  max-height: 350px; /* 카드의 최대 높이를 제한 */
+  width:200px;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%; /* 카드의 전체 높이를 채우도록 설정 */
+  padding: 10px; /* 카드 내부 여백 */
+}
+.card-text {
+  flex-grow: 1; /* 남은 공간을 채우도록 설정 */
+  margin-bottom: 30px; /* 아래 요소와 간격 유지 */
+  overflow: hidden; /* 텍스트가 길어질 때 넘치는 부분을 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
+  white-space: nowrap; /* 한 줄로 표시 */
+  max-height: 40px; /* 텍스트 높이 제한 설정 */
+}
+
+
+.card-meta {
+  margin-top: auto; /* 위에서부터 자동으로 마진을 적용하여 아래로 고정 */
+  padding-bottom: 50px; /* 아이콘과의 간격 유지 */
+  font-size: 12px; /* 글씨 크기 줄이기 */
+  line-height: 1.2; /* 줄 간격을 조절하여 높이 조절 */
+  height: 20px; /* 높이 설정 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+}
+
+
+.card-author {
+  margin: 0; /* 불필요한 마진 제거 */
+  padding: 0; /* 불필요한 패딩 제거 */
+}
+
+
+.card:nth-child(3) {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.icon-container {
+  position: absolute;
+  bottom: 20px; /* 카드의 하단에서 20px 위로 위치 */
+  left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 아이콘과 텍스트 간의 간격 조절 */
+}
+
+
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
+
+.icon-container {
+    position: absolute;
+    bottom: 20px; /* 카드의 하단에서 10px 위로 위치 */
+    left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+    display: flex;
+    align-items: center;
+}
+
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
+
+.icon-button img {
+  width: 15px; /* 아이콘의 크기를 설정합니다. */
+  height: 15px; /* 아이콘의 크기를 설정합니다. */
+}
+
+/* 아이콘 간격 조정을 위해 추가 */
+.icon-button.bookmark {
+  margin-left: 50px; /* heart 아이콘 기준으로 오른쪽으로 20px 떨어지도록 설정 */
+  margin-bottom: 3px;
+}
+
+/* heart 아이콘 클릭 시 빨간색으로 변경 */
+.icon-button.heart.clicked img {
+  filter: invert(20%) sepia(97%) saturate(7450%) hue-rotate(355deg) brightness(97%) contrast(105%);
+}
+
+/* bookmark 아이콘 클릭 시 파란색으로 변경 */
+.icon-button.bookmark.clicked img {
+  filter: invert(32%) sepia(70%) saturate(1931%) hue-rotate(177deg) brightness(97%) contrast(101%);
+}
+
+.badge {
+  display: inline-block;
+  width: 50px; /* 뱃지의 너비를 내용에 맞춤 */
+  height: 20px; /* 뱃지 높이 고정 */
+  line-height: 1.2; /* 텍스트 세로 정렬 */
+  padding: 0.25em 0.5em; /* 뱃지 내부 여백 */
+  font-size: 12px; /* 뱃지 폰트 크기 */
+}
+.navbar .form-inline {
+  z-index: 1050; /* 검색 바를 맨 위로 표시 */
+  position: relative; /* 레이어 위치 설정 */
+}
+
+.navbar {
+  z-index: 1000; /* 검색 바보다 아래에 위치하도록 설정 */
+}
+
+/* 검색 바 디자인 변경 */
+#search-form {
+  position: absolute; /* 검색 바를 고정 위치에 설정 */
+  top: 10px; /* 화면 상단에서 10px 아래로 위치 */
+  left: 50%; /* 화면의 가로 중심에 위치 */
+  transform: translateX(-50%); /* 검색 바를 가로 중앙에 정렬 */
+  display: flex; /* 검색 바와 버튼을 수평으로 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  z-index: 1050; /* 검색 바를 최상위에 위치 */
+}
+
+
+
+#search-form .form-control {
+  border-radius: 5px; /* 둥근 모서리 적용 */
+  width: 450px; /* 검색 바 너비 조정 */
+  box-shadow: none; /* 기본 그림자 제거 */
+  border: 1px solid #ececec; /* 테두리 색상 조정 */
+}
+
+#search-form .btn {
+  margin-left: 5px; /* 검색 바와 버튼 간격 조정 */
+  border-radius: 3px; /* 버튼의 둥근 모서리 적용 */
+  padding: 5px 15px; /* 버튼 패딩 조정 */
+  background-color:  #03914f; /* 버튼 배경색 */
+  color: #fff; /* 버튼 글자색 */
+  border: none; /* 버튼 테두리 제거 */
+  transition: background-color 0.3s; /* 버튼 색상 전환 효과 */
+}
+
+#search-form .btn:hover {
+  background-color: #5e5e5e; /* 버튼 호버 시 색상 */
+}

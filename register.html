@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="./css/loginStyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="aniSanLogIn">Register</div>
+        <br>
+        <div class="login-form">    
+            <div class="form-group">
+                <label for="username">ID</label>
+                <input type="text" id="username" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="name">名前</label>
+                <input type="text" id="name" placeholder="例：杉浦 大地">
+            </div>
+
+            <div class="form-group">
+                <label for="birth">生年月日</label>
+                <input type="text" id="birth" placeholder="例：2000年04月23日">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" placeholder="例：mail@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">性別</label>
+                <div class="gender-selection">
+                    <label>
+                        <input type="radio" name="gender" value="MALE">男性
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="FEMALE">女性
+                    </label>
+                </div>
+            </div>
+
+            <button class="register-button">会員登録</button>
+            <div class="signup-link">
+                <a href="./login.html">ログイン画面に戻る</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle registration -->
+    <script>
+        document.querySelector(".register-button").addEventListener("click", function() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const name = document.getElementById("name").value;
+            const birth = document.getElementById("birth").value;
+            const email = document.getElementById("email").value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+
+            const requestData = {
+                username: username,
+                password: password,
+                name: name,
+                birth: birth,
+                email: email,
+                gender: gender
+            };
+
+            fetch("http://localhost:9000/api/members/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("회원 가입에 실패했습니다.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("회원 가입 성공:", data);
+                alert('Registration successful!');
+                window.location.href = './login.html';  
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
