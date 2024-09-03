@@ -42,88 +42,119 @@
   </header>
 
   <main class="container">
-      <section class="post" id="post-container">
-          <!-- 게시물 내용이 여기에 동적으로 삽입됩니다 -->
-      </section>
+      <section class="post">
+          <div class="post-image">
+              <img src="/image/random8.jpg" alt="Post Image">
+          </div>
+          <div class="post-header">
+              <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
+              <div class="profile-info">
+                  <h3>tanaka</h3>
+                  <p>25歳。旅と読書と自然が好き。建築やアートも。自由気ままに生きてる。</p>
+                  <div class="post-meta">
+                      <span>95 likes</span>
+                      <span>2024年8月25日 13:42</span>
+                  </div>
+              </div>
+          </div>
+          <div class="post-content">
+              <h2>あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
+              <p>これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
+              <div class="dropdown-menu">
+                <button>目標</button>
+                <div class="dropdown-menu-content">
+                    <a href="#">List text 1</a>
+                    <a href="#">List text 2</a>
+                    <a href="#">List text 3</a>
+                    <a href="#">List text 4</a>
+                    <a href="#">List text 5</a>
+                </div>
+                <p>これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
+                    スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。
+                </p>
+            </div>
 
-      <!-- 이전/다음 기사 섹션 수정 -->
-      <div class="post-navigation">
-          <div class="prev-article" onclick="navigateToPrevious()">
-              <!-- 왼쪽 방향 삼각형 추가 -->
-              <span>&#9664; 前の記事</span>
-              <p id="prev-title">이전 게시물 제목 로딩 중...</p>
-          </div>
-          <div class="next-article" onclick="navigateToNext()">
-              <!-- 오른쪽 방향 삼각형 추가 -->
-              <span>次の記事 &#9654;</span>
-              <p id="next-title">다음 게시물 제목 로딩 중...</p>
-          </div>
-      </div>
-  </main>
+            <br>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div>432</div>
+                <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
+                <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
+                <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
+            </div>            
+        </div>
+
+        <div class="profile-section">
+            <img src="/image/userimage.png" alt="Thumbnail Image" class="profile-thumbnail">
+            <div class="profile-info">
+                <h3>AnimeSantuary公式</h3>
+                <p>「人間ではないもの」とは誰か：戦争とモダニズムの詩学』(青土社)、詩集『遠さについて特装版』発売中！ 詩歌／哲学／創作</p>
+                <button class="follow-button" onclick="toggleFollow(this)">フォロー</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 인기 기사 섹션 -->
+    <div class="additional-content">
+        <h3>人気記事</h3>
+        <div class="content-item">
+            <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div>3,851</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div>インターネットでの発信に、もっと安心を。#note10周年</div>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div>2,094</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div>noteはより多様なクリエイターを応援していきます</div>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div>3,509</div>
+            </div>
+        </div>
+        <br>
+        <div class="view-all">すべて見る</div>
+
+ <!-- 이전/다음 기사 섹션 수정 -->
+<div class="post-navigation">
+    <div class="prev-article" onclick="navigateToPrevious()">
+        <!-- 왼쪽 방향 삼각형 추가 -->
+        <span>&#9664; 前の記事</span>
+        <p>Macで完全ローカルで1万6千字の記事の作成から日本語訳まで行う</p>
+    </div>
+    <div class="next-article" onclick="navigateToNext()">
+        <!-- 오른쪽 방향 삼각형 추가 -->
+        <span>次の記事 &#9654;</span>
+        <p>今そこにある酒</p>
+    </div>
+</div>
+
+
+    </section>
+
+
+</main>
 
 <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const title = urlParams.get('title');
-
-        if (title) {
-            await fetchPostByTitle(title);
-        } else {
-            console.error('No post title found in URL');
-        }
-    });
-
-    // title을 기반으로 게시물 데이터를 가져오는 함수
-    async function fetchPostByTitle(title) {
-        try {
-            const response = await fetch(`http://localhost:9000/api/notes`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch post data');
-            }
-            const post = await response.json();
-            displayPost(post);
-        } catch (error) {
-            console.error('Error fetching post:', error);
-        }
-    }
-
-    function displayPost(post) {
-        const postContainer = document.getElementById('post-container');
-        if (!postContainer) {
-            console.error('Post container element not found');
-            return;
-        }
-
-        postContainer.innerHTML = `
-            <div class="post-image">
-                <img src="${post.image || '/image/random8.jpg'}" alt="Post Image">
-            </div>
-            <div class="post-header">
-                <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
-                <div class="profile-info">
-                    <h3>${post.author || 'Unknown Author'}</h3>
-                    <p>${post.description || 'No description available'}</p>
-                    <div class="post-meta">
-                        <span>${post.likes || 0} likes</span>
-                        <span>${post.date || 'Unknown Date'}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <h2>${post.title || 'No Title'}</h2>
-                <p>${post.contents || 'No content available'}</p>
-            </div>
-        `;
-    }
-
-    function toggleSandbox() {
+   function toggleSandbox() {
         const sandbox = document.querySelector('.sandbox-content');
-        sandbox.classList.toggle('open');
+        sandbox.classList.toggle('open'); // "open" 클래스를 올바르게 토글
     }
 
     function toggleIconColor(iconElement, iconType) {
         iconElement.classList.toggle('active');
-        const icons = document.querySelectorAll(`.post-icon.${iconType}`);
+
+        const icons = document.querySelectorAll(.post-icon.${iconType});
         icons.forEach(icon => {
             if (icon !== iconElement) {
                 icon.classList.remove('active');
@@ -140,11 +171,13 @@
         }
     }
 
+    // 드롭다운 기능 추가
     function toggleDropdown() {
         const dropdown = document.getElementById('dropdown');
         dropdown.classList.toggle('show');
     }
 
+    // 드롭다운을 클릭 외부 클릭 시 닫기
     window.onclick = function(event) {
         if (!event.target.matches('.icon2 img')) {
             const dropdowns = document.getElementsByClassName('dropdown-content');
@@ -157,13 +190,18 @@
         }
     }
 
+      // 생략된 기존 자바스크립트
+
+    // 이전 게시물로 이동하는 함수
     function navigateToPrevious() {
-        // 이전 게시물로 이동 로직
+        window.location.href = 'previous-post.html'; // 여기에 실제 이전 게시물의 URL을 입력
     }
 
+    // 다음 게시물로 이동하는 함수
     function navigateToNext() {
-        // 다음 게시물로 이동 로직
+        window.location.href = 'next-post.html'; // 여기에 실제 다음 게시물의 URL을 입력
     }
+    
 </script>
 
 </body>
