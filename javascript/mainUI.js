@@ -147,7 +147,7 @@ function rotateCarousel(rowId, direction) {
 }
 // 초기화 함수
 function initialize() {
-  fetchPosts(); // 서버에서 게시물 데이터를 가져오는 함수 호출
+  fetchPosts(); // 서버에서 게시물 데이터를 가져오는 함수 호출   - 로그인 후 게시글 및 자바 스크립트 작업 파트가 안뜨는 상황이 발생하고 있음. 
 }
 
 function scrollToTop() {

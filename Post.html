@@ -58,24 +58,18 @@
               </div>
           </div>
           <div class="post-content">
-              <h2>あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
-              <p>これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
-              <div class="dropdown-menu">
+            <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
+            <div class="dropdown-menu">
                 <button>目標</button>
                 <div class="dropdown-menu-content">
                     <a href="#">List text 1</a>
+                  
                     <a href="#">List text 2</a>
                     <a href="#">List text 3</a>
                     <a href="#">List text 4</a>
                     <a href="#">List text 5</a>
                 </div>
-                <p>これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
-                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
-                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
-                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
-                    これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。
-                    スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。スクロールテスト用テキストです。
-                </p>
+                <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
             </div>
 
             <br>
@@ -154,7 +148,8 @@
     function toggleIconColor(iconElement, iconType) {
         iconElement.classList.toggle('active');
 
-        const icons = document.querySelectorAll(.post-icon.${iconType});
+        const icons = document.querySelectorAll(`.post-icon.${iconType}`);
+        
         icons.forEach(icon => {
             if (icon !== iconElement) {
                 icon.classList.remove('active');
@@ -202,6 +197,42 @@
         window.location.href = 'next-post.html'; // 여기에 실제 다음 게시물의 URL을 입력
     }
     
+
+   // 데이터를 가져와서 웹 페이지에 표시하는 함수
+async function fetchPosts() {
+    try {
+        // 서버에 요청을 보내고, 응답을 기다려요
+        const response = await fetch('http://localhost:9000/api/notes'); // 서버 주소로 GET 요청을 보냄
+
+        // 응답이 제대로 왔는지 확인해요
+        if (!response.ok) {
+            throw new Error(`서버 오류: ${response.status}`);
+        }
+
+        // 서버에서 받은 데이터를 JSON 형식으로 변환해요
+        const posts = await response.json();
+
+        // 데이터를 삽입할 HTML 요소를 선택해요
+        const titleElement = document.querySelector('h2.title'); // 제목이 들어갈 <h2> 태그를 선택
+        const contentElement = document.querySelector('p.contents'); // 내용이 들어갈 <p> 태그를 선택
+
+        // 받은 데이터가 있다면 첫 번째 게시물을 사용해요
+        if (posts.length > 0) {
+            titleElement.textContent = posts[0].title; // 첫 번째 게시물의 제목을 <h2>에 넣어요
+            contentElement.textContent = posts[0].contents; // 첫 번째 게시물의 내용을 <p>에 넣어요
+        }
+
+    } catch (error) {
+        console.error('데이터 가져오는 중 오류 발생:', error);
+    }
+}
+
+// 페이지가 로드되면 함수 호출하기
+window.onload = fetchPosts;
+
+
+
+
 </script>
 
 </body>
