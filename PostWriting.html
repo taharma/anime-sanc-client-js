@@ -5,22 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>記事エディター</title>
     <link rel="stylesheet" href="css/PostWritingstyle.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
 </head>
 <body>
-
     <!-- Navbar -->
     <div class="navbar">
         <div class="menu">
-            <ul>
-                <li><a herf="#">・・・</a>
-                    <ul>
-                        <li><a href="#">共有用リンクをコピー</a></li>
-                        <li></li><a href="#">プレビュー</a></li>
-                        <li></li><a href="#">変更履歴</a></li>
-                    </ul>
-                </li>
+            <button class="menu-button">・・・</button>
+            <ul class="dropdown-menu">
+                <li><a href="#">共有用リンクをコピー</a></li>
+                <li><a href="#">プレビュー</a></li>
+                <li><a href="#">変更履歴</a></li>
             </ul>
-        </div>
         </div>
         <button class="save-draft">下書き保存</button>
         <button class="publish">公開に進む</button>
@@ -28,15 +24,24 @@
 
     <!-- Article Editor -->
     <div class="editor-container">
-        <div class="title-area">
-            <h1 contenteditable="true" class="article-title">記事タイトル</h1>
+        <div class="editor-header">
+            <h1 id="article-title" class="article-title" contenteditable="true">記事タイトル</h1>
         </div>
-        <div class="content-area">
-            <p contenteditable="true">ここに記事の内容を入力してください...</p>
+        <div class="editor-content">
+            <div id="editor-content" name="editorContent"></div>
         </div>
         <div class="word-count">0文字</div>
+        <!-- 버튼들 추가 -->
+        <div class="button-container">
+            <button id="preview-post" class="preview-post">プレビュー</button>
+            <button id="save-draft" class="save-draft-button">下書き保存</button>
+            <button id="submit-post" class="submit-post">公開に進む</button>
+        </div>
+        <!-- 미리보기 영역 추가 -->
+        <div id="post-preview" class="post-preview"></div>
     </div>
 
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script src="javascript/PostWriting.js"></script>
 </body>
 </html>
