@@ -124,6 +124,22 @@
         </div>
         <br>
         <div class="view-all">すべて見る</div>
+
+ <!-- 이전/다음 기사 섹션 수정 -->
+<div class="post-navigation">
+    <div class="prev-article" onclick="navigateToPrevious()">
+        <!-- 왼쪽 방향 삼각형 추가 -->
+        <span>&#9664; 前の記事</span>
+        <p>Macで完全ローカルで1万6千字の記事の作成から日本語訳まで行う</p>
+    </div>
+    <div class="next-article" onclick="navigateToNext()">
+        <!-- 오른쪽 방향 삼각형 추가 -->
+        <span>次の記事 &#9654;</span>
+        <p>今そこにある酒</p>
+    </div>
+</div>
+
+
     </section>
 
 
@@ -138,7 +154,7 @@
     function toggleIconColor(iconElement, iconType) {
         iconElement.classList.toggle('active');
 
-        const icons = document.querySelectorAll(`.post-icon.${iconType}`);
+        const icons = document.querySelectorAll(.post-icon.${iconType});
         icons.forEach(icon => {
             if (icon !== iconElement) {
                 icon.classList.remove('active');
@@ -173,6 +189,19 @@
             }
         }
     }
+
+      // 생략된 기존 자바스크립트
+
+    // 이전 게시물로 이동하는 함수
+    function navigateToPrevious() {
+        window.location.href = 'previous-post.html'; // 여기에 실제 이전 게시물의 URL을 입력
+    }
+
+    // 다음 게시물로 이동하는 함수
+    function navigateToNext() {
+        window.location.href = 'next-post.html'; // 여기에 실제 다음 게시물의 URL을 입력
+    }
+    
 </script>
 
 </body>
