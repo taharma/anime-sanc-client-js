@@ -1,23 +1,54 @@
 
 .sidebar {
-    width: 200px;
-    position: fixed;
-    top: 6%;
-    left: 0;
-    height: 100%;
-    padding-top: 20px;
-    background-color: #f8f9fa;
+  width: 200px;
+  min-width: 200px; /* 최소 너비를 설정하여 사이드바가 너무 작아지지 않도록 함 */
+  position: fixed;
+  top: 6%;
+  left: 0;
+  height: 100%;
+  padding-top: 20px;
+  background-color: #f8f9fa;
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+  z-index: 1000; /* 사이드바를 항상 위에 표시 */
 }
+
+
+.sidebar h5,
+.sidebar ul {
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
+}
+
+.list-group-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%; /* 아이템이 사이드바 너비를 넘지 않도록 설정 */
+}
+/* 메인 콘텐츠 스타일 수정 */
 .main-content {
-    margin-left: 220px;
-    padding: 20px;
+  margin-left: 220px; /* 사이드바의 너비와 여백을 더하여 왼쪽 마진 설정 */
+  padding: 20px;
+  overflow: hidden; /* 메인 콘텐츠가 사이드바를 넘어가지 않도록 숨기기 */
 }
+
+.card-img-top {
+  height: 150px; /* 고정된 높이 */
+  object-fit: cover; /* 이미지를 고정된 높이에 맞추기 위해 자름 */
+  width: 100%; /* 이미지 너비를 카드 너비에 맞춤 */
+}
+
+/* 카드 열 스타일 수정 */
 .card-wrapper {
-    margin-bottom: 100px;
-    margin-top: 30px;
-    display: flex;
-    overflow: hidden;
-    position: relative;
+  margin-bottom: 100px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* 카드 열을 수평으로 가운데 정렬 */
+  align-items: center; /* 카드 열을 수직으로 가운데 정렬 */
+  position: relative;
+  width: calc(100% - 220px); /* 사이드바를 뺀 나머지 너비를 사용 */
+  max-width: 100%;
 }
 .carousel-control-next {
     position: absolute;
@@ -33,32 +64,70 @@
 .carousel-control-next-icon {
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M2.02 0L0 2l4 2-4 2 2 2 6-4-6-4z"/%3E%3C/svg%3E');
 }
-.card-container {
-    display: flex;
-    transition: transform 0.5s ease;
+
+.carousel-control-prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
+
+.carousel-control-prev-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M5.98 0L8 2l-4 2 4 2-2 2L0 4l6-4z"/%3E%3C/svg%3E');
+}
+
+.card-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  justify-content: center; /* 카드들을 가운데 정렬 */
+  gap: 10px; /* 카드 간의 간격 설정 */
+}
+
 .card {
   min-width: 200px;
   margin-right: 10px;
   transition: transform 0.5s ease;
-  height: 600px; /* 카드 높이를 콘텐츠에 맞추도록 설정 */
-  max-height: 350px; /* 카드의 최대 높이를 제한 */
-  width:200px;
+  height: 600px;
+  max-height: 350px;
+  width: 200px;
+  position: relative; /* 부모 요소를 기준으로 위치를 설정 */
+  overflow: visible; /* 카드 내용이 잘리지 않도록 설정 */
 }
+
+.card.scaled {
+  transform: scale(1.1); /* 기본 확대 크기 조정 (3번째 카드 확대) */
+  z-index: 2; /* 확대된 카드가 다른 카드보다 위에 오도록 설정 */
+}
+.card-normal {
+  transform: scale(1); /* 2번째 카드와 다른 모든 카드는 기본 크기 */
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: 100%; /* 카드의 전체 높이를 채우도록 설정 */
-  padding: 10px; /* 카드 내부 여백 */
+  padding: 10px;
+  overflow: hidden; /* 텍스트가 넘치는 것을 숨기지 않도록 */
+  font-size: 0.9em; /* 기본 폰트 크기 설정 */
+}
+
+.card.scaled .card-body {
+  font-size: 1em; /* 가운데 카드가 확대되었을 때 폰트 크기를 키움 */
+  overflow: visible; /* 확대된 카드의 텍스트가 잘리지 않도록 */
 }
 .card-text {
-  flex-grow: 1; /* 남은 공간을 채우도록 설정 */
-  margin-bottom: 30px; /* 아래 요소와 간격 유지 */
-  overflow: hidden; /* 텍스트가 길어질 때 넘치는 부분을 숨김 */
-  text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
-  white-space: nowrap; /* 한 줄로 표시 */
-  max-height: 40px; /* 텍스트 높이 제한 설정 */
+  flex-grow: 1;
+  margin-bottom: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: 40px;
 }
 
 
@@ -72,6 +141,25 @@
 }
 
 
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
 .card-author {
   margin: 0; /* 불필요한 마진 제거 */
   padding: 0; /* 불필요한 패딩 제거 */
@@ -155,36 +243,52 @@
   z-index: 1000; /* 검색 바보다 아래에 위치하도록 설정 */
 }
 
-/* 검색 바 디자인 변경 */
+/* 검색 바 고정 및 정렬 */
 #search-form {
-  position: absolute; /* 검색 바를 고정 위치에 설정 */
+  position: fixed; /* 고정 위치로 변경 */
   top: 10px; /* 화면 상단에서 10px 아래로 위치 */
   left: 50%; /* 화면의 가로 중심에 위치 */
   transform: translateX(-50%); /* 검색 바를 가로 중앙에 정렬 */
   display: flex; /* 검색 바와 버튼을 수평으로 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
-  z-index: 1050; /* 검색 바를 최상위에 위치 */
+  white-space: nowrap; /* 검색 바와 버튼이 한 줄로 유지되도록 설정 */
+  z-index: 1050; /* 검색 바를 사이드바 위에 위치 */
 }
 
 
 
 #search-form .form-control {
-  border-radius: 5px; /* 둥근 모서리 적용 */
-  width: 450px; /* 검색 바 너비 조정 */
-  box-shadow: none; /* 기본 그림자 제거 */
-  border: 1px solid #ececec; /* 테두리 색상 조정 */
+  border-radius: 5px;
+  width: 450px; 
+  box-shadow: none; 
+  border: 1px solid #ececec; 
+  flex-shrink: 1; /* 검색 바가 줄어들 수 있도록 설정 */
 }
 
+
 #search-form .btn {
-  margin-left: 5px; /* 검색 바와 버튼 간격 조정 */
-  border-radius: 3px; /* 버튼의 둥근 모서리 적용 */
-  padding: 5px 15px; /* 버튼 패딩 조정 */
-  background-color:  #03914f; /* 버튼 배경색 */
-  color: #fff; /* 버튼 글자색 */
-  border: none; /* 버튼 테두리 제거 */
-  transition: background-color 0.3s; /* 버튼 색상 전환 효과 */
+  margin-left: 5px; 
+  border-radius: 3px; 
+  padding: 5px 15px; 
+  background-color: #03914f; 
+  color: #fff; 
+  border: none; 
+  transition: background-color 0.3s; 
+  flex-shrink: 0; /* 버튼 크기를 유지하면서 검색 바가 줄어들도록 설정 */
 }
 
 #search-form .btn:hover {
   background-color: #5e5e5e; /* 버튼 호버 시 색상 */
+}
+
+.see-all-link {
+  color: #c1c1c1; /* 텍스트 색상 */
+  font-size: 10pt; /* 폰트 크기 */
+  text-decoration: none; /* 밑줄 제거 */
+ font-weight: bold;
+}
+
+.see-all-link:hover {
+  text-decoration: dotted;
+  color: rgb(16, 65, 210);
 }
