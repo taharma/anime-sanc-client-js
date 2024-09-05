@@ -56,4 +56,22 @@
   <!-- 외부 JavaScript 파일 로드 -->
   <script src="javascript/mainUI.js"></script>
 </body>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); 
+  });
+  
+  async function fetchPosts() {
+    try {
+      const response = await fetch("http://localhost:9000/api/notes");
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+      const posts = await response.json(); // 서버로부터 게시물 데이터를 JSON 형식으로 가져옴
+      displayPosts(posts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  }
+</script>
 </html>
