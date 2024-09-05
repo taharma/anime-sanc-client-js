@@ -47,40 +47,76 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // 게시글 등록 버튼 클릭 시 제목과 내용 표시
+    // 게시글 등록 버튼 클릭 시 API로 전송
     submitButton.addEventListener('click', function() {
-        const title = titleElement.textContent.trim() || '無題';
+        const title = titleElement.textContent.trim();
         const content = editor.getMarkdown().trim();
-        
-        postPreview.innerHTML = `
-            <h2>${title}</h2>
-            <div>${content}</div>
-        `;
+
+        // 필수 필드가 비어 있는지 확인
+        if (!title || !content) {
+            alert('제목과 내용을 모두 입력해 주세요.');
+            return;
+        }
+
+        // 게시글 등록 API로 데이터 전송
+        fetch('http://localhost:9000/api/notes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: title,
+                content: content,
+                categoryId: 1 // 필요 시 categoryId 변경
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errData => {
+                    throw new Error(errData.error || '서버 오류');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('投稿成功:', data);
+            alert('投稿が正常に完了しました！');
+        })
+        .catch(error => {
+            console.error('投稿失敗:', error);
+            alert(`投稿に失敗しました: ${error.message}`);
+        });
     });
 
-    // 미리보기 버튼 클릭 시 제목과 내용 표시
+    // 미리보기 버튼 클릭 시 미리보기 영역에 내용 표시
     previewButton.addEventListener('click', function() {
-        const title = titleElement.textContent.trim() || '無題';
+        const title = titleElement.textContent.trim();
         const content = editor.getMarkdown().trim();
-        
+
+        if (!title || !content) {
+            alert('제목과 내용을 입력해 주세요.');
+            return;
+        }
+
         postPreview.innerHTML = `
-            <h2>${title}</h2>
-            <div>${content}</div>
+            <h1>${title}</h1>
+            <div>${editor.getHTML()}</div>
         `;
     });
 
-    // 임시 저장 버튼 클릭 시 제목과 내용 저장
+    // 임시 저장 버튼 클릭 시 로컬 스토리지에 저장
     saveDraftButton.addEventListener('click', function() {
-        const title = titleElement.textContent.trim() || '無題';
+        const title = titleElement.textContent.trim();
         const content = editor.getMarkdown().trim();
-        
-        // 여기서는 단순히 콘솔에 저장하는 로직을 추가
-        console.log('임시 저장');
-        console.log('제목:', title);
-        console.log('내용:', content);
-        
-        // 실제 구현에서는 로컬 스토리지나 서버에 저장 로직을 추가해야 합니다.
-        alert('임시 저장이 완료되었습니다!');
+
+        if (!title || !content) {
+            alert('제목과 내용을 입력해 주세요.');
+            return;
+        }
+
+        localStorage.setItem('draftTitle', title);
+        localStorage.setItem('draftContent', content);
+        alert('下書きが保存されました！');
     });
 
     initializeTitle();
