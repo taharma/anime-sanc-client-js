@@ -61,24 +61,6 @@
   <script>
     document.addEventListener("DOMContentLoaded", initialize); // ★ 페이지 로드 시 초기화 함수 호출
 
-    const images = [
-      "/image/random6.jpg",
-      "/image/random7.jpg",
-      "/image/random8.jpg",
-      "/image/random9.jpg",
-      "/image/random3.jpg",
-    ];
-
-    const categoryNames = [
-      "<button class='category-button'>Anime</button> <a href='#' class='see-all-link'>すべて見る</a>",
-      "<button class='category-button'>Manga</button> <a href='#' class='see-all-link'>すべて見る</a>",
-      "<button class='category-button'>Popular Works</button> <a href='#' class='see-all-link'>すべて見る</a>",
-      "<button class='category-button'>Characters</button> <a href='#' class='see-all-link'>すべて見る</a>",
-      "<button class='category-button'>Forum</button> <a href='#' class='see-all-link'>すべて見る</a>",
-    ];
-
-    let posts = [];
-    const currentIndexes = Array(categoryNames.length).fill(0);
 
     // 서버에서 게시물 데이터를 가져오는 함수
     async function fetchPosts() {
@@ -131,7 +113,7 @@
     // 카드 요소를 생성하는 함수
     function createCard(image, title, description, author, date, id) {
       return `
-        <div class="card shadow" style="position: relative;" onclick="redirectToPost(${id})"> <!-- ★ 클릭 시 ID를 포함하여 이동 -->
+        <div class="card shadow" style="position: relative;" onclick="redirectToPost('${id}')"> <!-- ★ 클릭 시 ID를 포함하여 이동 -->
           <img src="${image}" class="card-img-top">
           <div class="card-body">
             <span class="badge rounded-pill bg-primary">News</span>
@@ -156,6 +138,7 @@
 
     // 게시물 클릭 시 이동하는 함수
     function redirectToPost(id) {
+      console.log("Navigating to post with ID:", id); // ★ ID가 제대로 전달되는지 확인
       window.location.href = `post.html?id=${id}`; // ★ 게시물의 ID를 URL에 포함하여 상세 페이지로 이동합니다.
     }
 

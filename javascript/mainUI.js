@@ -29,13 +29,13 @@ async function fetchPosts() {
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }
-    posts = await response.json(); // 서버로부터 게시물 데이터를 JSON 형식으로 가져옴
-    displayPosts(); // 처음으로 게시물 데이터를 표시
+    posts = await response.json();
+    console.log("Fetched posts:", posts); // ★ 서버에서 가져온 게시물 데이터를 확인합니다.
+    displayPosts(); // ★ 게시물 데이터를 화면에 표시합니다.
   } catch (error) {
-    console.error("Error fetching posts:", error); // 오류를 콘솔에 출력
+    console.error("Error fetching posts:", error);
   }
 }
-
 // 게시물 데이터를 카드로 표시하는 함수
 function displayPosts() {
   const cardRows = [];
@@ -72,9 +72,10 @@ function displayPosts() {
 }
 
 // 카드 요소를 생성하는 함수
-function createCard(image, title, description, author, date) {
+function createCard(image, title, description, author, date, id) {
   return `
-    <div class="card shadow" style="position: relative;" onclick="redirectToPost()">
+    <div class="card shadow" style="position: relative;" onclick="redirectToPost('${id}')">
+      <!-- 카드 클릭 시 ID를 전달하도록 수정 -->
       <img src="${image}" class="card-img-top">
       <div class="card-body">
         <span class="badge rounded-pill bg-primary">News</span>
