@@ -7,233 +7,42 @@
     <link rel="stylesheet" href="css/postStyle.css">
 </head>
 <body>
-  <div class="dropdown-sandbox">
-      <button onclick="toggleSandbox()">&#9664;</button>
-      <div class="sandbox-content">
-          <img src="/icon/user.png" alt="Profile-dummyPic" class="profile-pic">
-          <h3>インティメート・マージャーのData Driven NOTE</h3>
-          <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
-      </div>
-  </div>
-  
-  <header>
-      <div class="logo"><a href="/index.html">Anime Sanctuary</a></div>
-      <div class="search-container">
-          <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
-          <button class="search-button">検索</button>
-      </div>
-      <div class="header-icons">
-          <div class="icon1">
-            <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1">
-          </div>
-          <div class="icon2">
-              <img src="/icon/user.png" onclick="toggleDropdown()" alt="icon2-user">
-              <!-- 드롭다운 메뉴 추가 -->
-              <div id="dropdown" class="dropdown-content">
-                  <a href="#">プロフィール</a>
-                  <a href="#">設定</a>
-                  <a href="#">お知らせ</a>
-                  <a href="#">メッセージ</a>
-                  <a href="#">ログアウト</a>
-              </div>
-          </div>
-          <button class="post-button">投稿</button>
-      </div>
-  </header>
+  <!-- 기타 HTML 요소 생략 -->
 
-  <main class="container">
-      <section class="post">
-          <div class="post-image">
-              <img src="/image/random8.jpg" alt="Post Image">
-          </div>
-          <div class="post-header">
-              <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
-              <div class="profile-info">
-                  <h3>tanaka</h3>
-                  <p>25歳。旅と読書と自然が好き。建築やアートも。自由気ままに生きてる。</p>
-                  <div class="post-meta">
-                      <span>95 likes</span>
-                      <span>2024年8月25日 13:42</span>
-                  </div>
-              </div>
-          </div>
-          <div class="post-content">
-            <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
-            <div class="dropdown-menu">
-                <button>目標</button>
-                <div class="dropdown-menu-content">
-                    <a href="#">List text 1</a>
-                  
-                    <a href="#">List text 2</a>
-                    <a href="#">List text 3</a>
-                    <a href="#">List text 4</a>
-                    <a href="#">List text 5</a>
-                </div>
-                <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
-            </div>
+  <script>
+   // URL에서 게시물 ID를 가져오는 함수
+   function getPostIdFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id"); // ★ URL에서 ID 추출
+   }
 
-            <br>
-            <div class="post-icons">
-                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                <div>432</div>
-                <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
-                <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
-                <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
-            </div>            
-        </div>
+   // 서버에서 특정 게시물 데이터를 가져오는 함수
+   async function fetchPostById(id) {
+      try {
+          const response = await fetch(`http://localhost:9000/api/notes/${id}`); // ★ GET 요청으로 특정 ID의 게시물 데이터를 가져옴
+          if (!response.ok) {
+              throw new Error(`Failed to fetch post: ${response.status}`); // 서버 응답 오류가 있는 경우 오류 메시지와 상태 코드를 표시합니다.
+          }
+          const post = await response.json();
 
-        <div class="profile-section">
-            <img src="/image/userimage.png" alt="Thumbnail Image" class="profile-thumbnail">
-            <div class="profile-info">
-                <h3>AnimeSantuary公式</h3>
-                <p>「人間ではないもの」とは誰か：戦争とモダニズムの詩学』(青土社)、詩集『遠さについて特装版』発売中！ 詩歌／哲学／創作</p>
-                <button class="follow-button" onclick="toggleFollow(this)">フォロー</button>
-            </div>
-        </div>
-    </div>
+          // 페이지에 게시물 데이터 표시
+          document.querySelector('h2.title').textContent = post.title || '제목을 찾을 수 없습니다'; // 서버에서 받아온 제목을 표시합니다.
+          document.querySelector('p.contents').textContent = post.contents || '내용을 찾을 수 없습니다'; // 서버에서 받아온 내용을 표시합니다.
+      } catch (error) {
+          console.error("Error fetching post:", error); // 오류 발생 시 콘솔에 출력
+          alert("게시물 데이터를 불러오는 중 오류가 발생했습니다."); // 사용자에게 오류 알림
+      }
+   }
 
-    <!-- 인기 기사 섹션 -->
-    <div class="additional-content">
-        <h3>人気記事</h3>
-        <div class="content-item">
-            <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
-            <div class="post-icons">
-                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                <div>3,851</div>
-            </div>
-        </div>
-        <div class="content-item">
-            <div>インターネットでの発信に、もっと安心を。#note10周年</div>
-            <div class="post-icons">
-                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                <div>2,094</div>
-            </div>
-        </div>
-        <div class="content-item">
-            <div>noteはより多様なクリエイターを応援していきます</div>
-            <div class="post-icons">
-                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                <div>3,509</div>
-            </div>
-        </div>
-        <br>
-        <div class="view-all">すべて見る</div>
-
- <!-- 이전/다음 기사 섹션 수정 -->
-<div class="post-navigation">
-    <div class="prev-article" onclick="navigateToPrevious()">
-        <!-- 왼쪽 방향 삼각형 추가 -->
-        <span>&#9664; 前の記事</span>
-        <p>Macで完全ローカルで1万6千字の記事の作成から日本語訳まで行う</p>
-    </div>
-    <div class="next-article" onclick="navigateToNext()">
-        <!-- 오른쪽 방향 삼각형 추가 -->
-        <span>次の記事 &#9654;</span>
-        <p>今そこにある酒</p>
-    </div>
-</div>
-
-
-    </section>
-
-
-</main>
-
-<script>
-   function toggleSandbox() {
-        const sandbox = document.querySelector('.sandbox-content');
-        sandbox.classList.toggle('open'); // "open" 클래스를 올바르게 토글
-    }
-
-    function toggleIconColor(iconElement, iconType) {
-        iconElement.classList.toggle('active');
-
-        const icons = document.querySelectorAll(`.post-icon.${iconType}`);
-        
-        icons.forEach(icon => {
-            if (icon !== iconElement) {
-                icon.classList.remove('active');
-            }
-        });
-    }
-
-    function toggleFollow(button) {
-        button.classList.toggle('active');
-        if (button.classList.contains('active')) {
-            button.textContent = 'フォロー中';
-        } else {
-            button.textContent = 'フォロー';
-        }
-    }
-
-    // 드롭다운 기능 추가
-    function toggleDropdown() {
-        const dropdown = document.getElementById('dropdown');
-        dropdown.classList.toggle('show');
-    }
-
-    // 드롭다운을 클릭 외부 클릭 시 닫기
-    window.onclick = function(event) {
-        if (!event.target.matches('.icon2 img')) {
-            const dropdowns = document.getElementsByClassName('dropdown-content');
-            for (let i = 0; i < dropdowns.length; i++) {
-                const openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-
-      // 생략된 기존 자바스크립트
-
-    // 이전 게시물로 이동하는 함수
-    function navigateToPrevious() {
-        window.location.href = 'previous-post.html'; // 여기에 실제 이전 게시물의 URL을 입력
-    }
-
-    // 다음 게시물로 이동하는 함수
-    function navigateToNext() {
-        window.location.href = 'next-post.html'; // 여기에 실제 다음 게시물의 URL을 입력
-    }
-    
-
-   // 데이터를 가져와서 웹 페이지에 표시하는 함수
-async function fetchPosts() {
-    try {
-        // 서버에 요청을 보내고, 응답을 기다려요
-        const response = await fetch('http://localhost:9000/api/notes'); // 서버 주소로 GET 요청을 보냄
-
-        // 응답이 제대로 왔는지 확인해요
-        if (!response.ok) {
-            throw new Error(`서버 오류: ${response.status}`);
-        }
-
-        // 서버에서 받은 데이터를 JSON 형식으로 변환해요
-        const posts = await response.json();
-
-        // 데이터를 삽입할 HTML 요소를 선택해요
-        const titleElement = document.querySelector('h2.title'); // 제목이 들어갈 <h2> 태그를 선택
-        const contentElement = document.querySelector('p.contents'); // 내용이 들어갈 <p> 태그를 선택
-
-        // 받은 데이터가 있다면 첫 번째 게시물을 사용해요
-        if (posts.length > 0) {
-            titleElement.textContent = posts[0].title; // 첫 번째 게시물의 제목을 <h2>에 넣어요
-            contentElement.textContent = posts[0].contents; // 첫 번째 게시물의 내용을 <p>에 넣어요
-        }
-
-    } catch (error) {
-        console.error('데이터 가져오는 중 오류 발생:', error);
-    }
-}
-
-// 페이지가 로드되면 함수 호출하기
-window.onload = fetchPosts;
-
-
-
-
-</script>
-
+   // 페이지 로드 시 게시물 ID를 추출하고 데이터를 가져오는 함수 호출
+   document.addEventListener("DOMContentLoaded", function() {
+      const postId = getPostIdFromURL();
+      if (postId) {
+          fetchPostById(postId); // ★ 페이지 로드 시 ID를 사용해 데이터 요청
+      } else {
+          alert("게시물 ID를 찾을 수 없습니다."); // ID가 없을 경우 사용자에게 알림
+      }
+   });
+  </script>
 </body>
 </html>
