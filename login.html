@@ -14,7 +14,7 @@
         <!-- 로그인 폼 -->
         <form id="loginForm" class="login-form">
             <div class="social-login">
-                <button onclick="redirectToGoogle()">
+                <button type="button" onclick="redirectToGoogle()"> <!-- type="button"으로 수정하여 기본 제출을 방지 -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
                         <path fill="#4285F4" d="M44.5 20H24v8.5h11.8c-1.3 3.5-4.2 6.5-7.9 7.7l6.4 5c3.8-3.4 6-8.5 6-14.2c0-1.4-.2-2.8-.6-4z"/>
                         <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.4-4.8l-6.4-5c-1.8 1.2-4.1 1.9-7 1.9c-5.4 0-9.9-3.6-11.5-8.5l-6.6 5.1C9.7 39.5 16.4 44 24 44z"/>
@@ -22,10 +22,9 @@
                         <path fill="#EA4335" d="M24 13.5c3 0 5.7 1 7.8 3l5.8-5.8C34.1 7.8 29.5 6 24 6c-7.6 0-14.3 4.5-17.5 11.7l6.7 5C14.1 17.1 18.6 13.5 24 13.5z"/>
                     </svg>
                 </button>
-                <button>
+                <button type="button"> <!-- type="button"으로 수정 -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32"><path fill="#03A9F4" d="M32 6.1a13 13 0 0 1-3.7 1A6.4 6.4 0 0 0 31.1 4a13.1 13.1 0 0 1-4.1 1.6a6.6 6.6 0 0 0-11.1 6c-5.5-.3-10.3-2.9-13.5-6.8a6.7 6.7 0 0 0 2 8.8a6.5 6.5 0 0 1-3-.9v.1a6.6 6.6 0 0 0 5.3 6.5a6.9 6.9 0 0 1-3 .1a6.7 6.7 0 0 0 6.2 4.6a13.3 13.3 0 0 1-8.3 2.9c-.5 0-1.1 0-1.6-.1a18.8 18.8 0 0 0 10.2 3c12.3 0 19-10.1 19-18.9l-.1-.9A13.5 13.5 0 0 0 32 6.1z"/></svg>
                 </button>
-               
             </div>
             <div class="form-group">
                 <label for="usernameOrEmail">EmailまたはID</label>
@@ -78,9 +77,9 @@
         });
 
         function redirectToGoogle() {
-        // Google OAuth2 인증을 위한 엔드포인트로 리다이렉트
-        window.location.href = 'http://localhost:9000/oauth2/authorization/google';
-    }
-
+            // Google OAuth2 인증을 위한 엔드포인트로 리다이렉트
+            window.location.href = 'http://localhost:9000/oauth2/authorization/google';
+        }
     </script>
 </body>
+</html>

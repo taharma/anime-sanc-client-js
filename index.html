@@ -11,17 +11,17 @@
   
   <!-- 네비게이션 바 /로그인 회원등록 -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Anime Sanctuary</a>
+    <a class="navbar-brand" href="/index.html">Anime Sanctuary</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" id="auth-buttons"> <!-- ID 추가 -->
         <li class="nav-item">
-          <a class="nav-link" href="./login.html">ログイン</a>
+          <a class="nav-link" href="./login.html" id="login-button">ログイン</a> <!-- ID 추가 -->
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./register.html">新規登録</a>
+          <a class="nav-link" href="./register.html" id="register-button">新規登録</a> <!-- ID 추가 -->
         </li>
       </ul>
     </div>
@@ -59,8 +59,55 @@
 
   <!-- JavaScript 코드 -->
   <script>
-    document.addEventListener("DOMContentLoaded", initialize); // ★ 페이지 로드 시 초기화 함수 호출
+    document.addEventListener("DOMContentLoaded", function() {
+      checkLoginStatus(); // 페이지 로드 시 로그인 상태 확인
+      initialize(); // 초기화 함수 호출
+    });
 
+    // 로그인 상태 확인 및 버튼 변경 함수들
+    function checkLoginStatus() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn"); // 로그인 상태를 localStorage에서 확인
+
+      if (isLoggedIn === "true") {
+        showLogoutButton();
+      } else {
+        showLoginAndRegisterButtons();
+      }
+    }
+
+    function showLogoutButton() {
+      const authButtons = document.getElementById("auth-buttons");
+      authButtons.innerHTML = `
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logout-button" onclick="logout()">ログアウト</a>
+        </li>
+      `;
+    }
+
+    function showLoginAndRegisterButtons() {
+      const authButtons = document.getElementById("auth-buttons");
+      authButtons.innerHTML = `
+        <li class="nav-item">
+          <a class="nav-link" href="./login.html" id="login-button">ログイン</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./register.html" id="register-button">新規登録</a>
+        </li>
+      `;
+    }
+
+    function login() {
+      // 로그인 성공 후 실행할 로직
+      localStorage.setItem("isLoggedIn", "true");
+      alert("로그인에 성공했습니다.");
+      checkLoginStatus(); // 로그인 상태 확인 및 버튼 업데이트
+    }
+
+    function logout() {
+      // 로그아웃 시 실행할 로직 예시
+      localStorage.removeItem("isLoggedIn");
+      checkLoginStatus();
+    }
 
     // 서버에서 게시물 데이터를 가져오는 함수
     async function fetchPosts() {

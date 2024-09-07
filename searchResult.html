@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>검색 결과 - AS/board</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/searchResult.css">
+</head>
+<body>
+
+  <!-- 네비게이션 바 /로그인 회원등록 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/index.html">Anime Sanctuary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" id="auth-buttons">
+        <li class="nav-item">
+          <a class="nav-link" href="./login.html" id="login-button">ログイン</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./register.html" id="register-button">新規登録</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 검색 바 추가 및 중앙 고정 -->
+  <form class="form-inline" id="search-form">
+    <input class="form-control" type="search" placeholder="キーワードやクリエイターで検索" aria-label="Search" id="search-input">
+    <button class="btn btn-outline-success" type="submit" id="search-button">検索</button>
+  </form>
+  
+  <!-- 카테고리 선택 버튼 -->
+  <div class="category-container">
+    <button class="category-button" onclick="changeCategory('anime')">アニメ</button>
+    <button class="category-button" onclick="changeCategory('manga')">漫画</button>
+    <button class="category-button" onclick="changeCategory('popular')">人気作品</button>
+    <button class="category-button" onclick="changeCategory('character')">キャラクター</button>
+    <button class="category-button" onclick="changeCategory('forum')">フォーラム</button>
+  </div>
+
+  <!-- 메인 콘텐츠 -->
+  <div class="main-content">
+    <div class="container-fluid">
+      <!-- 検索結果 텍스트 추가 -->
+      <h3>検索結果</h3>
+      <!-- 카드 행을 생성할 위치 -->
+      <div id="card-rows" class="row">
+        <!-- JavaScript를 통해 카드가 추가됩니다. -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 외부 JavaScript 파일 로드 -->
+  <script src="javascript/searchResult.js"></script>
+</body>
+</html>

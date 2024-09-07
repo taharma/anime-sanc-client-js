@@ -100,7 +100,59 @@
                 </div>
             </div>
         </div>
+    <!--0907 댓글창수정-->
+    <div class="comments-section">
+        <h3>コメント</h3>
+        <div class="comment">
+            <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+            <div class="comment-content">
+                <span class="comment-username">ユーザー1</span>
+                <p>本内容はテスト用です。</p>
+                <span class="comment-date">2024年9月7日 14:30</span>
+            </div>
+        </div>
+        <div class="comment">
+            <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+            <div class="comment-content">
+                <span class="comment-username">ユーザー2</span>
+                <p>本内容はテスト用です。</p>
+                <span class="comment-date">2024年9月7日 14:32</span>
+            </div>
+        </div>
+        <div class="comment">
+            <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+            <div class="comment-content">
+                <span class="comment-username">ユーザー3</span>
+                <p>本内容はテスト用です。</p>
+                <span class="comment-date">2024年9月7日 14:35</span>
+            </div>
+        </div>
+        
+   <!-- 페이지네이션 -->
+   <div class="pagination">
+    <button class="pagination-arrow" onclick="prevPage()">&#9664;</button>
+    <div class="pagination-numbers">
+        <!-- 페이지 번호 버튼 -->
+    </div>
+    <button class="pagination-arrow" onclick="nextPage()">&#9654;</button>
+</div>
+</div>
+         <!-- 페이지네이션 끝-->
+
+        <button class="toggle-comment-button" onclick="toggleCommentBox()">コメント覧を開く</button>
     
+        <!-- 댓글 작성 창 -->
+        <div id="comment-box" class="comment-box">
+            <textarea id="comment-input" maxlength="200" placeholder="コメントを入力してください..."></textarea>
+            <div class="comment-box-footer">
+                <span id="char-count">0/200</span>
+                <button onclick="submitComment()">確認</button>
+            </div>
+        </div>
+        
+    </div>
+
+     <!--0907 수정끝-->
         <!-- 인기 기사 섹션 -->
         <div class="additional-content">
             <h3>人気記事</h3>
@@ -187,6 +239,100 @@
           alert("게시물 ID를 찾을 수 없습니다."); // ID가 없을 경우 사용자에게 알림
       }
    });
+
+
+
+   //여기부터 댓글창
+   function toggleCommentBox() {
+    const commentBox = document.getElementById('comment-box');
+    const toggleButton = document.querySelector('.toggle-comment-button');
+
+    if (commentBox.style.display === 'block') {
+        commentBox.style.display = 'none';
+        toggleButton.textContent = 'コメント覧を開く';
+    } else {
+        commentBox.style.display = 'block';
+        toggleButton.textContent = 'コメント覧を閉じる';
+    }
+}
+
+document.getElementById('comment-input').addEventListener('input', function() {
+    const charCount = this.value.length;
+    document.getElementById('char-count').textContent = `${charCount}/200`;
+});
+
+function submitComment() {
+    const commentInput = document.getElementById('comment-input');
+    const newCommentText = commentInput.value.trim();
+    if (newCommentText === "") {
+        alert("コメントを入力してください。");
+        return;
+    }
+
+    // 새로운 댓글 요소 추가
+    const newComment = document.createElement('div');
+    newComment.classList.add('comment');
+    newComment.innerHTML = `
+        <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+        <div class="comment-content">
+            <span class="comment-username">新しいユーザー</span>
+            <p>${newCommentText}</p>
+            <span class="comment-date">2024年9月7日 15:00</span>
+        </div>
+    `;
+    document.querySelector('.comments-section').appendChild(newComment);
+
+    // 댓글 창 닫기 및 초기화
+    toggleCommentBox();
+    commentInput.value = "";
+    document.getElementById('char-count').textContent = '0/200';
+}
+
+//페이지네이션 -필요없을지 여기서부터 삭제 
+let currentPageSet = 1; // 현재 페이지 세트 (1~5, 6~10 등)
+const totalPages = 10; // 총 페이지 수
+const pagesPerSet = 5; // 한 세트 당 페이지 수
+
+function renderPagination() {
+    const paginationNumbers = document.querySelector('.pagination-numbers');
+    paginationNumbers.innerHTML = ''; // 기존 페이지 번호 초기화
+
+    const startPage = (currentPageSet - 1) * pagesPerSet + 1;
+    const endPage = Math.min(startPage + pagesPerSet - 1, totalPages);
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.classList.add('page-button');
+        if (i === startPage) pageButton.classList.add('active'); // 첫 페이지를 기본 활성화
+
+        pageButton.onclick = function () {
+            document.querySelectorAll('.page-button').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            // 페이지 번호에 따른 댓글 표시 기능 추가
+        };
+        paginationNumbers.appendChild(pageButton);
+    }
+}
+
+function prevPage() {
+    if (currentPageSet > 1) {
+        currentPageSet--;
+        renderPagination();
+    }
+}
+
+function nextPage() {
+    if (currentPageSet < Math.ceil(totalPages / pagesPerSet)) {
+        currentPageSet++;
+        renderPagination();
+    }
+}
+
+// 페이지 로드 시 초기 페이지네이션 렌더링
+document.addEventListener('DOMContentLoaded', function() {
+    renderPagination();
+});
   </script>
 </body>
 </html>
