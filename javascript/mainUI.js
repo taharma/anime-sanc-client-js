@@ -154,10 +154,16 @@ function redirectToPost(id) {
 
 function checkLoginStatus() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
-  if (isLoggedIn === "true") {
-    showLogoutButton();
+  const authButtons = document.getElementById("auth-buttons");
+
+  if (authButtons) { // auth-buttons 요소가 존재하는지 확인
+    if (isLoggedIn === "true") {
+      showLogoutButton();
+    } else {
+      showLoginAndRegisterButtons();
+    }
   } else {
-    showLoginAndRegisterButtons();
+    console.warn('auth-buttons 요소를 찾을 수 없습니다.');
   }
 }
 
@@ -168,6 +174,17 @@ function showLogoutButton() {
       <a class="nav-link" href="#" id="logout-button" onclick="logout()">ログアウト</a>
     </li>
   `;
+
+  // 로그아웃 버튼 클릭 시 처리
+  const logoutButton = document.getElementById("logout-button");
+  if (logoutButton) {
+    logoutButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      logout(); // 로그아웃 함수 호출
+    });
+  } else {
+    console.warn('로그아웃 버튼을 찾을 수 없습니다.');
+  }
 }
 
 function showLoginAndRegisterButtons() {
@@ -183,13 +200,16 @@ function showLoginAndRegisterButtons() {
 }
 
 function login() {
+  console.log("로그인 함수 호출됨");
   localStorage.setItem("isLoggedIn", "true");
   alert("로그인에 성공했습니다.");
   checkLoginStatus();
-  window.location.reload();
+  console.log("로그인 상태 확인 완료");
+  showLogoutButton(); // 페이지 리디렉션 대신 버튼을 동적으로 변경
 }
 
 function logout() {
   localStorage.removeItem("isLoggedIn");
-  checkLoginStatus();
+  showLoginAndRegisterButtons();
+  alert("로그아웃 되었습니다.");
 }
