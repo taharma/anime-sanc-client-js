@@ -2,13 +2,12 @@
 <html lang="ja">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AS/board</title>
+  <title>검색 결과 - AS/board</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/indexStyle.css">
+  <link rel="stylesheet" href="css/searchResult.css">
 </head>
 <body>
-  
+
   <!-- 네비게이션 바 /로그인 회원등록 -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/index.html">Anime Sanctuary</a>
@@ -17,7 +16,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto" id="auth-buttons">
-        <!-- 로그인 및 등록 버튼은 JavaScript에서 동적으로 변경됩니다 -->
+        <li class="nav-item">
+          <a class="nav-link" href="./login.html" id="login-button">ログイン</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./register.html" id="register-button">新規登録</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -27,35 +31,29 @@
     <input class="form-control" type="search" placeholder="キーワードやクリエイターで検索" aria-label="Search" id="search-input">
     <button class="btn btn-outline-success" type="submit" id="search-button">検索</button>
   </form>
-  <!-- 검색 바 끝 -->
-
-  <!-- 사이드바 -->
-  <div class="sidebar">
-    <h5>メインリスト</h5>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">アニメ</li>
-      <li class="list-group-item">漫画</li>
-      <li class="list-group-item">人気作品</li>
-      <li class="list-group-item">キャラクター</li>
-      <li class="list-group-item">フォーラム</li>
-    </ul>
+  
+  <!-- 카테고리 선택 버튼 -->
+  <div class="category-container">
+    <button class="category-button" onclick="changeCategory('anime')">アニメ</button>
+    <button class="category-button" onclick="changeCategory('manga')">漫画</button>
+    <button class="category-button" onclick="changeCategory('popular')">人気作品</button>
+    <button class="category-button" onclick="changeCategory('character')">キャラクター</button>
+    <button class="category-button" onclick="changeCategory('forum')">フォーラム</button>
   </div>
 
   <!-- 메인 콘텐츠 -->
   <div class="main-content">
     <div class="container-fluid">
+      <!-- 検索結果 텍스트 추가 -->
+      <h3>検索結果</h3>
       <!-- 카드 행을 생성할 위치 -->
-      <div id="card-rows"></div>
+      <div id="card-rows" class="row">
+        <!-- JavaScript를 통해 카드가 추가됩니다. -->
+      </div>
     </div>
   </div>
 
-  <!-- 로그아웃 버튼 -->
-  <div class="container">
-    <button id="logoutButton" class="logout-button">ログアウト</button>
-  </div>
-
   <!-- 외부 JavaScript 파일 로드 -->
-  <script src="javascript/mainUI.js"></script> <!-- 중복된 JavaScript 코드 대신 mainUI.js 파일만 로드 -->
-  
+  <script src="javascript/searchResult.js"></script>
 </body>
 </html>

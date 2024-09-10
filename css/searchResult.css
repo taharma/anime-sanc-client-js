@@ -1,0 +1,125 @@
+/* 메인 콘텐츠 스타일 수정 */
+.main-content {
+  margin-left: 0; /* 사이드바가 삭제되었으므로 마진을 제거 */
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* 검색 결과와 첫 번째 카드 열 사이의 간격 조정 */
+h3 {
+  margin-bottom: 20px; /* 검색 결과와 첫 번째 카드 열 사이의 간격 */
+  margin-left: 290px; /* 좌측에 300px 마진 추가 */
+}
+
+/* 카테고리 버튼 스타일 */
+.category-container {
+  display: flex;
+  margin-left: 300px; /* 좌측 마진을 맞추기 위해 추가 */
+  margin-bottom: 20px; /* 아래쪽 마진 추가 */
+}
+
+.category-button {
+  margin-right: 10px; /* 각 버튼 사이의 간격 */
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-button:hover {
+  background-color: #ddd; /* 호버 시 버튼 색상 변경 */
+}
+
+/* 카드 열 스타일 수정 */
+.card-wrapper {
+  margin: 0 auto 50px auto; /* 열을 가운데 정렬하고, 아래쪽 마진 설정 */
+  padding: 0 300px; /* 좌우에 각각 300px의 패딩 추가 */
+  display: flex;
+  justify-content: space-between; /* 카드 열을 왼쪽과 오른쪽 정렬 */
+  flex-wrap: wrap; /* 카드가 여러 줄로 나올 수 있도록 설정 */
+  gap: 10px; /* 카드 간의 간격 설정 */
+}
+
+/* 카드 스타일 수정 */
+.card {
+  width: calc(16.66% - 20px); /* 한 줄에 6개의 카드가 들어가도록 너비 계산 */
+  height: 250px; /* 카드 높이 고정 */
+  margin-bottom: 10px; /* 카드 간의 세로 간격 설정 */
+  position: relative;
+  overflow: hidden; /* 카드 밖으로 텍스트가 튀어나오지 않도록 설정 */
+  box-sizing: border-box; /* 카드 크기를 박스 모델에 맞추기 */
+  flex: 0 0 auto; /* 각 카드의 너비를 고정하여 설정 */
+}
+
+.card img {
+  width: 100%;
+  height: auto; /* 이미지의 높이를 자동으로 조정하여 비율 유지 */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%; /* 카드의 전체 높이를 채우도록 설정 */
+  padding: 10px;
+  overflow: hidden; /* 텍스트가 카드 밖으로 튀어나오지 않도록 설정 */
+  font-size: 0.8em; /* 기본 폰트 크기 설정 */
+  text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+/* 카드 텍스트 스타일 */
+.card-text {
+  flex-grow: 1;
+  margin-bottom: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: 40px;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar .form-inline {
+  z-index: 1050; /* 검색 바를 맨 위로 표시 */
+  position: relative; /* 레이어 위치 설정 */
+}
+
+.navbar {
+  z-index: 1000; /* 검색 바보다 아래에 위치하도록 설정 */
+}
+
+/* 검색 바 고정 및 정렬 */
+#search-form {
+  position: fixed; /* 고정 위치로 변경 */
+  top: 10px; /* 화면 상단에서 10px 아래로 위치 */
+  left: 50%; /* 화면의 가로 중심에 위치 */
+  transform: translateX(-50%); /* 검색 바를 가로 중앙에 정렬 */
+  display: flex; /* 검색 바와 버튼을 수평으로 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  white-space: nowrap; /* 검색 바와 버튼이 한 줄로 유지되도록 설정 */
+  z-index: 1050; /* 검색 바를 사이드바 위에 위치 */
+}
+
+#search-form .form-control {
+  border-radius: 5px;
+  width: 450px; 
+  box-shadow: none; 
+  border: 1px solid #ececec; 
+  flex-shrink: 1; /* 검색 바가 줄어들 수 있도록 설정 */
+}
+
+#search-form .btn {
+  margin-left: 5px; 
+  border-radius: 3px; 
+  padding: 5px 15px; 
+  background-color: #03914f; 
+  color: #fff; 
+  border: none; 
+  transition: background-color 0.3s; 
+  flex-shrink: 0; /* 버튼 크기를 유지하면서 검색 바가 줄어들도록 설정 */
+}
+
+#search-form .btn:hover {
+  background-color: #5e5e5e; /* 버튼 호버 시 색상 */
+}
