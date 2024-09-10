@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", initialize);
-
-
-
 
 const images = [
   "/image/random6.jpg",
@@ -166,3 +162,43 @@ function toggleIcon(event, button) {
 function redirectToPost() {
   window.location.href = "post.html";
 }
+
+
+/* 로그인 상태에 따른 버튼 표시 기능 추가 */
+document.addEventListener("DOMContentLoaded", function() {
+
+
+
+  console.log('여기');
+  const writeBtn = document.getElementById("write-btn");
+
+  const loginBtn = document.getElementById("login-btn");
+  const registerBtn = document.getElementById("register-btn");
+  
+  console.log('writeBtn'+writeBtn);
+  console.log('writeBtn.style'+writeBtn.style);
+  console.log('writeBtn.style.display'+writeBtn.style.display);
+
+
+  console.log('loginBtn'+loginBtn);
+  console.log('loginBtn.style'+loginBtn.style);
+  console.log('loginBtn.style.display'+loginBtn.style.display);
+
+  console.log('registerBtn'+registerBtn);
+  console.log('registerBtn.style'+registerBtn.style);
+  console.log('registerBtn.style.display'+registerBtn.style.display);
+
+  
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; 
+
+  if (isLoggedIn) {
+    loginBtn.style.display = "none";
+    registerBtn.style.display = "none";
+    writeBtn.style.display = "block";
+  } else {
+    loginBtn.style.display = "block";
+    registerBtn.style.display = "block";
+    writeBtn.style.display = "none";
+  }
+});
