@@ -202,6 +202,9 @@ function showLoginAndRegisterButtons() {
 function login() {
   console.log("로그인 함수 호출됨");
   localStorage.setItem("isLoggedIn", "true");
+
+
+
   alert("로그인에 성공했습니다.");
   checkLoginStatus();
   console.log("로그인 상태 확인 완료");
@@ -210,6 +213,7 @@ function login() {
 
 function logout() {
   localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("memberId");
   showLoginAndRegisterButtons();
   alert("로그아웃 되었습니다.");
 }

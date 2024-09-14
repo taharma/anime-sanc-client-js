@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const defaultTitleText = "記事タイトル";
     const defaultEditorPlaceholder = 'ここに記事の内容を入力してください...';
 
+    // 선택된 카테고리 ID를 저장할 변수
+    let selectedCategoryId = null;
+
     // Toast UI Editor 초기화
     const editor = new toastui.Editor({
         el: document.querySelector('#toast-editor'),
@@ -15,6 +18,19 @@ document.addEventListener("DOMContentLoaded", function() {
         previewStyle: 'vertical',
         initialValue: '',
         placeholder: defaultEditorPlaceholder
+    });
+
+    // 사이드바 카테고리 클릭 이벤트 처리
+    document.querySelectorAll('.category-menu a').forEach(categoryLink => {
+        categoryLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            selectedCategoryId = this.getAttribute('data-category-id');
+            console.log('Selected Category ID:', selectedCategoryId);
+            document.querySelectorAll('.category-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
     });
 
     function initializeTitle() {
@@ -36,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             titleElement.textContent = defaultTitleText;
             titleElement.style.color = '#888';
         }
-    })
+    });
 
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -47,16 +63,24 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('Title:', title);
         console.log('Content:', content);
 
-        if (!title || !content || content === defaultEditorPlaceholder) {
-            alert('タイトルと内容は必須です。');
-            console.log('Title and content is missing.');
+        if (!title || !content || content === defaultEditorPlaceholder || selectedCategoryId === null) {
+            alert('タイトル、内容、およびカテゴリは必須です。');
+            console.log('Title, content, or category is missing.');
             return;
         }
+
+
+
+        console.log('memberId:'+ localStorage.getItem("memberId"));
+        console.log('memberId:'+ localStorage.getItem("memberId"));
+      
+        
 
         const requestData = JSON.stringify({
             title: title,
             contents: content,
-            categoryId: 1
+            categoryId: selectedCategoryId, // 선택된 카테고리 ID
+            memberId : localStorage.getItem("memberId")
         });
         console.log('Request Data:', requestData);
 
@@ -79,42 +103,21 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('投稿成功:', data);
             alert('投稿が正常に完了しました！');
         } catch (error) {
-            console.error('投稿失敗:', error);
-            alert(`投稿に失敗しました: ${error.message}`);
+            console.error('Error:', error);
+            alert('エラーが発生しました。');
         }
     });
 
     previewButton.addEventListener('click', function() {
-        const title = titleElement.textContent.trim();
-        const content = editor.getHTML().trim();
-        
-        console.log('Preview Content:', content); // 콘텐츠 확인
-
-        if (!title || content === defaultEditorPlaceholder || content === '') {
-            alert('タイトルと内容を入力してください。');
-            return;
-        }
-
-        postPreview.innerHTML = `
-            <h1>${title}</h1>
-            <div>${content}</div>
-        `;
+        const previewContent = editor.getHTML();
+        postPreview.innerHTML = previewContent;
     });
 
     saveDraftButton.addEventListener('click', function() {
         const title = titleElement.textContent.trim();
         const content = editor.getHTML().trim();
-
-        console.log('Draft Content:', content); // 콘텐츠 확인
-
-        if (!title || content === defaultEditorPlaceholder || content === '') {
-            alert('タイトルと内容を入力してください。');
-            return;
-        }
-
-        localStorage.setItem('draftTitle', title);
-        localStorage.setItem('draftContent', content);
-        alert('下書きが保存されました！');
+        console.log('Saving draft with title:', title);
+        console.log('Saving draft with content:', content);
     });
 
     initializeTitle();
