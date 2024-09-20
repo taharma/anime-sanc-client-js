@@ -5,74 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AS/Post</title>
     <link rel="stylesheet" href="css/postStyle.css">
-</head>
+</head>  
 <body>
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AS/Post</title>
-        <link rel="stylesheet" href="css/postStyle.css">
-    </head>
-    <body>
-      <div class="dropdown-sandbox">
-          <button onclick="toggleSandbox()">&#9664;</button>
-          <div class="sandbox-content">
-              <img src="/icon/user.png" alt="Profile-dummyPic" class="profile-pic">
-              <h3>インティメート・マージャーのData Driven NOTE</h3>
-              <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
-          </div>
-      </div>
-      
-      <header>
-          <div class="logo"><a href="/index.html">Anime Sanctuary</a></div>
-          <div class="search-container">
-              <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
-              <button class="search-button">検索</button>
-          </div>
-          <div class="header-icons">
-              <div class="icon1">
-                <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1">
-              </div>
-              <div class="icon2">
-                  <img src="/icon/user.png" onclick="toggleDropdown()" alt="icon2-user">
-                  <!-- 드롭다운 메뉴 추가 -->
-                  <div id="dropdown" class="dropdown-content">
-                      <a href="#">プロフィール</a>
-                      <a href="#">設定</a>
-                      <a href="#">お知らせ</a>
-                      <a href="#">メッセージ</a>
-                      <a href="#">ログアウト</a>
-                  </div>
-              </div>
-              <button class="post-button">投稿</button>
-          </div>
-      </header>
+    <div class="dropdown-sandbox">
+        <button onclick="toggleSandbox()">&#9664;</button>
+        <div class="sandbox-content">
+            <img src="/icon/user.png" alt="Profile-dummyPic" class="profile-pic">
+            <h3>インティメート・マージャーのData Driven NOTE</h3>
+            <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
+        </div>
+    </div>
     
-      <main class="container">
-          <section class="post">
-              <div class="post-image">
-                  <img src="/image/random8.jpg" alt="Post Image">
-              </div>
-              <div class="post-header">
-                  <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
-                  <div class="profile-info">
-                      <h3>tanaka</h3>
-                      <p>25歳。旅と読書と自然が好き。建築やアートも。自由気ままに生きてる。</p>
-                      <div class="post-meta">
-                          <span>95 likes</span>
-                          <span>2024年8月25日 13:42</span>
-                      </div>
-                  </div>
-              </div>
-              <div class="post-content">
+    <header>
+        <div class="logo"><a href="/index.html">Anime Sanctuary</a></div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
+            <button class="search-button">検索</button>
+        </div>
+        <div class="header-icons">
+            <div class="icon1">
+              <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1">
+            </div>
+            <div class="icon2">
+                <img src="/icon/user.png" onclick="toggleDropdown()" alt="icon2-user">
+                <!-- 드롭다운 메뉴 추가 -->
+                <div id="dropdown" class="dropdown-content">
+                    <a href="#">プロフィール</a>
+                    <a href="#">設定</a>
+                    <a href="#">お知らせ</a>
+                    <a href="#">メッセージ</a>
+                    <a href="#">ログアウト</a>
+                </div>
+            </div>
+            <button class="post-button">投稿</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="post">
+            <div class="post-image">
+                <img src="/image/random8.jpg" alt="Post Image">
+            </div>
+            <div class="post-header">
+                <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <h3>tanaka</h3>
+                    <p>25歳。旅と読書と自然が好き。建築やアートも。自由気ままに生きてる。</p>
+                    <div class="post-meta">
+                        <span class="like-count">95 likes</span>
+                        <span>2024年8月25日 13:42</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
                 <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
                 <div class="dropdown-menu">
                     <button>目標</button>
                     <div class="dropdown-menu-content">
                         <a href="#">List text 1</a>
-                      
                         <a href="#">List text 2</a>
                         <a href="#">List text 3</a>
                         <a href="#">List text 4</a>
@@ -80,17 +70,17 @@
                     </div>
                     <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
                 </div>
-    
+
                 <br>
                 <div class="post-icons">
                     <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                    <div>432</div>
+                    <div class="like-number">432</div>
                     <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
                     <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
                     <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
                 </div>            
             </div>
-    
+
             <div class="profile-section">
                 <img src="/image/userimage.png" alt="Thumbnail Image" class="profile-thumbnail">
                 <div class="profile-info">
@@ -100,6 +90,7 @@
                 </div>
             </div>
         </div>
+
     <!--0907 댓글창수정-->
     <div class="comments-section">
         <h3>コメント</h3>
@@ -127,212 +118,200 @@
                 <span class="comment-date">2024年9月7日 14:35</span>
             </div>
         </div>
-        
-   <!-- 페이지네이션 -->
-   <div class="pagination">
-    <button class="pagination-arrow" onclick="prevPage()">&#9664;</button>
-    <div class="pagination-numbers">
-        <!-- 페이지 번호 버튼 -->
-    </div>
-    <button class="pagination-arrow" onclick="nextPage()">&#9654;</button>
-</div>
-</div>
-         <!-- 페이지네이션 끝-->
 
-        <button class="toggle-comment-button" onclick="toggleCommentBox()">コメント覧を開く</button>
-    
-        <!-- 댓글 작성 창 -->
-        <div id="comment-box" class="comment-box">
-            <textarea id="comment-input" maxlength="200" placeholder="コメントを入力してください..."></textarea>
-            <div class="comment-box-footer">
-                <span id="char-count">0/200</span>
-                <button onclick="submitComment()">確認</button>
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+        <button class="pagination-arrow" onclick="prevPage()">&#9664;</button>
+        <div class="pagination-numbers">
+            <!-- 페이지 번호 버튼 -->
+        </div>
+        <button class="pagination-arrow" onclick="nextPage()">&#9654;</button>
+    </div>
+    </div>
+    <!-- 페이지네이션 끝-->
+
+    <button class="toggle-comment-button" onclick="toggleCommentBox()">コメント覧を開く</button>
+
+    <!-- 댓글 작성 창 -->
+    <div id="comment-box" class="comment-box">
+        <textarea id="comment-input" maxlength="200" placeholder="コメントを入力してください..."></textarea>
+        <div class="comment-box-footer">
+            <span id="char-count">0/200</span>
+            <button onclick="submitComment()">確認</button>
+        </div>
+    </div>
+    </div>
+
+    <!--0907 수정끝-->
+    <div class="additional-content">
+        <h3>人気記事</h3>
+        <div class="content-item">
+            <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div class="like-number">3,851</div>
             </div>
         </div>
-        
+        <div class="content-item">
+            <div>インターネットでの発信に、もっと安心を。#note10周年</div>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div class="like-number">2,094</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div>noteはより多様なクリエイターを応援していきます</div>
+            <div class="post-icons">
+                <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                <div class="like-number">3,509</div>
+            </div>
+        </div>
+        <br>
+        <div class="view-all">すべて見る</div>
     </div>
 
-     <!--0907 수정끝-->
-        <!-- 인기 기사 섹션 -->
-        <div class="additional-content">
-            <h3>人気記事</h3>
-            <div class="content-item">
-                <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
-                <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                    <div>3,851</div>
-                </div>
-            </div>
-            <div class="content-item">
-                <div>インターネットでの発信に、もっと安心を。#note10周年</div>
-                <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                    <div>2,094</div>
-                </div>
-            </div>
-            <div class="content-item">
-                <div>noteはより多様なクリエイターを応援していきます</div>
-                <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
-                    <div>3,509</div>
-                </div>
-            </div>
-            <br>
-            <div class="view-all">すべて見る</div>
-    
-     <!-- 이전/다음 기사 섹션 수정 -->
     <div class="post-navigation">
         <div class="prev-article" onclick="navigateToPrevious()">
-            <!-- 왼쪽 방향 삼각형 추가 -->
             <span>&#9664; 前の記事</span>
             <p>Macで完全ローカルで1万6千字の記事の作成から日本語訳まで行う</p>
         </div>
         <div class="next-article" onclick="navigateToNext()">
-            <!-- 오른쪽 방향 삼각형 추가 -->
             <span>次の記事 &#9654;</span>
             <p>今そこにある酒</p>
         </div>
     </div>
-    
-    
-        </section>
-    
-    
+   
+    </section>
     </main>
-    
-    </body>
-  <!-- 기타 HTML 요소 생략 -->
 
-  <script>
-   // URL에서 게시물 ID를 가져오는 함수
-   function getPostIdFromURL() {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id"); // ★ URL에서 ID 추출
-      console.log('Fetched ID:', id); // ★ 콘솔에 ID를 찍어보기
-      return id;
-   }
+    <script>
+    // 댓글 창 열기/닫기 기능
+    function toggleCommentBox() {
+        const commentBox = document.getElementById('comment-box');
+        const toggleButton = document.querySelector('.toggle-comment-button');
 
-   // 서버에서 특정 게시물 데이터를 가져오는 함수
-   async function fetchPostById(id) {
-      try {
-          const response = await fetch(`http://localhost:9000/api/notes/${id}`); // ★ GET 요청으로 특정 ID의 게시물 데이터를 가져옴
-          if (!response.ok) {
-              throw new Error(`Failed to fetch post: ${response.status}`); // 서버 응답 오류가 있는 경우 오류 메시지와 상태 코드를 표시합니다.
-          }
-          const post = await response.json();
-
-          // 페이지에 게시물 데이터 표시
-          document.querySelector('h2.title').textContent = post.title || '제목을 찾을 수 없습니다'; // 서버에서 받아온 제목을 표시합니다.
-          document.querySelector('p.contents').textContent = post.contents || '내용을 찾을 수 없습니다'; // 서버에서 받아온 내용을 표시합니다.
-      } catch (error) {
-          console.error("Error fetching post:", error); // 오류 발생 시 콘솔에 출력
-          alert("게시물 데이터를 불러오는 중 오류가 발생했습니다."); // 사용자에게 오류 알림
-      }
-   }
-
-   // 페이지 로드 시 게시물 ID를 추출하고 데이터를 가져오는 함수 호출
-   document.addEventListener("DOMContentLoaded", function() {
-      const postId = getPostIdFromURL();
-      if (postId) {
-          fetchPostById(postId); // ★ 페이지 로드 시 ID를 사용해 데이터 요청
-      } else {
-          alert("게시물 ID를 찾을 수 없습니다."); // ID가 없을 경우 사용자에게 알림
-      }
-   });
-
-
-
-   //여기부터 댓글창
-   function toggleCommentBox() {
-    const commentBox = document.getElementById('comment-box');
-    const toggleButton = document.querySelector('.toggle-comment-button');
-
-    if (commentBox.style.display === 'block') {
-        commentBox.style.display = 'none';
-        toggleButton.textContent = 'コメント覧を開く';
-    } else {
-        commentBox.style.display = 'block';
-        toggleButton.textContent = 'コメント覧を閉じる';
-    }
-}
-
-document.getElementById('comment-input').addEventListener('input', function() {
-    const charCount = this.value.length;
-    document.getElementById('char-count').textContent = `${charCount}/200`;
-});
-
-function submitComment() {
-    const commentInput = document.getElementById('comment-input');
-    const newCommentText = commentInput.value.trim();
-    if (newCommentText === "") {
-        alert("コメントを入力してください。");
-        return;
+        if (commentBox.style.display === 'block') {
+            commentBox.style.display = 'none';
+            toggleButton.textContent = 'コメント覧を開く'; // 버튼 텍스트 변경
+        } else {
+            commentBox.style.display = 'block';
+            toggleButton.textContent = 'コメント覧を閉じる'; // 버튼 텍스트 변경
+        }
     }
 
-    // 새로운 댓글 요소 추가
-    const newComment = document.createElement('div');
-    newComment.classList.add('comment');
-    newComment.innerHTML = `
-        <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
-        <div class="comment-content">
-            <span class="comment-username">新しいユーザー</span>
-            <p>${newCommentText}</p>
-            <span class="comment-date">2024年9月7日 15:00</span>
-        </div>
-    `;
-    document.querySelector('.comments-section').appendChild(newComment);
+    // 샌드박스 열기/닫기 기능
+    function toggleSandbox() {
+        const sandboxContent = document.querySelector('.sandbox-content');
+        const sandboxButton = document.querySelector('.dropdown-sandbox button');
 
-    // 댓글 창 닫기 및 초기화
-    toggleCommentBox();
-    commentInput.value = "";
-    document.getElementById('char-count').textContent = '0/200';
-}
-
-//페이지네이션 -필요없을지 여기서부터 삭제 
-let currentPageSet = 1; // 현재 페이지 세트 (1~5, 6~10 등)
-const totalPages = 10; // 총 페이지 수
-const pagesPerSet = 5; // 한 세트 당 페이지 수
-
-function renderPagination() {
-    const paginationNumbers = document.querySelector('.pagination-numbers');
-    paginationNumbers.innerHTML = ''; // 기존 페이지 번호 초기화
-
-    const startPage = (currentPageSet - 1) * pagesPerSet + 1;
-    const endPage = Math.min(startPage + pagesPerSet - 1, totalPages);
-
-    for (let i = startPage; i <= endPage; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.classList.add('page-button');
-        if (i === startPage) pageButton.classList.add('active'); // 첫 페이지를 기본 활성화
-
-        pageButton.onclick = function () {
-            document.querySelectorAll('.page-button').forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            // 페이지 번호에 따른 댓글 표시 기능 추가
-        };
-        paginationNumbers.appendChild(pageButton);
+        // 샌드박스 내용 토글
+        if (sandboxContent.style.display === 'block') {
+            sandboxContent.style.display = 'none';
+            sandboxButton.style.transform = 'rotate(90deg)'; // 버튼 회전 복구
+        } else {
+            sandboxContent.style.display = 'block';
+            sandboxButton.style.transform = 'rotate(0deg)'; // 버튼 회전
+        }
     }
-}
 
-function prevPage() {
-    if (currentPageSet > 1) {
-        currentPageSet--;
+    // 좋아요 클릭 시 숫자 변경 기능 추가
+    function toggleIconColor(iconElement, type) {
+        iconElement.classList.toggle('active');
+        
+        if (type === 'like') {
+            iconElement.classList.toggle('like-active');
+            const likeNumber = iconElement.nextElementSibling;
+            let currentLikes = parseInt(likeNumber.textContent);
+            if (iconElement.classList.contains('like-active')) {
+                likeNumber.textContent = currentLikes + 1; // 좋아요 증가
+            } else {
+                likeNumber.textContent = currentLikes - 1; // 좋아요 감소
+            }
+        } else if (type === 'share') {
+            iconElement.classList.toggle('share-active');
+            showTooltip(iconElement, "링크를 복사하였습니다");
+            copyToClipboard(window.location.href);  // 현재 페이지 URL을 클립보드에 복사
+        } else if (type === 'bookmark') {
+            iconElement.classList.toggle('bookmark-active');
+            showTooltip(iconElement, "북마크되었습니다");
+        } else if (type === 'more') {
+            iconElement.classList.toggle('more-active');
+        }
+    }
+
+    // 말풍선 표시 함수
+    function showTooltip(element, message) {
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = message;
+        
+        // 아이콘 위에 말풍선 배치
+        document.body.appendChild(tooltip);
+        const rect = element.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + window.pageXOffset}px`;
+        tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
+        
+        // 말풍선 2초 후에 사라짐
+        setTimeout(() => {
+            tooltip.remove();
+        }, 2000);
+    }
+
+    // 클립보드에 텍스트 복사하는 함수
+    function copyToClipboard(text) {
+        const tempInput = document.createElement('input');
+        tempInput.style.position = 'absolute';
+        tempInput.style.left = '-9999px';
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+    }
+
+    // 페이지네이션
+    let currentPageSet = 1;
+    const totalPages = 10;
+    const pagesPerSet = 5;
+
+    function renderPagination() {
+        const paginationNumbers = document.querySelector('.pagination-numbers');
+        paginationNumbers.innerHTML = '';
+
+        const startPage = (currentPageSet - 1) * pagesPerSet + 1;
+        const endPage = Math.min(startPage + pagesPerSet - 1, totalPages);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            pageButton.classList.add('page-button');
+            if (i === startPage) pageButton.classList.add('active');
+            pageButton.onclick = function () {
+                document.querySelectorAll('.page-button').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            };
+            paginationNumbers.appendChild(pageButton);
+        }
+    }
+
+    function prevPage() {
+        if (currentPageSet > 1) {
+            currentPageSet--;
+            renderPagination();
+        }
+    }
+
+    function nextPage() {
+        if (currentPageSet < Math.ceil(totalPages / pagesPerSet)) {
+            currentPageSet++;
+            renderPagination();
+        }
+    }
+
+    // 페이지 로드 시 초기 페이지네이션 렌더링
+    document.addEventListener('DOMContentLoaded', function() {
         renderPagination();
-    }
-}
-
-function nextPage() {
-    if (currentPageSet < Math.ceil(totalPages / pagesPerSet)) {
-        currentPageSet++;
-        renderPagination();
-    }
-}
-
-// 페이지 로드 시 초기 페이지네이션 렌더링
-document.addEventListener('DOMContentLoaded', function() {
-    renderPagination();
-});
-  </script>
+    });
+    </script>
 </body>
 </html>

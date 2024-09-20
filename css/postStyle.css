@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -14,6 +13,7 @@ header {
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
 }
+
 /* 드롭다운 메뉴 스타일 */
 .dropdown-content {
     display: none;
@@ -40,8 +40,6 @@ header {
     display: block;
 }
 
-
-
 .icon1, .icon2 {
     display: flex;
     align-items: center;
@@ -64,7 +62,6 @@ header {
     transition: background-color 0.3s, color 0.3s; /* 호버 효과 */
 }
 
-
 .post-button:hover {
     background-color: #027d3f; /* 호버 시 배경색 */
     color: #fff; /* 호버 시 글자색 */
@@ -76,9 +73,6 @@ header {
     gap: 20px; /* 아이콘 간격 조정 */
     margin-right: 10px; /* 오른쪽 여백 */
 }
-
-
-
 
 .logo {
     font-size: 24px; /* 글자 크기 */
@@ -100,8 +94,7 @@ header {
     font-weight: bold;
     color: #000000;
     text-transform: none; /* 모든 글자가 대문자로 변하지 않도록 설정 */
-        text-decoration: none; /* 밑줄 제거 */
-    
+    text-decoration: none; /* 밑줄 제거 */
 }
 
 .search-container {
@@ -184,7 +177,6 @@ header {
     border-top: 1px solid #ddd; /* 위쪽 회색 선 */
 }
 
-
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -196,7 +188,6 @@ header {
     margin-right: auto; /* 오른쪽 정렬 */
     margin-top: 1%;
 }
-
 
 .profile-info h3 {
     margin: 5px;
@@ -259,7 +250,6 @@ header {
     padding-top: 10px;
 }
 
-
 /* 좋아요 아이콘과 텍스트를 우측 정렬 */
 .like-section {
     display: flex;
@@ -267,6 +257,7 @@ header {
     align-items: center; /* 수직 가운데 정렬 */
     gap: 5px; /* 아이콘과 텍스트 간격 */
 }
+
 .like-count {
     font-size: 14px; /* 좋아요 개수 글자 크기 설정 */
     color: #333; /* 글자 색상 */
@@ -325,7 +316,6 @@ header {
     border-radius: 10px;
     padding: 20px;
     margin-top: 10px;
-  
 }
 
 .dropdown-sandbox.open .sandbox-content {
@@ -358,17 +348,34 @@ header {
     margin-right: 10px;
 }
 
+/* 아이콘 스타일 및 색상 변경 */
 .post-icon {
-    width: 24px; /* Set the desired width for all icons */
-    height: 24px; /* Set the desired height for all icons */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.like-active {
+    filter: invert(28%) sepia(95%) saturate(7493%) hue-rotate(1deg) brightness(94%) contrast(118%);
+}
+
+.share-active {
+    filter: invert(36%) sepia(98%) saturate(723%) hue-rotate(82deg) brightness(94%) contrast(91%);
+}
+
+.bookmark-active {
+    filter: invert(51%) sepia(82%) saturate(3659%) hue-rotate(186deg) brightness(92%) contrast(104%);
+}
+
+.more-active {
+    filter: invert(61%) sepia(28%) saturate(2311%) hue-rotate(292deg) brightness(88%) contrast(90%);
 }
 
 /* Optional: If you want to change the icon's appearance when hovering */
 .post-icon:hover {
     opacity: 0.8; /* Slightly reduce opacity on hover for a visual effect */
 }
-
 
 /* 아이콘 클릭 시 활성화 상태의 색상 */
 .post-icon.like.active {
@@ -395,7 +402,6 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
-
 .content-item div {
     font-size: 14px;
 }
@@ -406,7 +412,6 @@ header {
     color: #333333;
     cursor: pointer;
 }
-
 
 .thumbnail-image {
     width: 80px;
@@ -465,7 +470,6 @@ header {
     border-radius: 10px;
     padding: 20px;
     margin-top: 10px;
-    
 }
 
 .dropdown-sandbox .open {
@@ -612,40 +616,6 @@ header {
     cursor: pointer;
     font-size: 12px;
 }
-/* 댓글 섹션 스타일 */
-.comments-section {
-    margin-top: 20px;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-}
-
-.comment {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.comment-icon {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.comment-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.comment-username {
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.comment-date {
-    font-size: 10px;
-    color: #999;
-}
 
 .toggle-comment-button {
     background-color: #4a7ae0;
@@ -735,3 +705,15 @@ header {
     background-color: #027d3f;
     color: #ffffff;
 }
+
+/* 말풍선 스타일 */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0px 2px 8px rgba(
