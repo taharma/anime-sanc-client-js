@@ -171,22 +171,28 @@ header {
 
 .profile-section {
     display: flex;
-    justify-content: space-between; /* 요소를 양쪽 끝으로 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
+    padding: 10px 20px; /* 좌우에 여백 추가 */
     border-top: 1px solid #ddd; /* 위쪽 회색 선 */
+    max-width: 620px; /* 여백을 침범하지 않도록 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .profile-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    margin-right: auto; /* 버튼과 텍스트 사이의 여백 조정 */
+    align-items: flex-start;
+    margin-right: 20px; /* 오른쪽 여백 추가 */
 }
 
+
 .follow-button {
-    margin-right: auto; /* 오른쪽 정렬 */
+    margin-left: auto;
     margin-top: 1%;
+    padding: 5px 20px;
 }
 
 .profile-info h3 {
@@ -231,11 +237,14 @@ header {
 
 .additional-content {
     margin-top: 20px;
-    padding: 10px;
+    padding: 20px; /* 여백 추가 */
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    text-align: left; /* 좌측 정렬로 설정 */
+    max-width: 620px; /* 여백을 침범하지 않도록 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .dropdown-menu-content {
     display: none;
@@ -506,9 +515,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #ddd; /* 위쪽 회색 선 */
-    padding: 20px 0;
+    border-top: 1px solid #ddd; /* 회색 선 */
+    padding: 20px;
     margin-top: 20px;
+    max-width: 620px; /* 다른 요소들과 동일한 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
 }
 
 .post-navigation div {
@@ -537,14 +549,18 @@ header {
 /* 댓글 섹션 스타일 */
 .comments-section {
     margin-top: 20px;
-    padding: 10px;
+    padding: 20px; /* 여백을 20px로 늘려서 좌우 여백을 균형 있게 맞춤 */
     border-top: 1px solid #ddd;
+    max-width: 620px; /* 다른 요소들과 일관된 너비 설정 */
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
 }
 
 .comment {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    padding: 0 20px; /* 좌우 여백을 추가 */
 }
 
 .comment-icon {
@@ -557,6 +573,7 @@ header {
 .comment-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .comment-username {
@@ -567,6 +584,7 @@ header {
 .comment-date {
     font-size: 10px;
     color: #999;
+    margin-top: 5px;
 }
 
 .add-comment-button {
@@ -621,11 +639,16 @@ header {
     background-color: #4a7ae0;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px; /* 좌우 여백을 넉넉하게 설정 */
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
-    margin-top: 10px;
+    font-size: 14px;
+    margin-top: 20px;
+    max-width: 620px; /* 다른 요소들과 동일한 최대 너비 설정 */
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
 }
 
 .comment-box {
@@ -671,10 +694,14 @@ header {
     align-items: center;
     justify-content: center;
     margin-top: 10px;
+    padding: 10px 20px; /* 좌우에 여백을 추가 */
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
 }
 
 .pagination-arrow {
-    background-color: #031b91;
+    background-color: #027d3f;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -683,6 +710,13 @@ header {
     font-size: 12px;
     margin: 0 5px;
 }
+
+
+.pagination-numbers {
+    display: flex;
+    justify-content: center;
+}
+
 
 .pagination-numbers button {
     background-color: #ffffff;
@@ -716,4 +750,5 @@ header {
     font-size: 12px;
     white-space: nowrap;
     z-index: 1000;
-    box-shadow: 0px 2px 8px rgba(
+    box-shadow: 0px 2px 8px
+}
