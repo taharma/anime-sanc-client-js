@@ -22,7 +22,21 @@ header {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0; /* 오른쪽 정렬 */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-10px); /* 초기 상태에서 약간 위로 이동 */
+}
+
+
+@keyframes dropdownFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);  /* 살짝 위에서 내려오도록 설정 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .dropdown-content a {
@@ -36,8 +50,18 @@ header {
     background-color: #f1f1f1;
 }
 
+/* 드롭다운 활성화 시 */
 .dropdown-content.show {
     display: block;
+    opacity: 1;
+    transform: translateY(10px); /* 아이콘 아래로 자연스럽게 내려옴 */
+}
+
+/* 드롭다운 사라지는 애니메이션 */
+.dropdown-content.hide {
+    opacity: 0;
+    transform: translateY(-10px); /* 다시 위로 올라가며 천천히 사라짐 */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .icon1, .icon2 {
@@ -639,21 +663,30 @@ header {
     background-color: #4a7ae0;
     color: white;
     border: none;
-    padding: 10px 20px; /* 좌우 여백을 넉넉하게 설정 */
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     margin-top: 20px;
-    max-width: 620px; /* 다른 요소들과 동일한 최대 너비 설정 */
-    display: block;
-    margin-left: auto;
-    margin-right: auto; /* 중앙 정렬 */
-    text-align: center; /* 텍스트 중앙 정렬 */
+    max-width: 620px;
+    margin-left: auto; /* 좌우 여백을 자동으로 */
+    margin-right: auto; /* 좌우 여백을 자동으로 */
+    text-align: left; /* 텍스트를 중앙 정렬 */
+   
 }
 
 .comment-box {
     display: none;
     margin-top: 10px;
+    padding: 10px; /* 상하 padding 조정 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    font-size: 12px;
+    max-width: 620px; /* 양옆 여백을 준정도로 설정 */
+    margin-left: 0; /* 좌측 여백 조정 */
+    margin-right: auto; /* 우측 여백 자동 조정 */
+    padding-left: 15px; /* 좌측 여백 추가 */
 }
 
 .comment-box textarea {

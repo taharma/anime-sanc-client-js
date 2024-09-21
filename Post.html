@@ -309,17 +309,59 @@
         renderPagination();
     });
 
-    // 알람 드롭다운 토글
     function toggleNotificationDropdown() {
-        const dropdown = document.getElementById('notification-dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    const dropdown = document.getElementById('notification-dropdown');
+    
+    if (dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+        dropdown.classList.add('hide');
+        
+        setTimeout(() => {
+            dropdown.style.display = 'none'; // 0.5초 후 완전히 사라짐
+        }, 500);
+    } else {
+        dropdown.style.display = 'block';
+        setTimeout(() => {
+            dropdown.classList.remove('hide');
+            dropdown.classList.add('show');
+        }, 10); // 바로 애니메이션 적용
+        setTimeout(() => {
+            dropdown.classList.remove('show');
+            dropdown.classList.add('hide');
+            setTimeout(() => {
+                dropdown.style.display = 'none';
+            }, 500); // 0.5초 후 드롭다운 완전히 사라짐
+        }, 2000); // 2초 후 사라지기 시작
     }
+}
 
-    // 프로필 드롭다운 토글
-    function toggleProfileDropdown() {
-        const dropdown = document.getElementById('profile-dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+// 프로필 드롭다운 토글
+function toggleProfileDropdown() {
+    const dropdown = document.getElementById('profile-dropdown');
+    
+    if (dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+        dropdown.classList.add('hide');
+        
+        setTimeout(() => {
+            dropdown.style.display = 'none'; // 0.5초 후 완전히 사라짐
+        }, 500);
+    } else {
+        dropdown.style.display = 'block';
+        setTimeout(() => {
+            dropdown.classList.remove('hide');
+            dropdown.classList.add('show');
+        }, 10); // 바로 애니메이션 적용
+        setTimeout(() => {
+            dropdown.classList.remove('show');
+            dropdown.classList.add('hide');
+            setTimeout(() => {
+                dropdown.style.display = 'none';
+            }, 500); // 0.5초 후 드롭다운 완전히 사라짐
+        }, 2000); // 2초 후 사라지기 시작
     }
+}
+
     </script>
 </body>
 </html>
