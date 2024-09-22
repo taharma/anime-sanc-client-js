@@ -17,7 +17,7 @@
             <div class="icon1"><img src="/icon/free-icon-alarm-bell-6367716.png"></div>
             <!-- ㄴ 알람 아이콘 svg 파일로 구해서 갈아끼우기-->
             <div class="icon2">
-                <img src="/icon/user.png" onclick="toggleDropdown()">
+                <img id="header-user-icon" src="/icon/user.png" onclick="toggleDropdown()"> <!-- 사람 모양 프로필 아이콘 -->
                 <div id="dropdown" class="dropdown-content">
                     <a href="#">プロフィール</a>
                     <a href="#">設定</a>
@@ -32,10 +32,12 @@
 
     <div class="container">
         <aside class="sidebar">
-            <div class="profile-img"><img src="/icon/user.png"></div>
+            <div class="profile-img"><img id="profile-pic" src="/icon/user.png"></div>
             <div class="profile-name">정연</div>
             <div class="follow-info"><span class="bold-number">1</span> フォロー <span class="bold-number">0</span> フォロワー</div>
-            <button class="settings-button">設定</button>
+            <button class="settings-button" onclick="document.getElementById('file-input').click();">設定</button>
+            <!-- 파일 입력 요소 추가 -->
+            <input type="file" id="file-input" accept="image/*" style="display:none" onchange="changeProfilePic(event)">
         </aside>
 
         <main class="main-content">
@@ -90,5 +92,23 @@
     </div>
 
     <script src="javascript/profileUI.js"></script>
+    <script>
+        // 프로필 사진 변경 함수
+        function changeProfilePic(event) {
+            const file = event.target.files[0]; // 파일 입력에서 선택한 파일을 가져옴
+            if (file) {
+                const reader = new FileReader(); // FileReader 객체를 사용해 파일을 읽음
+                reader.onload = function(e) {
+                    const profilePic = document.getElementById('profile-pic'); // 프로필 이미지 요소 가져오기
+                    const headerUserIcon = document.getElementById('header-user-icon'); // 오른쪽 상단 사람 모양 아이콘 가져오기
+
+                    // 선택한 이미지를 프로필 사진과 헤더 사람 모양 아이콘에 반영
+                    profilePic.src = e.target.result;
+                    headerUserIcon.src = e.target.result;
+                };
+                reader.readAsDataURL(file); // 파일을 데이터 URL로 읽음
+            }
+        }
+    </script>
 </body>
 </html>
