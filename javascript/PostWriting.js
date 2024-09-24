@@ -78,6 +78,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const data = await response.json();
             console.log('投稿成功:', data);
             alert('投稿が正常に完了しました！');
+
+            // 게시물 작성 성공 후 index.html로 리디렉션
+            window.location.href = 'index.html';
+
         } catch (error) {
             console.error('投稿失敗:', error);
             alert(`投稿に失敗しました: ${error.message}`);

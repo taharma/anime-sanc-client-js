@@ -24,7 +24,7 @@ header {
     z-index: 1;
     opacity: 0;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    transform: translateY(-10px); /* 초기 상태에서 약간 위로 이동 */
+    transform: translateY(10px); /* 초기 상태에서 약간 위로 이동 */
 }
 
 
@@ -54,13 +54,13 @@ header {
 .dropdown-content.show {
     display: block;
     opacity: 1;
-    transform: translateY(10px); /* 아이콘 아래로 자연스럽게 내려옴 */
+    transform: translateY(60px); /* 아이콘 아래로 자연스럽게 내려옴 */
 }
 
 /* 드롭다운 사라지는 애니메이션 */
 .dropdown-content.hide {
     opacity: 0;
-    transform: translateY(-10px); /* 다시 위로 올라가며 천천히 사라짐 */
+    transform: translateY(40px); /* 다시 위로 올라가며 천천히 사라짐 */
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
@@ -214,9 +214,23 @@ header {
 
 
 .follow-button {
-    margin-left: auto;
-    margin-top: 1%;
+    background-color: #4483ff;
+    color: white;
+    border: none;
     padding: 5px 20px;
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    transition: background-color 0.3s, color 0.3s; /* 전환 효과 추가 */
+}
+
+
+.follow-button.active {
+    background-color: white; /* 클릭 시 배경색 반전 */
+    color: black;
+    border: 2px solid black;
 }
 
 .profile-info h3 {
@@ -425,6 +439,25 @@ header {
 
 .post-icon.more.active {
     filter: invert(61%) sepia(28%) saturate(2311%) hue-rotate(292deg) brightness(88%) contrast(90%); /* 보라색 */
+}
+
+.post-icon.active {
+    filter: invert(36%) sepia(98%) saturate(723%) hue-rotate(82deg) brightness(94%) contrast(91%); /* 예: 초록색 */
+}
+
+
+/* 말풍선 스타일 */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0px 2px 8px;
+    opacity: 0.9;
 }
 
 /* 추가 컨텐츠 스타일 */
@@ -784,4 +817,11 @@ header {
     white-space: nowrap;
     z-index: 1000;
     box-shadow: 0px 2px 8px
+}
+
+.comment {
+    border-top: 1px solid #ddd; /* 댓글 위에 회색 경계선 추가 */
+    margin-top: 10px; /* 댓글 사이 여백 */
+    padding-top: 10px; /* 경계선 위쪽에 패딩 추가 */
+    padding-bottom: 10px; /* 경계선 아래쪽에 패딩 추가 */
 }

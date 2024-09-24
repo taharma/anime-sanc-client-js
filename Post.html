@@ -100,6 +100,13 @@
                     <span class="comment-username">ユーザー1</span>
                     <p>本内容はテスト用です。</p>
                     <span class="comment-date">2024年9月7日 14:30</span>
+                    <button class="reply-button" onclick="toggleReply(this)">답글달기</button>
+                    <!-- 대댓글 입력창 -->
+                    <div class="reply-box">
+                        <textarea placeholder="대댓글을 입력하세요..."></textarea>
+                        <button onclick="submitReply()">확인</button>
+                    </div>
+
                 </div>
             </div>
             <div class="comment">
@@ -211,29 +218,60 @@
     }
 
     // 좋아요 클릭 시 숫자 변경 기능 추가
-    function toggleIconColor(iconElement, type) {
-        iconElement.classList.toggle('active');
-        
-        if (type === 'like') {
-            iconElement.classList.toggle('like-active');
-            const likeNumber = iconElement.nextElementSibling;
-            let currentLikes = parseInt(likeNumber.textContent);
-            if (iconElement.classList.contains('like-active')) {
-                likeNumber.textContent = currentLikes + 1; // 좋아요 증가
-            } else {
-                likeNumber.textContent = currentLikes - 1; // 좋아요 감소
-            }
-        } else if (type === 'share') {
-            iconElement.classList.toggle('share-active');
+    // 공유 아이콘 클릭 시
+function toggleIconColor(iconElement, type) {
+    iconElement.classList.toggle('active');
+
+    if (type === 'share') {
+        if (iconElement.classList.contains('active')) {
             showTooltip(iconElement, "링크를 복사하였습니다");
             copyToClipboard(window.location.href);  // 현재 페이지 URL을 클립보드에 복사
-        } else if (type === 'bookmark') {
-            iconElement.classList.toggle('bookmark-active');
+        } else {
+            // 다시 클릭했을 때 아이콘 색상이 꺼짐
+            iconElement.classList.remove('active');
+            removeTooltip(iconElement);  // 말풍선 제거
+        }
+    } else if (type === 'bookmark') {
+        if (iconElement.classList.contains('active')) {
             showTooltip(iconElement, "북마크되었습니다");
-        } else if (type === 'more') {
-            iconElement.classList.toggle('more-active');
+        } else {
+            showTooltip(iconElement, "북마크가 취소되었습니다");
+            // 아이콘 색상이 꺼짐
         }
     }
+}
+
+// 클립보드 복사
+function copyToClipboard(text) {
+    const tempInput = document.createElement('input');
+    tempInput.style.position = 'absolute';
+    tempInput.style.left = '-9999px';
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+}
+
+// 말풍선 표시
+function showTooltip(element, message) {
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    tooltip.textContent = message;
+    
+    document.body.appendChild(tooltip);
+    const rect = element.getBoundingClientRect();
+    tooltip.style.left = `${rect.left + window.pageXOffset}px`;
+    tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
+
+    // 2초 후 말풍선과 아이콘 상태를 복구
+    setTimeout(() => {
+        tooltip.remove();
+        element.classList.remove('active'); // 아이콘 색상 초기화
+    }, 2000);
+}
+
+
 
     // 말풍선 표시 함수
     function showTooltip(element, message) {
@@ -361,7 +399,15 @@ function toggleProfileDropdown() {
         }, 2000); // 2초 후 사라지기 시작
     }
 }
-
+//팔로우중 버튼 전환)
+function toggleFollow(button) {
+    button.classList.toggle('active');
+    if (button.classList.contains('active')) {
+        button.textContent = 'フォロー中'; // 클릭 시 'フォロー中'로 변경
+    } else {
+        button.textContent = 'フォロー'; // 다시 클릭 시 원래대로 'フォロー'로 변경
+    }
+}
     </script>
 </body>
 </html>
