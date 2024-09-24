@@ -137,3 +137,30 @@ body {
 .navbar button {
     margin-right: 10px;
 }
+
+/* PostWritingstyle.css에 추가 */
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar button {
+    background-color: #03914f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.navbar button:hover {
+    background-color: #027a3e;
+}

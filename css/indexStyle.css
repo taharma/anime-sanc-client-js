@@ -295,44 +295,22 @@
 
 /* 프로필 아이콘 스타일 */
 .profile-icon {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-    border-radius: 50%;
-    cursor: pointer;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-/* 드롭다운 메뉴 스타일 */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 4px;
-    margin-top: 10px;
-    padding: 10px 0;
+/* 드롭다운 메뉴 스타일 (Bootstrap 기본 스타일 사용) */
+/* 추가적인 커스터마이징이 필요하다면 아래에 추가 */
+
+/* 예: 드롭다운 메뉴의 배경색 변경 */
+.dropdown-menu {
+  background-color: #f9f9f9;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 8px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* 드롭다운 메뉴 표시 */
-.nav-item {
-    position: relative;
-}
-
-.nav-item .dropdown-content {
-    top: 100%;
-    left: 0;
+/* 예: 드롭다운 아이템 호버 시 배경색 변경 */
+.dropdown-item:hover {
+  background-color: #e0e0e0;
 }
