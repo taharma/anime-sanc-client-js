@@ -74,10 +74,11 @@
                 gender: gender
             };
 
-            fetch("http://localhost:9000/api/members/register", {
-                method: "POST",
+            fetch('http://localhost:9000/api/members/register', {
+                method: 'POST',
+                credentials: 'include',
                 headers: {
-                    "Content-Type": "application/json"
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(requestData)
             })
