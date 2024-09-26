@@ -128,7 +128,7 @@
   overflow: hidden; /* 넘치는 텍스트를 숨김 */
   text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
   white-space: nowrap; /* 텍스트를 한 줄로 표시 */
-  display: -webkit-box; /* 여러 줄을 위한 flexbox 모델 */
+  display: flex; /* 여러 줄을 위한 flexbox 모델 */
   -webkit-box-orient: vertical; /* flexbox 방향을 수직으로 설정 */
   -webkit-line-clamp: 2; /* 두 줄까지만 표시하고 나머지는 "..." 처리 */
 }
@@ -219,7 +219,7 @@ p.card-author {
   position: absolute;
   bottom: 20px; /* 카드의 하단에서 20px 위로 위치 */
   left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
-  display: flex;
+  display: flex-end;
   align-items: center;
   gap: 5px; /* 아이콘과 텍스트 간의 간격 조절 */
 }
