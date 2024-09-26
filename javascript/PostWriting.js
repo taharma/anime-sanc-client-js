@@ -109,8 +109,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const data = await response.json();
             console.log('投稿成功:', data);
             alert('投稿が正常に完了しました！');
-            // 프로필 페이지로 리디렉션
+
+
+            // 프로필 페이지로 리디렉션 (******게시판 생성 후 게시판으로 경로 변경 바람***********)
             window.location.href = 'Profile.html';
+
         } catch (error) {
             console.error('Error:', error);
             alert('エラーが発生しました: ' + error.message);

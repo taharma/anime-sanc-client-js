@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">Anime Sanctuary</div>
+        <a class="navbar-brand" href="/index.html">Anime Sanctuary</a>
         <div class="search-container">
             <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
             <button class="search-button">検索</button>
@@ -17,12 +17,11 @@
             <div class="icon1"><img src="/icon/free-icon-alarm-bell-6367716.png"></div>
             <!-- ㄴ 알람 아이콘 svg 파일로 구해서 갈아끼우기-->
             <div class="icon2">
-                <img src="/icon/user.png" onclick="toggleDropdown()">
+                <img id="header-user-icon" src="/icon/user.png" onclick="toggleDropdown()"> <!-- 사람 모양 프로필 아이콘 -->
                 <div id="dropdown" class="dropdown-content">
-                    <a href="#">プロフィール</a>
+                    <a href="#">マイページ</a>
                     <a href="#">設定</a>
-                    <a href="#">お知らせ</a>
-                    <a href="#">メッセージ</a>
+                  
                     <a href="#">ログアウト</a>
                 </div>
             </div>
@@ -32,34 +31,36 @@
 
     <div class="container">
         <aside class="sidebar">
-            <div class="profile-img"><img src="/icon/user.png"></div>
+            <div class="profile-img"><img id="profile-pic" src="/icon/user.png"></div>
             <div class="profile-name">정연</div>
             <div class="follow-info"><span class="bold-number">1</span> フォロー <span class="bold-number">0</span> フォロワー</div>
-            <button class="settings-button">設定</button>
+            <button class="settings-button" onclick="document.getElementById('file-input').click();">設定</button>
+            <!-- 파일 입력 요소 추가 -->
+            <input type="file" id="file-input" accept="image/*" style="display:none" onchange="changeProfilePic(event)">
         </aside>
 
         <main class="main-content">
             <div class="category-menu">
                 <button onclick="showContent('home')">ホーム</button>
-                <button onclick="showContent('articles')">記事</button>
-                <button onclick="showContent('membership')">メンバーシップ</button>
-                <button onclick="showContent('magazine')">マガジン</button>
+                <button onclick="showContent('articles')">スクラップ</button>
+                <!-- <button onclick="showContent('membership')">メンバーシップ</button>
+                <button onclick="showContent('magazine')">マガジン</button> -->
                 <button onclick="showContent('suki')">スキ</button>
             </div>
 
             <div id="home" class="content-section active">
                 <div class="welcome-section">
                     <img src="/icon/drawing.png" alt="home image">
-                    <p>まだメンバーシップは開設されていません</p>
-                    <button class="start-writing-button">書きはじめる</button>
+                    <p>まだホームは開設されていません</p>
+                    <a href="PostWriting.html" class="start-writing-button">書きはじめる</a>
                 </div>
             </div>
 
             <div id="articles" class="content-section">
                 <div class="welcome-section">
                     <img src="/icon/drawing2.png" alt="articles image">
-                    <p>記事の内容がここに表示されます。</p>
-                    <button class="start-writing-button">書きはじめる</button>
+                    <p>スクラップの内容がここに表示されます。</p>
+                    <a href="PostWriting.html" class="start-writing-button">書きはじめる</a>
                 </div>
             </div>
 
@@ -83,12 +84,30 @@
                 <div class="welcome-section">
                     <img src="/icon/drawing5.png" alt="suki image">
                     <p>スキの内容がここに表示されます。</p>
-                    <button class="start-writing-button">書きはじめる</button>
+                    <a href="PostWriting.html" class="start-writing-button">書きはじめる</a>
                 </div>
             </div>
         </main>
     </div>
 
     <script src="javascript/profileUI.js"></script>
+    <script>
+        // 프로필 사진 변경 함수
+        function changeProfilePic(event) {
+            const file = event.target.files[0]; // 파일 입력에서 선택한 파일을 가져옴
+            if (file) {
+                const reader = new FileReader(); // FileReader 객체를 사용해 파일을 읽음
+                reader.onload = function(e) {
+                    const profilePic = document.getElementById('profile-pic'); // 프로필 이미지 요소 가져오기
+                    const headerUserIcon = document.getElementById('header-user-icon'); // 오른쪽 상단 사람 모양 아이콘 가져오기
+
+                    // 선택한 이미지를 프로필 사진과 헤더 사람 모양 아이콘에 반영
+                    profilePic.src = e.target.result;
+                    headerUserIcon.src = e.target.result;
+                };
+                reader.readAsDataURL(file); // 파일을 데이터 URL로 읽음
+            }
+        }
+    </script>
 </body>
 </html>

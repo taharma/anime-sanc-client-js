@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -14,6 +13,7 @@ header {
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
 }
+
 /* 드롭다운 메뉴 스타일 */
 .dropdown-content {
     display: none;
@@ -22,7 +22,21 @@ header {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0; /* 오른쪽 정렬 */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(10px); /* 초기 상태에서 약간 위로 이동 */
+}
+
+
+@keyframes dropdownFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);  /* 살짝 위에서 내려오도록 설정 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .dropdown-content a {
@@ -36,11 +50,19 @@ header {
     background-color: #f1f1f1;
 }
 
+/* 드롭다운 활성화 시 */
 .dropdown-content.show {
     display: block;
+    opacity: 1;
+    transform: translateY(60px); /* 아이콘 아래로 자연스럽게 내려옴 */
 }
 
-
+/* 드롭다운 사라지는 애니메이션 */
+.dropdown-content.hide {
+    opacity: 0;
+    transform: translateY(40px); /* 다시 위로 올라가며 천천히 사라짐 */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
 
 .icon1, .icon2 {
     display: flex;
@@ -64,7 +86,6 @@ header {
     transition: background-color 0.3s, color 0.3s; /* 호버 효과 */
 }
 
-
 .post-button:hover {
     background-color: #027d3f; /* 호버 시 배경색 */
     color: #fff; /* 호버 시 글자색 */
@@ -76,9 +97,6 @@ header {
     gap: 20px; /* 아이콘 간격 조정 */
     margin-right: 10px; /* 오른쪽 여백 */
 }
-
-
-
 
 .logo {
     font-size: 24px; /* 글자 크기 */
@@ -100,8 +118,7 @@ header {
     font-weight: bold;
     color: #000000;
     text-transform: none; /* 모든 글자가 대문자로 변하지 않도록 설정 */
-        text-decoration: none; /* 밑줄 제거 */
-    
+    text-decoration: none; /* 밑줄 제거 */
 }
 
 .search-container {
@@ -178,25 +195,43 @@ header {
 
 .profile-section {
     display: flex;
-    justify-content: space-between; /* 요소를 양쪽 끝으로 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
+    padding: 10px 20px; /* 좌우에 여백 추가 */
     border-top: 1px solid #ddd; /* 위쪽 회색 선 */
+    max-width: 620px; /* 여백을 침범하지 않도록 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 .profile-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    margin-right: auto; /* 버튼과 텍스트 사이의 여백 조정 */
+    align-items: flex-start;
+    margin-right: 20px; /* 오른쪽 여백 추가 */
 }
+
 
 .follow-button {
-    margin-right: auto; /* 오른쪽 정렬 */
-    margin-top: 1%;
+    background-color: #4483ff;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    transition: background-color 0.3s, color 0.3s; /* 전환 효과 추가 */
 }
 
+
+.follow-button.active {
+    background-color: white; /* 클릭 시 배경색 반전 */
+    color: black;
+    border: 2px solid black;
+}
 
 .profile-info h3 {
     margin: 5px;
@@ -240,11 +275,14 @@ header {
 
 .additional-content {
     margin-top: 20px;
-    padding: 10px;
+    padding: 20px; /* 여백 추가 */
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    text-align: left; /* 좌측 정렬로 설정 */
+    max-width: 620px; /* 여백을 침범하지 않도록 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .dropdown-menu-content {
     display: none;
@@ -259,7 +297,6 @@ header {
     padding-top: 10px;
 }
 
-
 /* 좋아요 아이콘과 텍스트를 우측 정렬 */
 .like-section {
     display: flex;
@@ -267,6 +304,7 @@ header {
     align-items: center; /* 수직 가운데 정렬 */
     gap: 5px; /* 아이콘과 텍스트 간격 */
 }
+
 .like-count {
     font-size: 14px; /* 좋아요 개수 글자 크기 설정 */
     color: #333; /* 글자 색상 */
@@ -325,7 +363,6 @@ header {
     border-radius: 10px;
     padding: 20px;
     margin-top: 10px;
-  
 }
 
 .dropdown-sandbox.open .sandbox-content {
@@ -358,17 +395,34 @@ header {
     margin-right: 10px;
 }
 
+/* 아이콘 스타일 및 색상 변경 */
 .post-icon {
-    width: 24px; /* Set the desired width for all icons */
-    height: 24px; /* Set the desired height for all icons */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.like-active {
+    filter: invert(28%) sepia(95%) saturate(7493%) hue-rotate(1deg) brightness(94%) contrast(118%);
+}
+
+.share-active {
+    filter: invert(36%) sepia(98%) saturate(723%) hue-rotate(82deg) brightness(94%) contrast(91%);
+}
+
+.bookmark-active {
+    filter: invert(51%) sepia(82%) saturate(3659%) hue-rotate(186deg) brightness(92%) contrast(104%);
+}
+
+.more-active {
+    filter: invert(61%) sepia(28%) saturate(2311%) hue-rotate(292deg) brightness(88%) contrast(90%);
 }
 
 /* Optional: If you want to change the icon's appearance when hovering */
 .post-icon:hover {
     opacity: 0.8; /* Slightly reduce opacity on hover for a visual effect */
 }
-
 
 /* 아이콘 클릭 시 활성화 상태의 색상 */
 .post-icon.like.active {
@@ -387,6 +441,25 @@ header {
     filter: invert(61%) sepia(28%) saturate(2311%) hue-rotate(292deg) brightness(88%) contrast(90%); /* 보라색 */
 }
 
+.post-icon.active {
+    filter: invert(36%) sepia(98%) saturate(723%) hue-rotate(82deg) brightness(94%) contrast(91%); /* 예: 초록색 */
+}
+
+
+/* 말풍선 스타일 */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0px 2px 8px;
+    opacity: 0.9;
+}
+
 /* 추가 컨텐츠 스타일 */
 .additional-content {
     margin-top: 20px; /* 추가 콘텐츠와 아이콘 사이의 간격 */
@@ -394,7 +467,6 @@ header {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
-
 
 .content-item div {
     font-size: 14px;
@@ -406,7 +478,6 @@ header {
     color: #333333;
     cursor: pointer;
 }
-
 
 .thumbnail-image {
     width: 80px;
@@ -465,7 +536,6 @@ header {
     border-radius: 10px;
     padding: 20px;
     margin-top: 10px;
-    
 }
 
 .dropdown-sandbox .open {
@@ -502,9 +572,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #ddd; /* 위쪽 회색 선 */
-    padding: 20px 0;
+    border-top: 1px solid #ddd; /* 회색 선 */
+    padding: 20px;
     margin-top: 20px;
+    max-width: 620px; /* 다른 요소들과 동일한 최대 너비 설정 */
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
 }
 
 .post-navigation div {
@@ -533,14 +606,18 @@ header {
 /* 댓글 섹션 스타일 */
 .comments-section {
     margin-top: 20px;
-    padding: 10px;
+    padding: 20px; /* 여백을 20px로 늘려서 좌우 여백을 균형 있게 맞춤 */
     border-top: 1px solid #ddd;
+    max-width: 620px; /* 다른 요소들과 일관된 너비 설정 */
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
 }
 
 .comment {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    padding: 0 20px; /* 좌우 여백을 추가 */
 }
 
 .comment-icon {
@@ -553,6 +630,7 @@ header {
 .comment-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .comment-username {
@@ -563,6 +641,7 @@ header {
 .comment-date {
     font-size: 10px;
     color: #999;
+    margin-top: 5px;
 }
 
 .add-comment-button {
@@ -612,55 +691,35 @@ header {
     cursor: pointer;
     font-size: 12px;
 }
-/* 댓글 섹션 스타일 */
-.comments-section {
-    margin-top: 20px;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-}
-
-.comment {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.comment-icon {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.comment-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.comment-username {
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.comment-date {
-    font-size: 10px;
-    color: #999;
-}
 
 .toggle-comment-button {
     background-color: #4a7ae0;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
-    margin-top: 10px;
+    font-size: 14px;
+    margin-top: 20px;
+    max-width: 620px;
+    margin-left: auto; /* 좌우 여백을 자동으로 */
+    margin-right: auto; /* 좌우 여백을 자동으로 */
+    text-align: left; /* 텍스트를 중앙 정렬 */
+   
 }
 
 .comment-box {
     display: none;
     margin-top: 10px;
+    padding: 10px; /* 상하 padding 조정 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    font-size: 12px;
+    max-width: 620px; /* 양옆 여백을 준정도로 설정 */
+    margin-left: 0; /* 좌측 여백 조정 */
+    margin-right: auto; /* 우측 여백 자동 조정 */
+    padding-left: 15px; /* 좌측 여백 추가 */
 }
 
 .comment-box textarea {
@@ -701,10 +760,14 @@ header {
     align-items: center;
     justify-content: center;
     margin-top: 10px;
+    padding: 10px 20px; /* 좌우에 여백을 추가 */
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto; /* 중앙 정렬 */
 }
 
 .pagination-arrow {
-    background-color: #03914f;
+    background-color: #027d3f;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -713,6 +776,13 @@ header {
     font-size: 12px;
     margin: 0 5px;
 }
+
+
+.pagination-numbers {
+    display: flex;
+    justify-content: center;
+}
+
 
 .pagination-numbers button {
     background-color: #ffffff;
@@ -734,4 +804,24 @@ header {
 .pagination-numbers button:hover {
     background-color: #027d3f;
     color: #ffffff;
+}
+
+/* 말풍선 스타일 */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0px 2px 8px
+}
+
+.comment {
+    border-top: 1px solid #ddd; /* 댓글 위에 회색 경계선 추가 */
+    margin-top: 10px; /* 댓글 사이 여백 */
+    padding-top: 10px; /* 경계선 위쪽에 패딩 추가 */
+    padding-bottom: 10px; /* 경계선 아래쪽에 패딩 추가 */
 }
