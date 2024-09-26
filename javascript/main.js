@@ -19,6 +19,9 @@ async function handleLogin(event) {
       body: JSON.stringify({ usernameOrEmail: username, password })
     });
 
+    
+    
+
     if (response.ok) {
       console.log('로그인 요청 성공'); // 로그 추가
       login(); // 로그인 성공 시 login() 함수 호출
@@ -37,7 +40,7 @@ async function handleLogin(event) {
 function login() {
   console.log("로그인 함수 호출됨");
   localStorage.setItem("isLoggedIn", "true");
-  alert("로그인에 성공했습니다.");
+  
   checkLoginStatus();
   console.log("로그인 상태 확인 완료");
   // 페이지 리디렉션 대신 버튼을 동적으로 변경

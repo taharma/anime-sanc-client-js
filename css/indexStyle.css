@@ -337,6 +337,7 @@ p.card-author {
   color: rgb(16, 65, 210);
 }
 
+
 /* 카드 타이틀(h4.mt-2)의 글자 크기 조정 */
 h4.mt-2 {
   font-size: 1.2em; /* 기본 글자 크기 설정 */
@@ -356,3 +357,25 @@ h4.mt-2 {
     font-size: 1.4em; /* 큰 화면에서는 글자 크기를 키움 */
   }
 }
+/* 프로필 아이콘 스타일 */
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 드롭다운 메뉴 스타일 (Bootstrap 기본 스타일 사용) */
+/* 추가적인 커스터마이징이 필요하다면 아래에 추가 */
+
+/* 예: 드롭다운 메뉴의 배경색 변경 */
+.dropdown-menu {
+  background-color: #f9f9f9;
+}
+
+/* 예: 드롭다운 아이템 호버 시 배경색 변경 */
+.dropdown-item:hover {
+  background-color: #e0e0e0;
+}
+
