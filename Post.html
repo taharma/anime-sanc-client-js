@@ -24,17 +24,18 @@
         </div>
         <div class="header-icons">
             <div class="icon1">
-              <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1" onclick="toggleNotificationDropdown()">
-              <div id="notification-dropdown" class="dropdown-content">
-                <a href="#">A님이 대댓글을 작성하셨습니다</a>
-              </div>
+                <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1" onclick="toggleNotificationDropdown()">
+                <div id="notification-dropdown" class="dropdown-content notification-dropdown">
+                    <a href="#">A님이 대댓글을 작성하셨습니다</a>
+                </div>
             </div>
+            
+            <!-- 프로필 드롭다운 -->
             <div class="icon2">
                 <img src="/icon/user.png" onclick="toggleProfileDropdown()" alt="icon2-user">
-                <!-- 프로필 드롭다운 메뉴 -->
-                <div id="profile-dropdown" class="dropdown-content">
-                    <a href="Profile.html">マイページ</a> <!-- 프로필 페이지 -->
-                    <a href="Setting.html">設定</a> <!-- 설정 페이지 -->
+                <div id="profile-dropdown" class="dropdown-content profile-dropdown">
+                    <a href="Profile.html">マイページ</a>
+                    <a href="Setting.html">設定</a>
                 </div>
             </div>
             <button class="post-button" onclick="window.location.href='#';">投稿</button> <!-- 이동 경로 설정: # -->
@@ -68,7 +69,7 @@
                         <a href="#">List text 4</a>
                         <a href="#">List text 5</a>
                     </div>
-                    <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
+                    <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
                 </div>
 
                 <br>
@@ -91,7 +92,7 @@
             </div>
         </section>
 
-        <!--0907 댓글창수정-->
+        <!-- 댓글 섹션 -->
         <div class="comments-section">
             <h3>コメント</h3>
             <div class="comment">
@@ -102,27 +103,28 @@
                     <span class="comment-date">2024年9月7日 14:30</span>
                     <button class="reply-button" onclick="toggleReply(this)">답글달기</button>
                     <!-- 대댓글 입력창 -->
-                    <div class="reply-box">
+                    <div class="reply-box" style="display:none;">
                         <textarea placeholder="대댓글을 입력하세요..."></textarea>
-                        <button onclick="submitReply()">확인</button>
+                        <button onclick="submitReply(this)">확인</button>
                     </div>
+                </div>
+            </div>
 
-                </div>
-            </div>
+            <!-- 추가 댓글 -->
             <div class="comment">
                 <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
                 <div class="comment-content">
-                    <span class="comment-username">ユーザー2</span>
+                    <span class="comment-username">ユーザー1</span>
                     <p>本内容はテスト用です。</p>
-                    <span class="comment-date">2024年9月7日 14:32</span>
-                </div>
-            </div>
-            <div class="comment">
-                <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
-                <div class="comment-content">
-                    <span class="comment-username">ユーザー3</span>
-                    <p>本内容はテスト用です。</p>
-                    <span class="comment-date">2024年9月7日 14:35</span>
+                    <span class="comment-date">2024年9月7日 14:30</span>
+                    <button class="reply-button" onclick="toggleReply(this)">답글달기</button>
+                    <!-- 대댓글 입력창 -->
+                    <div class="reply-box" style="display:none;">
+                        <span class="comment-username">TEST1</span>
+                        <textarea placeholder="답글을 입력하세요..."></textarea>
+                        <button onclick="submitReply(this)">확인</button>
+                        <span class="comment-date"></span>
+                    </div>
                 </div>
             </div>
 
@@ -135,10 +137,9 @@
                 <button class="pagination-arrow" onclick="nextPage()">&#9654;</button>
             </div>
         </div>
-        <!-- 페이지네이션 끝-->
 
+        
         <button class="toggle-comment-button" onclick="toggleCommentBox()">コメント覧を開く</button>
-
         <!-- 댓글 작성 창 -->
         <div id="comment-box" class="comment-box">
             <textarea id="comment-input" maxlength="200" placeholder="コメントを入力してください..."></textarea>
@@ -148,7 +149,6 @@
             </div>
         </div>
 
-        <!--0907 수정끝-->
         <div class="additional-content">
             <h3>人気記事</h3>
             <div class="content-item">
@@ -193,13 +193,8 @@
         const commentBox = document.getElementById('comment-box');
         const toggleButton = document.querySelector('.toggle-comment-button');
 
-        if (commentBox.style.display === 'block') {
-            commentBox.style.display = 'none';
-            toggleButton.textContent = 'コメント覧を開く'; // 버튼 텍스트 변경
-        } else {
-            commentBox.style.display = 'block';
-            toggleButton.textContent = 'コメント覧を閉じる'; // 버튼 텍스트 변경
-        }
+        commentBox.style.display = commentBox.style.display === 'block' ? 'none' : 'block';
+        toggleButton.textContent = commentBox.style.display === 'block' ? 'コメント覧を閉じる' : 'コメント覧を開く';
     }
 
     // 샌드박스 열기/닫기 기능
@@ -207,91 +202,33 @@
         const sandboxContent = document.querySelector('.sandbox-content');
         const sandboxButton = document.querySelector('.dropdown-sandbox button');
 
-        // 샌드박스 내용 토글
-        if (sandboxContent.style.display === 'block') {
-            sandboxContent.style.display = 'none';
-            sandboxButton.style.transform = 'rotate(90deg)'; // 버튼 회전 복구
-        } else {
-            sandboxContent.style.display = 'block';
-            sandboxButton.style.transform = 'rotate(0deg)'; // 버튼 회전
-        }
+        sandboxContent.style.display = sandboxContent.style.display === 'block' ? 'none' : 'block';
+        sandboxButton.style.transform = sandboxContent.style.display === 'block' ? 'rotate(0deg)' : 'rotate(90deg)';
     }
 
     // 좋아요 클릭 시 숫자 변경 기능 추가
-    // 공유 아이콘 클릭 시
-function toggleIconColor(iconElement, type) {
-    iconElement.classList.toggle('active');
+    function toggleIconColor(iconElement, type) {
+        iconElement.classList.toggle('active');
 
-    if (type === 'share') {
-        if (iconElement.classList.contains('active')) {
-            showTooltip(iconElement, "링크를 복사하였습니다");
-            copyToClipboard(window.location.href);  // 현재 페이지 URL을 클립보드에 복사
-        } else {
-            // 다시 클릭했을 때 아이콘 색상이 꺼짐
-            iconElement.classList.remove('active');
-            removeTooltip(iconElement);  // 말풍선 제거
+        if (type === 'like') {
+            const likeCountElement = iconElement.nextElementSibling;
+            let likeCount = parseInt(likeCountElement.textContent, 10);
+            likeCountElement.textContent = iconElement.classList.contains('active') ? likeCount + 1 : likeCount - 1;
         }
-    } else if (type === 'bookmark') {
-        if (iconElement.classList.contains('active')) {
-            showTooltip(iconElement, "북마크되었습니다");
-        } else {
-            showTooltip(iconElement, "북마크가 취소되었습니다");
-            // 아이콘 색상이 꺼짐
+
+        if (type === 'share') {
+            if (iconElement.classList.contains('active')) {
+                showTooltip(iconElement, "링크를 복사하였습니다");
+                copyToClipboard(window.location.href);
+            }
+        }
+
+        if (type === 'bookmark') {
+            showTooltip(iconElement, iconElement.classList.contains('active') ? "북마크되었습니다" : "북마크가 취소되었습니다");
         }
     }
-}
 
-// 클립보드 복사
-function copyToClipboard(text) {
-    const tempInput = document.createElement('input');
-    tempInput.style.position = 'absolute';
-    tempInput.style.left = '-9999px';
-    tempInput.value = text;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand('copy');
-    document.body.removeChild(tempInput);
-}
-
-// 말풍선 표시
-function showTooltip(element, message) {
-    const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
-    tooltip.textContent = message;
-    
-    document.body.appendChild(tooltip);
-    const rect = element.getBoundingClientRect();
-    tooltip.style.left = `${rect.left + window.pageXOffset}px`;
-    tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
-
-    // 2초 후 말풍선과 아이콘 상태를 복구
-    setTimeout(() => {
-        tooltip.remove();
-        element.classList.remove('active'); // 아이콘 색상 초기화
-    }, 2000);
-}
-
-
-
-    // 말풍선 표시 함수
-    function showTooltip(element, message) {
-        const tooltip = document.createElement('div');
-        tooltip.classList.add('tooltip');
-        tooltip.textContent = message;
-        
-        // 아이콘 위에 말풍선 배치
-        document.body.appendChild(tooltip);
-        const rect = element.getBoundingClientRect();
-        tooltip.style.left = `${rect.left + window.pageXOffset}px`;
-        tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
-        
-        // 말풍선 2초 후에 사라짐
-        setTimeout(() => {
-            tooltip.remove();
-        }, 2000);
-    }
-
-    // 클립보드에 텍스트 복사하는 함수
+    // 클립보드 복사 기능
     function copyToClipboard(text) {
         const tempInput = document.createElement('input');
         tempInput.style.position = 'absolute';
@@ -303,111 +240,83 @@ function showTooltip(element, message) {
         document.body.removeChild(tempInput);
     }
 
-    // 페이지네이션
-    let currentPageSet = 1;
-    const totalPages = 10;
-    const pagesPerSet = 5;
-
-    function renderPagination() {
-        const paginationNumbers = document.querySelector('.pagination-numbers');
-        paginationNumbers.innerHTML = '';
-
-        const startPage = (currentPageSet - 1) * pagesPerSet + 1;
-        const endPage = Math.min(startPage + pagesPerSet - 1, totalPages);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            pageButton.classList.add('page-button');
-            if (i === startPage) pageButton.classList.add('active');
-            pageButton.onclick = function () {
-                document.querySelectorAll('.page-button').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-            };
-            paginationNumbers.appendChild(pageButton);
-        }
-    }
-
-    function prevPage() {
-        if (currentPageSet > 1) {
-            currentPageSet--;
-            renderPagination();
-        }
-    }
-
-    function nextPage() {
-        if (currentPageSet < Math.ceil(totalPages / pagesPerSet)) {
-            currentPageSet++;
-            renderPagination();
-        }
-    }
-
-    // 페이지 로드 시 초기 페이지네이션 렌더링
-    document.addEventListener('DOMContentLoaded', function() {
-        renderPagination();
-    });
-
-    function toggleNotificationDropdown() {
-    const dropdown = document.getElementById('notification-dropdown');
-    
-    if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
-        dropdown.classList.add('hide');
+    // 말풍선 표시 기능
+    function showTooltip(element, message) {
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = message;
         
+        document.body.appendChild(tooltip);
+        const rect = element.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + window.pageXOffset}px`;
+        tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
+
         setTimeout(() => {
-            dropdown.style.display = 'none'; // 0.5초 후 완전히 사라짐
-        }, 500);
-    } else {
-        dropdown.style.display = 'block';
-        setTimeout(() => {
-            dropdown.classList.remove('hide');
-            dropdown.classList.add('show');
-        }, 10); // 바로 애니메이션 적용
-        setTimeout(() => {
-            dropdown.classList.remove('show');
-            dropdown.classList.add('hide');
-            setTimeout(() => {
-                dropdown.style.display = 'none';
-            }, 500); // 0.5초 후 드롭다운 완전히 사라짐
-        }, 2000); // 2초 후 사라지기 시작
+            tooltip.remove();
+        }, 2000);
     }
+
+    // 답글 입력창 열기/닫기 기능
+    function toggleReply(button) {
+        const replyBox = button.nextElementSibling;
+        replyBox.style.display = replyBox.style.display === "block" ? "none" : "block";
+    }
+
+    // 답글 제출 기능
+    function submitReply(button) {
+        const replyBox = button.parentElement;
+        const textarea = replyBox.querySelector("textarea");
+        const replyContent = textarea.value.trim();
+
+        if (replyContent !== "") {
+            const currentDate = new Date().toLocaleString();
+            const newReply = document.createElement("div");
+            newReply.classList.add("comment");
+            newReply.innerHTML = `
+                <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+                <div class="comment-content">
+                    <span class="comment-username">TEST1</span>
+                    <p>${replyContent}</p>
+                    <span class="comment-date">${currentDate}</span>
+                    <button onclick="editReply(this)">수정</button>
+                    <button onclick="deleteReply(this)">삭제</button>
+                </div>
+            `;
+            replyBox.parentNode.appendChild(newReply);
+            textarea.value = "";
+            replyBox.style.display = "none";
+        }
+    }
+
+    // 답글 수정 기능
+    function editReply(button) {
+        const replyContent = button.previousElementSibling.previousElementSibling;
+        const newContent = prompt("댓글을 수정하세요:", replyContent.textContent);
+        if (newContent) {
+            replyContent.textContent = newContent;
+        }
+    }
+
+    // 답글 삭제 기능
+    function deleteReply(button) {
+        if (confirm("댓글을 삭제하시겠습니까?")) {
+            button.parentElement.parentElement.remove();
+        }
+    }
+
+    // 알림 드롭다운 토글 기능
+   // 알람 드롭다운 토글 기능
+function toggleNotificationDropdown() {
+    const dropdown = document.getElementById('notification-dropdown');
+    dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
 }
 
-// 프로필 드롭다운 토글
+// 프로필 드롭다운 토글 기능
 function toggleProfileDropdown() {
     const dropdown = document.getElementById('profile-dropdown');
-    
-    if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
-        dropdown.classList.add('hide');
-        
-        setTimeout(() => {
-            dropdown.style.display = 'none'; // 0.5초 후 완전히 사라짐
-        }, 500);
-    } else {
-        dropdown.style.display = 'block';
-        setTimeout(() => {
-            dropdown.classList.remove('hide');
-            dropdown.classList.add('show');
-        }, 10); // 바로 애니메이션 적용
-        setTimeout(() => {
-            dropdown.classList.remove('show');
-            dropdown.classList.add('hide');
-            setTimeout(() => {
-                dropdown.style.display = 'none';
-            }, 500); // 0.5초 후 드롭다운 완전히 사라짐
-        }, 2000); // 2초 후 사라지기 시작
-    }
+    dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
 }
-//팔로우중 버튼 전환)
-function toggleFollow(button) {
-    button.classList.toggle('active');
-    if (button.classList.contains('active')) {
-        button.textContent = 'フォロー中'; // 클릭 시 'フォロー中'로 변경
-    } else {
-        button.textContent = 'フォロー'; // 다시 클릭 시 원래대로 'フォロー'로 변경
-    }
-}
+
     </script>
 </body>
 </html>
