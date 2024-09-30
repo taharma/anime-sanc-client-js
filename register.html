@@ -57,7 +57,7 @@
 
     <!-- JavaScript to handle registration -->
     <script>
-        document.querySelector(".register-button").addEventListener("click", function() {
+        document.querySelector(".register-button").addEventListener("click", async function() {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const name = document.getElementById("name").value;
@@ -74,29 +74,32 @@
                 gender: gender
             };
 
-            fetch('http://localhost:9000/api/members/register', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            })
-            .then(response => {
+            console.log("Request Data:", requestData); // Log the request data
+
+            try {
+                const response = await fetch('http://localhost:9000/api/members/register', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
                 if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error("Server Error:", errorData); // Log the server error response
                     throw new Error("회원 가입에 실패했습니다.");
                 }
-                return response.json();
-            })
-            .then(data => {
+
+                const data = await response.json();
                 console.log("회원 가입 성공:", data);
                 alert('Registration successful!');
                 window.location.href = './login.html';  
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error("Error:", error);
                 alert('An error occurred. Please try again.');
-            });
+            }
         });
     </script>
 </body>

@@ -50,34 +50,44 @@
             const usernameOrEmail = document.getElementById('usernameOrEmail').value;
             const password = document.getElementById('password').value;
 
+            const requestData = {
+                usernameOrEmail: usernameOrEmail,
+                password: password
+            };
+
+            console.log("Login Request Data:", requestData); // 요청 데이터 로그
+
             try {
                 const response = await fetch('http://localhost:9000/api/members/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ usernameOrEmail, password })
-                })
-                ;
-                
-                //console.log("response.ok"+data.id); // 로그 추가
-                
-                //console.log("obj[0]"+response.data);
+                    body: JSON.stringify(requestData)
+                });
 
-                const data = await response.json();
-
+                const contentType = response.headers.get("content-type");
                 if (response.ok) {
-                    console.log('로그인 함수 호출됨');
-                    alert('ログインに成功しました。');
-                    // 로그인 상태를 localStorage에 저장
-                    localStorage.setItem("isLoggedIn", "true");
-                    
-                    console.log("response.ok"+data.id);
-                    localStorage.setItem("memberId", data.id);
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = await response.json();
+                        console.log('로그인 성공:', data);
+                        alert('ログインに成功しました。');
+                        // 로그인 상태를 localStorage에 저장
+                        localStorage.setItem("isLoggedIn", "true");
+                        localStorage.setItem("memberId", data.id);
 
-                    // 로그인 성공 후 index.html로 이동
-                    window.location.href = 'index.html';
+                        // 로그인 성공 후 index.html로 이동
+                        window.location.href = 'index.html';
+                    } else {
+                        const successText = await response.text();
+                        console.log('로그인 성공:', successText);
+                        alert('ログインに成功しました。');
+                        // 로그인 상태를 localStorage에 저장
+                        localStorage.setItem("isLoggedIn", "true");
+                        localStorage.setItem("memberId", requestData.usernameOrEmail); // Assuming usernameOrEmail is unique
+
+                        // 로그인 성공 후 index.html로 이동
+                        window.location.href = 'index.html';
+                    }
                 } else {
-                    // 응답이 JSON 형식인지 검사한 후 처리
-                    const contentType = response.headers.get("content-type");
                     if (contentType && contentType.includes("application/json")) {
                         const errorData = await response.json();
                         alert(`로그인 실패: ${errorData.message}`);
@@ -88,7 +98,7 @@
                 }
             } catch (error) {
                 console.error('로그인 중 오류 발생:', error);
-                alert('로그인にエラーが発生しました。');
+                alert('로그인에 エラーが発生しました。');
             }
         }
 
