@@ -1,0 +1,166 @@
+/* 리셋 스타일: ブラウザのデフォルトスタイルをリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基本スタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* テキストの読みやすさを向上 */
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.category-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-menu li {
+    margin-bottom: 10px;
+}
+
+.category-menu li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.category-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Main content 스타일 */
+.main-content {
+    margin-left: 220px; /* 사이드바의 너비만큼 여백을 추가 */
+    padding: 20px;
+}
+
+/* ナビゲーションバーのスタイル */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px; /* 左右のパディングを追加 */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.save-draft, .publish, .preview {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.save-draft:hover, .publish:hover, .preview:hover {
+    background-color: #f9f9f9;
+}
+
+/* エディターのスタイル */
+.editor-container {
+    max-width: 800px; /* 適切な幅を設定 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editor-header {
+    margin-bottom: 20px;
+}
+
+.article-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.editor-content {
+    margin-top: 10px;
+}
+
+.word-count {
+    text-align: right;
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* プレビュー領域のスタイル */
+#post-preview {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Toast UI エディター関連のスタイル */
+.toastui-editor-defaultUI {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* ボタンのレイアウト調整 */
+.navbar button {
+    margin-right: 10px;
+}
+
+/* PostWritingstyle.css에 추가 */
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar button {
+    background-color: #03914f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.navbar button:hover {
+    background-color: #027a3e;
+}

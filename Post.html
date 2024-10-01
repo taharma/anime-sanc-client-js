@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS/Post</title>
+    <link rel="stylesheet" href="css/postStyle.css">
+</head>  
+<body>
+    <div class="dropdown-sandbox open">
+        <button onclick="toggleSandbox()">&#9664;</button>
+        <div class="sandbox-content">
+            <img src="/icon/user.png" alt="Profile-dummyPic" class="profile-pic">
+            <h3>インティメート・マージャーのData Driven NOTE</h3>
+            <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
+        </div>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="/index.html">Anime Sanctuary</a></div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
+            <button class="search-button">検索</button>
+        </div>
+        <div class="header-icons">
+            <div class="icon1">
+                <img src="/icon/free-icon-alarm-bell-6367716.png" alt="icon-1" onclick="toggleNotificationDropdown()">
+                <div id="notification-dropdown" class="dropdown-content notification-dropdown">
+                    <a href="#">A님이 대댓글을 작성하셨습니다</a>
+                </div>
+            </div>
+            
+            <!-- 프로필 드롭다운 -->
+            <div class="icon2">
+                <img src="/icon/user.png" onclick="toggleProfileDropdown()" alt="icon2-user">
+                <div id="profile-dropdown" class="dropdown-content profile-dropdown">
+                    <a href="Profile.html">マイページ</a>
+                    <a href="Setting.html">設定</a>
+                </div>
+            </div>
+            <button class="post-button" onclick="window.location.href='#';">投稿</button> <!-- 이동 경로 설정: # -->
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="post">
+            <div class="post-image">
+                <img src="/image/random8.jpg" alt="Post Image">
+            </div>
+            <div class="post-header">
+                <img src="/icon/user.png" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <h3>tanaka</h3>
+                    <p>25歳。旅と読書と自然が好き。建築やアートも。自由気ままに生きてる。</p>
+                    <div class="post-meta">
+                        <span class="like-count">95 likes</span>
+                        <span>2024年8月25日 13:42</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
+                <div class="dropdown-menu">
+                    <button>目標</button>
+                    <div class="dropdown-menu-content">
+                        <a href="#">List text 1</a>
+                        <a href="#">List text 2</a>
+                        <a href="#">List text 3</a>
+                        <a href="#">List text 4</a>
+                        <a href="#">List text 5</a>
+                    </div>
+                    <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
+                </div>
+
+                <br>
+                <div class="post-icons">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <div class="like-number">432</div>
+                    <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
+                    <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
+                    <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
+                </div>            
+            </div>
+
+            <div class="profile-section">
+                <img src="/image/userimage.png" alt="Thumbnail Image" class="profile-thumbnail">
+                <div class="profile-info">
+                    <h3>AnimeSantuary公式</h3>
+                    <p>「人間ではないもの」とは誰か：戦争とモダニズムの詩学』(青土社)、詩集『遠さについて特装版』発売中！ 詩歌／哲学／創作</p>
+                    <button class="follow-button" onclick="toggleFollow(this)">フォロー</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 댓글 섹션 -->
+        <div class="comments-section">
+            <h3>コメント</h3>
+            <div class="comment">
+                <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+                <div class="comment-content">
+                    <span class="comment-username">ユーザー1</span>
+                    <p>本内容はテスト用です。</p>
+                    <span class="comment-date">2024年9月7日 14:30</span>
+                    <button class="reply-button" onclick="toggleReply(this)">답글달기</button>
+                    <!-- 대댓글 입력창 -->
+                    <div class="reply-box" style="display:none;">
+                        <textarea placeholder="대댓글을 입력하세요..."></textarea>
+                        <button onclick="submitReply(this)">확인</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 추가 댓글 -->
+            <div class="comment">
+                <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+                <div class="comment-content">
+                    <span class="comment-username">ユーザー1</span>
+                    <p>本内容はテスト用です。</p>
+                    <span class="comment-date">2024年9月7日 14:30</span>
+                    <button class="reply-button" onclick="toggleReply(this)">답글달기</button>
+                    <!-- 대댓글 입력창 -->
+                    <div class="reply-box" style="display:none;">
+                        <span class="comment-username">TEST1</span>
+                        <textarea placeholder="답글을 입력하세요..."></textarea>
+                        <button onclick="submitReply(this)">확인</button>
+                        <span class="comment-date"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지네이션 -->
+            <div class="pagination">
+                <button class="pagination-arrow" onclick="prevPage()">&#9664;</button>
+                <div class="pagination-numbers">
+                    <!-- 페이지 번호 버튼 -->
+                </div>
+                <button class="pagination-arrow" onclick="nextPage()">&#9654;</button>
+            </div>
+        </div>
+
+        
+        <button class="toggle-comment-button" onclick="toggleCommentBox()">コメント覧を開く</button>
+        <!-- 댓글 작성 창 -->
+        <div id="comment-box" class="comment-box">
+            <textarea id="comment-input" maxlength="200" placeholder="コメントを入力してください..."></textarea>
+            <div class="comment-box-footer">
+                <span id="char-count">0/200</span>
+                <button onclick="submitComment()">確認</button>
+            </div>
+        </div>
+
+        <div class="additional-content">
+            <h3>人気記事</h3>
+            <div class="content-item">
+                <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
+                <div class="post-icons">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <div class="like-number">3</div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div>インターネットでの発信に、もっと安心を。#note10周年</div>
+                <div class="post-icons">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <div class="like-number">2</div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div>noteはより多様なクリエイターを応援していきます</div>
+                <div class="post-icons">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <div class="like-number">3</div>
+                </div>
+            </div>
+            <div class="view-all">すべて見る</div>
+        </div>
+
+        <div class="post-navigation">
+            <div class="prev-article" onclick="navigateToPrevious()">
+                <span>&#9664; 前の記事</span>
+                <p>Macで完全ローカルで1万6千字の記事の作成から日本語訳まで行う</p>
+            </div>
+            <div class="next-article" onclick="navigateToNext()">
+                <span>次の記事 &#9654;</span>
+                <p>今そこにある酒</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+    // 댓글 창 열기/닫기 기능
+    function toggleCommentBox() {
+        const commentBox = document.getElementById('comment-box');
+        const toggleButton = document.querySelector('.toggle-comment-button');
+
+        commentBox.style.display = commentBox.style.display === 'block' ? 'none' : 'block';
+        toggleButton.textContent = commentBox.style.display === 'block' ? 'コメント覧を閉じる' : 'コメント覧を開く';
+    }
+
+    // 샌드박스 열기/닫기 기능
+    function toggleSandbox() {
+        const sandboxContent = document.querySelector('.sandbox-content');
+        const sandboxButton = document.querySelector('.dropdown-sandbox button');
+
+        sandboxContent.style.display = sandboxContent.style.display === 'block' ? 'none' : 'block';
+        sandboxButton.style.transform = sandboxContent.style.display === 'block' ? 'rotate(0deg)' : 'rotate(90deg)';
+    }
+
+    // 좋아요 클릭 시 숫자 변경 기능 추가
+    function toggleIconColor(iconElement, type) {
+        iconElement.classList.toggle('active');
+
+        if (type === 'like') {
+            const likeCountElement = iconElement.nextElementSibling;
+            let likeCount = parseInt(likeCountElement.textContent, 10);
+            likeCountElement.textContent = iconElement.classList.contains('active') ? likeCount + 1 : likeCount - 1;
+        }
+
+        if (type === 'share') {
+            if (iconElement.classList.contains('active')) {
+                showTooltip(iconElement, "링크를 복사하였습니다");
+                copyToClipboard(window.location.href);
+            }
+        }
+
+        if (type === 'bookmark') {
+            showTooltip(iconElement, iconElement.classList.contains('active') ? "북마크되었습니다" : "북마크가 취소되었습니다");
+        }
+    }
+
+    // 클립보드 복사 기능
+    function copyToClipboard(text) {
+        const tempInput = document.createElement('input');
+        tempInput.style.position = 'absolute';
+        tempInput.style.left = '-9999px';
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+    }
+
+    // 말풍선 표시 기능
+    function showTooltip(element, message) {
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = message;
+        
+        document.body.appendChild(tooltip);
+        const rect = element.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + window.pageXOffset}px`;
+        tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
+
+        setTimeout(() => {
+            tooltip.remove();
+        }, 2000);
+    }
+
+    // 답글 입력창 열기/닫기 기능
+    function toggleReply(button) {
+        const replyBox = button.nextElementSibling;
+        replyBox.style.display = replyBox.style.display === "block" ? "none" : "block";
+    }
+
+    // 답글 제출 기능
+    function submitReply(button) {
+        const replyBox = button.parentElement;
+        const textarea = replyBox.querySelector("textarea");
+        const replyContent = textarea.value.trim();
+
+        if (replyContent !== "") {
+            const currentDate = new Date().toLocaleString();
+            const newReply = document.createElement("div");
+            newReply.classList.add("comment");
+            newReply.innerHTML = `
+                <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
+                <div class="comment-content">
+                    <span class="comment-username">TEST1</span>
+                    <p>${replyContent}</p>
+                    <span class="comment-date">${currentDate}</span>
+                    <button onclick="editReply(this)">수정</button>
+                    <button onclick="deleteReply(this)">삭제</button>
+                </div>
+            `;
+            replyBox.parentNode.appendChild(newReply);
+            textarea.value = "";
+            replyBox.style.display = "none";
+        }
+    }
+
+    // 답글 수정 기능
+    function editReply(button) {
+        const replyContent = button.previousElementSibling.previousElementSibling;
+        const newContent = prompt("댓글을 수정하세요:", replyContent.textContent);
+        if (newContent) {
+            replyContent.textContent = newContent;
+        }
+    }
+
+    // 답글 삭제 기능
+    function deleteReply(button) {
+        if (confirm("댓글을 삭제하시겠습니까?")) {
+            button.parentElement.parentElement.remove();
+        }
+    }
+
+    // 알림 드롭다운 토글 기능
+   // 알람 드롭다운 토글 기능
+function toggleNotificationDropdown() {
+    const dropdown = document.getElementById('notification-dropdown');
+    dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
+}
+
+// 프로필 드롭다운 토글 기능
+function toggleProfileDropdown() {
+    const dropdown = document.getElementById('profile-dropdown');
+    dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
+}
+
+    </script>
+</body>
+</html>

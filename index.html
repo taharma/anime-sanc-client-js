@@ -1,31 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Sanctuary</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AS/board</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/indexStyle.css">
 </head>
 <body>
-    <header>
-        <h1>Anime Sanctuary</h1>
-    </header>
-    <main>
-        <section id="auth-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
-                <button type="submit">Login</button>
-            </form>
-        </section>
-        <section id="posts-section">
-            <h2>Posts</h2>
-            <div id="posts-list"></div>
-        </section>
-    </main>
-    <script src="js/main.js"></script>
+  
+  <!-- 네비게이션 바 /로그인 회원등록 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/index.html">Anime Sanctuary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" id="auth-buttons">
+        <!-- 로그인 및 등록 버튼은 JavaScript에서 동적으로 변경됩니다 -->
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 검색 바 추가 및 중앙 고정 -->
+  <form class="form-inline" id="search-form">
+    <input class="form-control" type="search" placeholder="キーワードやクリエイターで検索" aria-label="Search" id="search-input">
+    <button class="btn btn-outline-success" type="submit" id="search-button">検索</button>
+  </form>
+  <!-- 검색 바 끝 -->
+
+  <!-- 사이드바 -->
+  <div class="sidebar">
+    <h5>メインリスト</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">アニメ</li>
+      <li class="list-group-item">漫画</li>
+      <li class="list-group-item">人気作品</li>
+      <li class="list-group-item">キャラクター</li>
+      <li class="list-group-item">フォーラム</li>
+    </ul> 
+  </div>
+
+  <!-- 메인 콘텐츠 -->
+  <div class="main-content">
+    <div class="container-fluid">
+      <!-- 카드 행을 생성할 위치 -->
+      <div id="card-rows"></div>
+    </div>
+  </div>
+
+  <!-- 외부 JavaScript 파일 로드 -->
+  <script src="javascript/mainUI.js"></script> <!-- 중복된 JavaScript 코드 대신 mainUI.js 파일만 로드 -->
+
+  <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事エディター</title>
+    <link rel="stylesheet" href="css/PostWritingstyle.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>カテゴリ</h2>
+        <ul class="category-menu">
+            <li><a href="#" data-category-id="1">新作アニメ</a></li>
+            <li><a href="#" data-category-id="2">人気アニメ</a></li>
+            <li><a href="#" data-category-id="3">アニメレビュー</a></li>
+            <li><a href="#" data-category-id="4">フリートーク</a></li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Navbar -->
+        <div class="navbar">
+
+            <!-- 下書き保存 버튼에 고유 ID 추가 -->
+            <button class="save-draft" id="navbar-save-draft">下書き保存</button>
+            <!-- 公開に進む 버튼에 고유 ID 추가 -->
+            <button class="publish" id="navbar-publish">公開に進む</button>
+
+        </div>
+
+        <!-- Article Editor -->
+        <div class="editor-container">
+            <form id="article-form">
+                <div class="editor-header">
+                    <h1 id="article-title" class="article-title" contenteditable="true">記事タイトル</h1>
+                </div>
+                <div class="editor-content">
+                    <!-- 에디터가 초기화될 영역 -->
+                    <textarea id="editor-content" name="editorContent" style="display:none;"></textarea>
+                    <div id="toast-editor"></div>
+                </div>
+                <div class="word-count">0文字</div>
+                <div class="button-container">
+                    <button type="button" id="preview-post" class="preview-post">プレビュー</button>
+                    <button type="button" id="save-draft" class="save-draft-button">下書き保存</button>
+                    <button type="submit" id="submit-post" class="submit-post">作成</button>
+
+                </div>
+                <div id="post-preview" class="post-preview"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ToastUI Editor JS 라이브러리 -->
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <!-- PostWriting.js 파일 -->
+    <script src="javascript/PostWriting.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+
+.sidebar {
+  width: 200px;
+  min-width: 200px; /* 최소 너비를 설정하여 사이드바가 너무 작아지지 않도록 함 */
+  position: fixed;
+  top: 6%;
+  left: 0;
+  height: 100%;
+  padding-top: 20px;
+  background-color: #f8f9fa;
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+  z-index: 1000; /* 사이드바를 항상 위에 표시 */
+}
+
+
+.sidebar h5,
+.sidebar ul {
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
+}
+
+.list-group-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%; /* 아이템이 사이드바 너비를 넘지 않도록 설정 */
+}
+/* 메인 콘텐츠 스타일 수정 */
+.main-content {
+  margin-left: 220px; /* 사이드바의 너비와 여백을 더하여 왼쪽 마진 설정 */
+  padding: 20px;
+  overflow: hidden; /* 메인 콘텐츠가 사이드바를 넘어가지 않도록 숨기기 */
+}
+
+.card-img-top {
+  height: 150px; /* 고정된 높이 */
+  object-fit: cover; /* 이미지를 고정된 높이에 맞추기 위해 자름 */
+  width: 100%; /* 이미지 너비를 카드 너비에 맞춤 */
+}
+
+/* 카드 열 스타일 수정 */
+.card-wrapper {
+  margin-bottom: 100px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* 카드 열을 수평으로 가운데 정렬 */
+  align-items: center; /* 카드 열을 수직으로 가운데 정렬 */
+  position: relative;
+  width: calc(100% - 220px); /* 사이드바를 뺀 나머지 너비를 사용 */
+  max-width: 100%;
+}
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M2.02 0L0 2l4 2-4 2 2 2 6-4-6-4z"/%3E%3C/svg%3E');
+}
+
+.carousel-control-prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.carousel-control-prev-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 8 8"%3E%3Cpath d="M5.98 0L8 2l-4 2 4 2-2 2L0 4l6-4z"/%3E%3C/svg%3E');
+}
+
+.card-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  justify-content: center; /* 카드들을 가운데 정렬 */
+  gap: 10px; /* 카드 간의 간격 설정 */
+}
+
+.card {
+  min-width: 200px;
+  margin-right: 10px;
+  transition: transform 0.5s ease;
+  height: 600px;
+  max-height: 350px;
+  width: 200px;
+  position: relative; /* 부모 요소를 기준으로 위치를 설정 */
+  overflow: visible; /* 카드 내용이 잘리지 않도록 설정 */
+}
+
+.card.scaled {
+  transform: scale(1.1); /* 기본 확대 크기 조정 (3번째 카드 확대) */
+  z-index: 2; /* 확대된 카드가 다른 카드보다 위에 오도록 설정 */
+}
+.card-normal {
+  transform: scale(1); /* 2번째 카드와 다른 모든 카드는 기본 크기 */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%; /* 카드의 전체 높이를 채우도록 설정 */
+  padding: 10px;
+  overflow: hidden; /* 텍스트가 넘치는 것을 숨기지 않도록 */
+  font-size: 0.9em; /* 기본 폰트 크기 설정 */
+}
+
+.card.scaled .card-body {
+  font-size: 1em; /* 가운데 카드가 확대되었을 때 폰트 크기를 키움 */
+  overflow: visible; /* 확대된 카드의 텍스트가 잘리지 않도록 */
+}
+.card-text {
+  font-size: 0.9em; /* 기본 글자 크기 설정 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  max-height: 3em; /* 두 줄을 초과하지 않도록 최대 높이 설정 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
+  white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+  display: flex; /* 여러 줄을 위한 flexbox 모델 */
+  -webkit-box-orient: vertical; /* flexbox 방향을 수직으로 설정 */
+  -webkit-line-clamp: 2; /* 두 줄까지만 표시하고 나머지는 "..." 처리 */
+}
+
+/* 반응형 디자인을 위해 화면 크기에 따른 글자 크기 조정 */
+@media (max-width: 768px) {
+  p.card-text {
+    font-size: 0.8em; /* 작은 화면에서 글자 크기를 줄임 */
+    line-height: 1.5; /* 줄 간격 설정 */
+    max-height: 1.5em; /* 한 줄의 높이에 맞게 설정 */
+    overflow: hidden; /* 넘치는 텍스트를 숨김 */
+    text-overflow: ellipsis; /* 넘치는 텍스트를 "..."로 표시 */
+    white-space: nowrap; /* 텍스트를 한 줄로 설정 */
+    margin-bottom: 20px; /* p.card-author와의 간격을 위해 하단 여백 추가 */
+  }
+}
+
+/* 카드 작성자 정보(p.card-author) */
+p.card-author {
+  font-size: 0.8em;
+  margin-top: 0; /* 불필요한 상단 여백 제거 */
+  margin-bottom: 10px; /* 카드 텍스트와의 간격 확보 */
+  color: #666; /* 텍스트 색상 설정 */
+}
+
+/* 반응형 디자인을 위해 화면 크기에 따른 글자 크기 조정 */
+@media (max-width: 768px) {
+  p.card-text {
+    font-size: 0.8em; /* 작은 화면에서 글자 크기를 줄임 */
+  }
+}
+
+@media (min-width: 1200px) {
+  p.card-text {
+    font-size: 1em; /* 큰 화면에서 글자 크기를 키움 */
+  }
+}
+
+
+@media (min-width: 1200px) {
+  p.card-text {
+    font-size: 1em; /* 큰 화면에서는 글자 크기를 키움 */
+  }
+}
+
+
+.card-meta {
+  margin-top: auto; /* 위에서부터 자동으로 마진을 적용하여 아래로 고정 */
+  padding-bottom: 50px; /* 아이콘과의 간격 유지 */
+  font-size: 12px; /* 글씨 크기 줄이기 */
+  line-height: 1.2; /* 줄 간격을 조절하여 높이 조절 */
+  height: 20px; /* 높이 설정 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+.card-author {
+  margin: 0; /* 불필요한 마진 제거 */
+  padding: 0; /* 불필요한 패딩 제거 */
+}
+
+
+.card:nth-child(3) {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.icon-container {
+  position: absolute;
+  bottom: 20px; /* 카드의 하단에서 20px 위로 위치 */
+  left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+  display: flex-end;
+  align-items: center;
+  gap: 5px; /* 아이콘과 텍스트 간의 간격 조절 */
+}
+
+
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
+
+.icon-container {
+    position: absolute;
+    bottom: 20px; /* 카드의 하단에서 10px 위로 위치 */
+    left: 10px; /* 카드의 왼쪽에서 10px 오른쪽으로 위치 */
+    display: flex;
+    align-items: center;
+}
+
+.icon-button {
+  border: none; /* 버튼의 테두리를 제거합니다. */
+  background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 버튼처럼 보이게 합니다. */
+  padding: 0; /* 버튼의 기본 패딩을 제거합니다. */
+  outline: none; /* 클릭 시 나타나는 아웃라인을 제거합니다. */
+}
+
+.icon-button img {
+  width: 15px; /* 아이콘의 크기를 설정합니다. */
+  height: 15px; /* 아이콘의 크기를 설정합니다. */
+}
+
+/* 아이콘 간격 조정을 위해 추가 */
+.icon-button.bookmark {
+  margin-left: 50px; /* heart 아이콘 기준으로 오른쪽으로 20px 떨어지도록 설정 */
+  margin-bottom: 3px;
+}
+
+/* heart 아이콘 클릭 시 빨간색으로 변경 */
+.icon-button.heart.clicked img {
+  filter: invert(20%) sepia(97%) saturate(7450%) hue-rotate(355deg) brightness(97%) contrast(105%);
+}
+
+/* bookmark 아이콘 클릭 시 파란색으로 변경 */
+.icon-button.bookmark.clicked img {
+  filter: invert(32%) sepia(70%) saturate(1931%) hue-rotate(177deg) brightness(97%) contrast(101%);
+}
+
+.badge {
+  display: inline-block;
+  width: 50px; /* 뱃지의 너비를 내용에 맞춤 */
+  height: 20px; /* 뱃지 높이 고정 */
+  line-height: 1.2; /* 텍스트 세로 정렬 */
+  padding: 0.25em 0.5em; /* 뱃지 내부 여백 */
+  font-size: 12px; /* 뱃지 폰트 크기 */
+}
+.navbar .form-inline {
+  z-index: 1050; /* 검색 바를 맨 위로 표시 */
+  position: relative; /* 레이어 위치 설정 */
+}
+
+.navbar {
+  z-index: 1000; /* 검색 바보다 아래에 위치하도록 설정 */
+}
+
+/* 검색 바 고정 및 정렬 */
+#search-form {
+  position: fixed; /* 고정 위치로 변경 */
+  top: 10px; /* 화면 상단에서 10px 아래로 위치 */
+  left: 50%; /* 화면의 가로 중심에 위치 */
+  transform: translateX(-50%); /* 검색 바를 가로 중앙에 정렬 */
+  display: flex; /* 검색 바와 버튼을 수평으로 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  white-space: nowrap; /* 검색 바와 버튼이 한 줄로 유지되도록 설정 */
+  z-index: 1050; /* 검색 바를 사이드바 위에 위치 */
+}
+
+
+
+#search-form .form-control {
+  border-radius: 5px;
+  width: 450px; 
+  box-shadow: none; 
+  border: 1px solid #ececec; 
+  flex-shrink: 1; /* 검색 바가 줄어들 수 있도록 설정 */
+}
+
+
+#search-form .btn {
+  margin-left: 5px; 
+  border-radius: 3px; 
+  padding: 5px 15px; 
+  background-color: #03914f; 
+  color: #fff; 
+  border: none; 
+  transition: background-color 0.3s; 
+  flex-shrink: 0; /* 버튼 크기를 유지하면서 검색 바가 줄어들도록 설정 */
+}
+
+#search-form .btn:hover {
+  background-color: #5e5e5e; /* 버튼 호버 시 색상 */
+}
+
+.see-all-link {
+  color: #c1c1c1; /* 텍스트 색상 */
+  font-size: 10pt; /* 폰트 크기 */
+  text-decoration: none; /* 밑줄 제거 */
+ font-weight: bold;
+}
+
+.see-all-link:hover {
+  text-decoration: dotted;
+  color: rgb(16, 65, 210);
+}
+
+
+/* 카드 타이틀(h4.mt-2)의 글자 크기 조정 */
+h4.mt-2 {
+  font-size: 1.2em; /* 기본 글자 크기 설정 */
+  font-weight: bold; /* 카드 타이틀이 눈에 띄게 볼드 처리 */
+  margin-bottom: 10px; /* 아래 여백 설정 */
+}
+
+/* 반응형 디자인을 위해 화면 크기에 따른 글자 크기 조정 */
+@media (max-width: 768px) {
+  h4.mt-2 {
+    font-size: 1em; /* 작은 화면에서는 글자 크기를 줄임 */
+  }
+}
+
+@media (min-width: 1200px) {
+  h4.mt-2 {
+    font-size: 1.4em; /* 큰 화면에서는 글자 크기를 키움 */
+  }
+}
+/* 프로필 아이콘 스타일 */
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 드롭다운 메뉴 스타일 (Bootstrap 기본 스타일 사용) */
+/* 추가적인 커스터마이징이 필요하다면 아래에 추가 */
+
+/* 예: 드롭다운 메뉴의 배경색 변경 */
+.dropdown-menu {
+  background-color: #f9f9f9;
+}
+
+/* 예: 드롭다운 아이템 호버 시 배경색 변경 */
+.dropdown-item:hover {
+  background-color: #e0e0e0;
+}
+

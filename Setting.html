@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS/Account Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settingStyle.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Anime Sanctuary</div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="キーワードやクリエイターで検索">
+            <button class="search-button">検索</button>
+        </div>
+        <div class="header-icons">
+            <div class="icon1">
+                <img src="/icon/free-icon-alarm-bell-6367716.png" class="icon-img" onclick="toggleNotificationDropdown()">
+                <div id="notification-dropdown" class="dropdown-content">
+                    <a href="#">ㅇㅇ님이 대댓글을 작성하셨습니다</a> <!-- 링크 설정 -->
+                </div>
+            </div>
+            <div class="icon2">
+                <img src="/icon/user.png" class="icon-img" onclick="toggleProfileDropdown()">
+                <div id="profile-dropdown" class="dropdown-content">
+                    <a href="Profile.html">マイページ</a> <!-- 링크 설정 -->
+                    <a href="Setting.html">設定</a> <!-- 링크 설정 -->
+                </div>
+            </div>
+            <button class="post-button" onclick="window.location.href='PostWriting.html';">投稿</button> <!-- 링크 설정 -->
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li>アカウント</li>
+                <li>通知</li>
+                <li>リアクション</li>
+                <li>購入・サポート履歴</li>
+                <li>ポイント管理</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2>アカウント</h2>
+            <div class="account-info">
+                <div class="info-item">
+                    <span class="label">ユーザー名</span>
+                    <span class="value">TestUser1</span>
+                    <a href="#" onclick="openSlideUp('username')">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">ID</span>
+                    <span class="value">Hello0707</span>
+                    <a href="#" onclick="openSlideUp('userId')">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">メールアドレス</span>
+                    <span class="value">Hello0707@gmail.com</span>
+                    <a href="#" onclick="openSlideUp('email')">変更</a>
+                </div>
+                <div class="info-item">
+                    <span class="label">パスワード</span>
+                    <span class="value">********</span>
+                    <a href="#" onclick="openSlideUp('password')">変更</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Hello0707@gmail.com宛に認証メールを送信しました。認証をすませてください。技術・購入・コメントを利用しましょう！</p>
+        </div>
+    </footer>
+
+    <!-- 슬라이드업 알림창 -->
+    <!-- 슬라이드업 알림창 -->
+<div id="slide-up-popup" class="slide-up-popup">
+    <div class="slide-up-content">
+        <h3 id="slide-up-title"></h3>
+        <form id="slide-up-form">
+            <div class="form-group">
+                <label id="slide-up-label" for="slide-up-input"></label>
+                <input type="text" id="slide-up-input" name="slide-up-input">
+            </div>
+            <div class="form-group" id="confirm-password-group" style="display: none;">
+                <label for="confirm-password">비밀번호 확인</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+            </div>
+            <button type="submit">変更</button>
+        </form>
+        <span class="close" onclick="closeSlideUp()">&times;</span>
+    </div>
+</div>
+    <script>
+        // 알람 드롭다운 토글
+        function toggleNotificationDropdown() {
+            const dropdown = document.getElementById('notification-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // 프로필 드롭다운 토글
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profile-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // 슬라이드업 알림창 열기
+        function openSlideUp(type) {
+            const popup = document.getElementById('slide-up-popup');
+            const title = document.getElementById('slide-up-title');
+            const label = document.getElementById('slide-up-label');
+            const input = document.getElementById('slide-up-input');
+            const confirmPasswordGroup = document.getElementById('confirm-password-group');
+
+            popup.classList.add('show'); // 슬라이드업 표시
+
+            if (type === 'username') {
+                title.textContent = 'ユーザー名の変更';
+                label.textContent = '新しいユーザー名';
+                input.type = 'text';
+                confirmPasswordGroup.style.display = 'none';
+            } else if (type === 'userId') {
+                title.textContent = 'IDの変更';
+                label.textContent = '新しいID';
+                input.type = 'text';
+                confirmPasswordGroup.style.display = 'none';
+            } else if (type === 'email') {
+                title.textContent = 'メールアドレスの変更';
+                label.textContent = '新しいメールアドレス';
+                input.type = 'email';
+                confirmPasswordGroup.style.display = 'none';
+            } else if (type === 'password') {
+                title.textContent = 'パスワードの変更';
+                label.textContent = '新しいパスワード';
+                input.type = 'password';
+                confirmPasswordGroup.style.display = 'block'; // 비밀번호 확인 필드 표시
+            }
+        }
+
+        // 슬라이드업 알림창 닫기
+        function closeSlideUp() {
+            const popup = document.getElementById('slide-up-popup');
+            popup.classList.remove('show');
+        }
+
+        // 폼 제출 처리
+        document.getElementById('slide-up-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 여기에서 SQL을 통해 데이터를 업데이트하는 로직을 추가하면 됩니다.
+            closeSlideUp();
+        });
+    </script>
+</body>
+</html>
