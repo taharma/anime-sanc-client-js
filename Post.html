@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AS/Post</title>
     <link rel="stylesheet" href="css/postStyle.css">
-</head>  
+</head>
+
 <body>
     <div class="dropdown-sandbox open">
         <button onclick="toggleSandbox()">&#9664;</button>
@@ -15,7 +17,7 @@
             <p>元々は起業志向がある、いわゆる意識高い大学生。学ぶことが好きで、常に新しい知識を求めている</p>
         </div>
     </div>
-    
+
     <header>
         <div class="logo"><a href="/index.html">Anime Sanctuary</a></div>
         <div class="search-container">
@@ -29,7 +31,7 @@
                     <a href="#">A님이 대댓글을 작성하셨습니다</a>
                 </div>
             </div>
-            
+
             <!-- 프로필 드롭다운 -->
             <div class="icon2">
                 <img src="/icon/user.png" onclick="toggleProfileDropdown()" alt="icon2-user">
@@ -81,12 +83,16 @@
 
                 <br>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
+                        onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">432</div>
-                    <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
-                    <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
-                    <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
-                </div>            
+                    <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share"
+                        onclick="toggleIconColor(this, 'share')">
+                    <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark"
+                        onclick="toggleIconColor(this, 'bookmark')">
+                    <img src="/icon/etc.svg" alt="More Icon" class="post-icon more"
+                        onclick="toggleIconColor(this, 'more')">
+                </div>
             </div>
 
             <div class="profile-section">
@@ -145,7 +151,7 @@
             </div>
         </div>
 
-        
+
         <button class="toggle-comment-button" onclick="toggleCommentBox()">コメント覧を開く</button>
         <!-- 댓글 작성 창 -->
         <div id="comment-box" class="comment-box">
@@ -161,21 +167,24 @@
             <div class="content-item">
                 <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
+                        onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">3</div>
                 </div>
             </div>
             <div class="content-item">
                 <div>インターネットでの発信に、もっと安心を。#note10周年</div>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
+                        onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">2</div>
                 </div>
             </div>
             <div class="content-item">
                 <div>noteはより多様なクリエイターを応援していきます</div>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
+                        onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">3</div>
                 </div>
             </div>
@@ -197,136 +206,159 @@
     <script>
         // Chatbot feature!
         async function summarizeNote() {
-        try {
-            // Extract note ID from the URL or another source
-            const urlParams = new URLSearchParams(window.location.search);
-            const noteId = urlParams.get('noteId'); // Assuming the note ID is passed as a query parameter
+            try {
+                // Extract note ID from the URL or another source
+                const urlParams = new URLSearchParams(window.location.search);
+                const noteId = urlParams.get('id'); // Assuming the note ID is passed as a query parameter
+                console.log(noteId);
 
-            if (!noteId) {
-                throw new Error('Note ID not found in the URL');
-            }
+                if (!noteId) {
+                    throw new Error('Note ID not found in the URL');
+                }
 
-            // Fetch note data from backend
-            const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
+                // Fetch note data from backend
+                const response = await 
+                fetch(`http://localhost:9000/api/notes/${noteId}`);
 
-            if (!response.ok) {
-                throw new Error('Failed to fetch note data');
-            }
+                console.log(response);
 
-            const note = await response.json();
+                if (!response.ok) {
+                    throw new Error('Failed to fetch note data');
+                }
 
-            // Send note content to OpenAI API for summarization
-            const openAIResponse = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer SERIOUSLY_USE_ENV_HERE_OPENAI_API_KEY`
-                },
-                body: JSON.stringify({
-                    prompt: `Summarize the following context of this post based on its language. Use bullet points to clearly present the summary: ${note.content}`,
-                    max_tokens: 100
-                })
-            });
+                const note = await response.json();
 
-            if (!openAIResponse.ok) {
-                throw new Error('Failed to fetch summary from OpenAI');
-            }
+                console.log(note);
 
-            const summaryData = await openAIResponse.json();
-            const summary = summaryData.choices[0].text.trim();
+                // Send note content to OpenAI API for summarization
+                const openAIResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer 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`
+                    },
+                    body: JSON.stringify({
+                        model: `gpt-4o-mini`,
+                        messages: [
+                            //gpt에 
+                            {
+                                role: 'system',
+                                content: 'Print the answer in Japanese. Do not exceed more than 300 words'
+                            },
+                            //현재 note의 내용 변수이름 : contents
+                            {
+                                role: 'user',
+                                content: `Summarize the following content in bullet points:
+                                ${note.contents}"`
+                            }
+                        ],
+                        //글자수 조절 , $5
+                        max_tokens: 300
+                    })
+                });
 
-            // Display the summary
-            document.getElementById('summary').innerText = summary;
-        } catch (error) {
-            console.error('Error summarizing note:', error);
-        }
-    }
 
-    // 댓글 창 열기/닫기 기능
-    function toggleCommentBox() {
-        const commentBox = document.getElementById('comment-box');
-        const toggleButton = document.querySelector('.toggle-comment-button');
+                if (!openAIResponse.ok) {
+                    throw new Error('Failed to fetch summary from OpenAI');
+                }
 
-        commentBox.style.display = commentBox.style.display === 'block' ? 'none' : 'block';
-        toggleButton.textContent = commentBox.style.display === 'block' ? 'コメント覧を閉じる' : 'コメント覧を開く';
-    }
+                const summaryData = await openAIResponse.json();
+                console.log(openAIResponse.json());
+                const summary = summaryData.choices[0].message.content.trim();
 
-    // 샌드박스 열기/닫기 기능
-    function toggleSandbox() {
-        const sandboxContent = document.querySelector('.sandbox-content');
-        const sandboxButton = document.querySelector('.dropdown-sandbox button');
-
-        sandboxContent.style.display = sandboxContent.style.display === 'block' ? 'none' : 'block';
-        sandboxButton.style.transform = sandboxContent.style.display === 'block' ? 'rotate(0deg)' : 'rotate(90deg)';
-    }
-
-    // 좋아요 클릭 시 숫자 변경 기능 추가
-    function toggleIconColor(iconElement, type) {
-        iconElement.classList.toggle('active');
-
-        if (type === 'like') {
-            const likeCountElement = iconElement.nextElementSibling;
-            let likeCount = parseInt(likeCountElement.textContent, 10);
-            likeCountElement.textContent = iconElement.classList.contains('active') ? likeCount + 1 : likeCount - 1;
-        }
-
-        if (type === 'share') {
-            if (iconElement.classList.contains('active')) {
-                showTooltip(iconElement, "링크를 복사하였습니다");
-                copyToClipboard(window.location.href);
+                // Display the summary
+                document.getElementById('summary').innerText = summary;
+            } catch (error) {
+                console.error('Error summarizing note:', error);
+                document.getElementById('summary').innerText = "Error fetching the summary."; // 에러 발생 시 메시지 표시
             }
         }
 
-        if (type === 'bookmark') {
-            showTooltip(iconElement, iconElement.classList.contains('active') ? "북마크되었습니다" : "북마크가 취소되었습니다");
+        // 댓글 창 열기/닫기 기능
+        function toggleCommentBox() {
+            const commentBox = document.getElementById('comment-box');
+            const toggleButton = document.querySelector('.toggle-comment-button');
+
+            commentBox.style.display = commentBox.style.display === 'block' ? 'none' : 'block';
+            toggleButton.textContent = commentBox.style.display === 'block' ? 'コメント覧を閉じる' : 'コメント覧を開く';
         }
-    }
 
-    // 클립보드 복사 기능
-    function copyToClipboard(text) {
-        const tempInput = document.createElement('input');
-        tempInput.style.position = 'absolute';
-        tempInput.style.left = '-9999px';
-        tempInput.value = text;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-    }
+        // 샌드박스 열기/닫기 기능
+        function toggleSandbox() {
+            const sandboxContent = document.querySelector('.sandbox-content');
+            const sandboxButton = document.querySelector('.dropdown-sandbox button');
 
-    // 말풍선 표시 기능
-    function showTooltip(element, message) {
-        const tooltip = document.createElement('div');
-        tooltip.classList.add('tooltip');
-        tooltip.textContent = message;
-        
-        document.body.appendChild(tooltip);
-        const rect = element.getBoundingClientRect();
-        tooltip.style.left = `${rect.left + window.pageXOffset}px`;
-        tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
+            sandboxContent.style.display = sandboxContent.style.display === 'block' ? 'none' : 'block';
+            sandboxButton.style.transform = sandboxContent.style.display === 'block' ? 'rotate(0deg)' : 'rotate(90deg)';
+        }
 
-        setTimeout(() => {
-            tooltip.remove();
-        }, 2000);
-    }
+        // 좋아요 클릭 시 숫자 변경 기능 추가
+        function toggleIconColor(iconElement, type) {
+            iconElement.classList.toggle('active');
 
-    // 답글 입력창 열기/닫기 기능
-    function toggleReply(button) {
-        const replyBox = button.nextElementSibling;
-        replyBox.style.display = replyBox.style.display === "block" ? "none" : "block";
-    }
+            if (type === 'like') {
+                const likeCountElement = iconElement.nextElementSibling;
+                let likeCount = parseInt(likeCountElement.textContent, 10);
+                likeCountElement.textContent = iconElement.classList.contains('active') ? likeCount + 1 : likeCount - 1;
+            }
 
-    // 답글 제출 기능
-    function submitReply(button) {
-        const replyBox = button.parentElement;
-        const textarea = replyBox.querySelector("textarea");
-        const replyContent = textarea.value.trim();
+            if (type === 'share') {
+                if (iconElement.classList.contains('active')) {
+                    showTooltip(iconElement, "링크를 복사하였습니다");
+                    copyToClipboard(window.location.href);
+                }
+            }
 
-        if (replyContent !== "") {
-            const currentDate = new Date().toLocaleString();
-            const newReply = document.createElement("div");
-            newReply.classList.add("comment");
-            newReply.innerHTML = `
+            if (type === 'bookmark') {
+                showTooltip(iconElement, iconElement.classList.contains('active') ? "북마크되었습니다" : "북마크가 취소되었습니다");
+            }
+        }
+
+        // 클립보드 복사 기능
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.style.position = 'absolute';
+            tempInput.style.left = '-9999px';
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+        }
+
+        // 말풍선 표시 기능
+        function showTooltip(element, message) {
+            const tooltip = document.createElement('div');
+            tooltip.classList.add('tooltip');
+            tooltip.textContent = message;
+
+            document.body.appendChild(tooltip);
+            const rect = element.getBoundingClientRect();
+            tooltip.style.left = `${rect.left + window.pageXOffset}px`;
+            tooltip.style.top = `${rect.top + window.pageYOffset - tooltip.offsetHeight}px`;
+
+            setTimeout(() => {
+                tooltip.remove();
+            }, 2000);
+        }
+
+        // 답글 입력창 열기/닫기 기능
+        function toggleReply(button) {
+            const replyBox = button.nextElementSibling;
+            replyBox.style.display = replyBox.style.display === "block" ? "none" : "block";
+        }
+
+        // 답글 제출 기능
+        function submitReply(button) {
+            const replyBox = button.parentElement;
+            const textarea = replyBox.querySelector("textarea");
+            const replyContent = textarea.value.trim();
+
+            if (replyContent !== "") {
+                const currentDate = new Date().toLocaleString();
+                const newReply = document.createElement("div");
+                newReply.classList.add("comment");
+                newReply.innerHTML = `
                 <img src="/icon/user.png" alt="Profile Icon" class="comment-icon">
                 <div class="comment-content">
                     <span class="comment-username">TEST1</span>
@@ -336,41 +368,42 @@
                     <button onclick="deleteReply(this)">삭제</button>
                 </div>
             `;
-            replyBox.parentNode.appendChild(newReply);
-            textarea.value = "";
-            replyBox.style.display = "none";
+                replyBox.parentNode.appendChild(newReply);
+                textarea.value = "";
+                replyBox.style.display = "none";
+            }
         }
-    }
 
-    // 답글 수정 기능
-    function editReply(button) {
-        const replyContent = button.previousElementSibling.previousElementSibling;
-        const newContent = prompt("댓글을 수정하세요:", replyContent.textContent);
-        if (newContent) {
-            replyContent.textContent = newContent;
+        // 답글 수정 기능
+        function editReply(button) {
+            const replyContent = button.previousElementSibling.previousElementSibling;
+            const newContent = prompt("댓글을 수정하세요:", replyContent.textContent);
+            if (newContent) {
+                replyContent.textContent = newContent;
+            }
         }
-    }
 
-    // 답글 삭제 기능
-    function deleteReply(button) {
-        if (confirm("댓글을 삭제하시겠습니까?")) {
-            button.parentElement.parentElement.remove();
+        // 답글 삭제 기능
+        function deleteReply(button) {
+            if (confirm("댓글을 삭제하시겠습니까?")) {
+                button.parentElement.parentElement.remove();
+            }
         }
-    }
 
-    // 알림 드롭다운 토글 기능
-   // 알람 드롭다운 토글 기능
-function toggleNotificationDropdown() {
-    const dropdown = document.getElementById('notification-dropdown');
-    dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
-}
+        // 알림 드롭다운 토글 기능
+        // 알람 드롭다운 토글 기능
+        function toggleNotificationDropdown() {
+            const dropdown = document.getElementById('notification-dropdown');
+            dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
+        }
 
-// 프로필 드롭다운 토글 기능
-function toggleProfileDropdown() {
-    const dropdown = document.getElementById('profile-dropdown');
-    dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
-}
+        // 프로필 드롭다운 토글 기능
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profile-dropdown');
+            dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
+        }
 
     </script>
 </body>
+
 </html>
