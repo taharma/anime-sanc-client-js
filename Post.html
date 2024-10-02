@@ -83,15 +83,11 @@
 
                 <br>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
-                        onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">432</div>
-                    <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share"
-                        onclick="toggleIconColor(this, 'share')">
-                    <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark"
-                        onclick="toggleIconColor(this, 'bookmark')">
-                    <img src="/icon/etc.svg" alt="More Icon" class="post-icon more"
-                        onclick="toggleIconColor(this, 'more')">
+                    <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
+                    <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
+                    <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
                 </div>
             </div>
 
@@ -167,24 +163,21 @@
             <div class="content-item">
                 <div>シンプルな操作画面は変わらず、機能はパワーアップ！みなさんの記事編集画面が新しくなります</div>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
-                        onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">3</div>
                 </div>
             </div>
             <div class="content-item">
                 <div>インターネットでの発信に、もっと安心を。#note10周年</div>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
-                        onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">2</div>
                 </div>
             </div>
             <div class="content-item">
                 <div>noteはより多様なクリエイターを応援していきます</div>
                 <div class="post-icons">
-                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like"
-                        onclick="toggleIconColor(this, 'like')">
+                    <img src="/icon/heart-fill.svg" alt="Like Icon" class="post-icon like" onclick="toggleIconColor(this, 'like')">
                     <div class="like-number">3</div>
                 </div>
             </div>
@@ -217,8 +210,7 @@
                 }
 
                 // Fetch note data from backend
-                const response = await 
-                fetch(`http://localhost:9000/api/notes/${noteId}`);
+                const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
 
                 console.log(response);
 
