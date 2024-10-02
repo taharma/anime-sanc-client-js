@@ -209,20 +209,26 @@
             try {
                 // Extract note ID from the URL or another source
                 const urlParams = new URLSearchParams(window.location.search);
-                const noteId = urlParams.get('noteId'); // Assuming the note ID is passed as a query parameter
+                const noteId = urlParams.get('id'); // Assuming the note ID is passed as a query parameter
+                console.log(noteId);
 
                 if (!noteId) {
                     throw new Error('Note ID not found in the URL');
                 }
 
                 // Fetch note data from backend
-                const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
+                const response = await 
+                fetch(`http://localhost:9000/api/notes/${noteId}`);
+
+                console.log(response);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch note data');
                 }
 
                 const note = await response.json();
+
+                console.log(note);
 
                 // Send note content to OpenAI API for summarization
                 const openAIResponse = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -234,13 +240,20 @@
                     body: JSON.stringify({
                         model: `gpt-4o-mini`,
                         messages: [
+                            //gpt에 
+                            {
+                                role: 'system',
+                                content: 'Print the answer in Japanese. Do not exceed more than 300 words'
+                            },
+                            //현재 note의 내용 변수이름 : contents
                             {
                                 role: 'user',
                                 content: `Summarize the following content in bullet points:
-                                        "`
+                                ${note.contents}"`
                             }
                         ],
-                        max_tokens: 1000
+                        //글자수 조절 , $5
+                        max_tokens: 300
                     })
                 });
 
