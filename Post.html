@@ -59,6 +59,13 @@
                 </div>
             </div>
             <div class="post-content">
+                <!-- Chatbot Section -->
+                <div id="chatbot">
+                    <h2>コンテンツのまとめ</h2>
+                    <button onclick="summarizeNote()">この記事を要約！</button>
+                    <div id="summary"></div>
+                </div>
+
                 <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
                 <div class="dropdown-menu">
                     <button>目標</button>
@@ -69,8 +76,8 @@
                         <a href="#">List text 4</a>
                         <a href="#">List text 5</a>
                     </div>
-                    <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
                 </div>
+                <p class="contents">これはテスト用の文です。意味はありません。これはテスト用の文です。意味はありません。</p>
 
                 <br>
                 <div class="post-icons">
@@ -188,6 +195,53 @@
     </main>
 
     <script>
+        // Chatbot feature!
+        async function summarizeNote() {
+        try {
+            // Extract note ID from the URL or another source
+            const urlParams = new URLSearchParams(window.location.search);
+            const noteId = urlParams.get('noteId'); // Assuming the note ID is passed as a query parameter
+
+            if (!noteId) {
+                throw new Error('Note ID not found in the URL');
+            }
+
+            // Fetch note data from backend
+            const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch note data');
+            }
+
+            const note = await response.json();
+
+            // Send note content to OpenAI API for summarization
+            const openAIResponse = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer SERIOUSLY_USE_ENV_HERE_OPENAI_API_KEY`
+                },
+                body: JSON.stringify({
+                    prompt: `Summarize the following context of this post based on its language. Use bullet points to clearly present the summary: ${note.content}`,
+                    max_tokens: 100
+                })
+            });
+
+            if (!openAIResponse.ok) {
+                throw new Error('Failed to fetch summary from OpenAI');
+            }
+
+            const summaryData = await openAIResponse.json();
+            const summary = summaryData.choices[0].text.trim();
+
+            // Display the summary
+            document.getElementById('summary').innerText = summary;
+        } catch (error) {
+            console.error('Error summarizing note:', error);
+        }
+    }
+
     // 댓글 창 열기/닫기 기능
     function toggleCommentBox() {
         const commentBox = document.getElementById('comment-box');
