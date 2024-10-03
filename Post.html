@@ -218,6 +218,7 @@
                     throw new Error('Failed to fetch note data');
                 }
 
+                // 한 번만 response.json() 호출
                 const note = await response.json();
 
                 console.log(note);
@@ -235,7 +236,7 @@
                             //gpt에 
                             {
                                 role: 'system',
-                                content: 'Print the answer in Japanese. Do not exceed more than 300 words'
+                                content: 'Print the answer in Japanese.And Summarize in 300 words'
                             },
                             //현재 note의 내용 변수이름 : contents
                             {
@@ -255,7 +256,7 @@
                 }
 
                 const summaryData = await openAIResponse.json();
-                console.log(openAIResponse.json());
+                console.log(summaryData);
                 const summary = summaryData.choices[0].message.content.trim();
 
                 // Display the summary
