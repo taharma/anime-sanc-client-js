@@ -61,11 +61,14 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="post-content">
                 <!-- 내용 섹션 -->
+                <h1>contents</h1>
                 
                 
-                
+
+                <br>
                 <!-- Chatbot Section -->
                 <div id="chatbot">
                     <h2>コンテンツのまとめ</h2>
@@ -203,7 +206,36 @@
     </main>
 
     <script>
-        // Chatbot feature!
+        //내용 가져오기 fetch
+        async function fetchPost() {
+            try {
+                const response = await fetch(`http://localhost:9000/api/post/${noteId}`);
+                const post = await response.json();
+                console.log(post.title)
+                displayPost(post);
+            } catch (error) {
+                console.error("Error fetching post:", error);
+            }
+        }
+        //내용 표시하기
+        function displayPost(post) {
+            console.log(post);
+            // post-content div 요소 가져오기
+            const postContent = document.querySelector('.post-content');
+            
+            // 새로운 요소 생성 (제목과 내용 추가)
+            const title = document.createElement('h2');
+            title.textContent = post.title;  // post 객체에서 title 속성을 사용
+            
+
+            const content = document.createElement('p');
+            content.textContent = post.contents;  // post 객체에서 content 속성을 사용
+
+            // post-content 섹션에 동적으로 추가
+            postContent.appendChild(title);
+            postContent.appendChild(contents);
+        }
+        //  GPT 내용 요약 Chatbot feature!
         async function summarizeNote() {
             try {
                 // Extract note ID from the URL or another source
