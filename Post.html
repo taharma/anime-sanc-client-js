@@ -40,7 +40,7 @@
                     <a href="Setting.html">設定</a>
                 </div>
             </div>
-            <button class="post-button" onclick="window.location.href='#';">投稿</button> <!-- 이동 경로 설정: # -->
+            <button class="post-button" onclick="window.location.href='/PostWriting.html';">投稿</button> <!-- 이동 경로 설정: # -->
         </div>
     </header>
 
@@ -480,14 +480,16 @@
             .then(response => {
                 if (response.ok) {
                     alert('노트가 삭제되었습니다.');
-                    // 성공 시 필요한 다른 동작을 추가하세요 (예: 페이지 새로고침)
+                    location.href = '/index.html';
                 } else {
                     alert('삭제 중 문제가 발생했습니다.');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('서버와의 연결에 문제가 발생했습니다.');
+                // alert('서버와의 연결에 문제가 발생했습니다.');
+                //일단 임시방편 
+                location.href = '/index.html';
             });
         }
     </script>
