@@ -61,11 +61,11 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="post-content">
                 <!-- 내용 섹션 -->
-                
-                
-                
+                <div id="contents">test</div>
+                <br>
                 <!-- Chatbot Section -->
                 <div id="chatbot">
                     <h2>コンテンツのまとめ</h2>
@@ -203,7 +203,47 @@
     </main>
 
     <script>
-        // Chatbot feature!
+        // URL에서 noteId 추출하기
+        function getNoteIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search); // 현재 URL에서 쿼리 매개변수 추출
+            return urlParams.get('id'); // 'id' 값 가져오기
+        }
+        //내용 가져오기 fetch
+        async function fetchPost() {
+            try {
+                // URL에서 noteId 추출하기
+                const noteId = getNoteIdFromURL();
+                //null검사
+                if (!noteId) {
+                    console.error("noteId가 존재하지 않습니다.");
+                    return;
+                }
+                const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
+                const post = await response.json();
+                console.log(post)
+                displayPost(post);
+            } catch (error) {
+                console.error("Error fetching post:", error);
+            }
+        }
+        // 내용 표시하기
+        function displayPost(post) {
+            const contentsDiv = document.getElementById('contents');
+            
+            if (contentsDiv) {
+                // post 객체에서 내용을 가져와서 표시
+                const content = post.contents || post.content || "No content available";  // 적절한 속성 확인
+                contentsDiv.textContent = content;
+            } else {
+                console.error("contents div가 존재하지 않습니다.");
+            }
+        }
+
+        // 페이지 로드 후 fetchPost 호출
+        window.addEventListener('DOMContentLoaded', function() {
+            fetchPost(); // 페이지가 로드되면 즉시 fetchPost 함수 호출
+        });
+        //  GPT 내용 요약 Chatbot feature!
         async function summarizeNote() {
             try {
                 // Extract note ID from the URL or another source
