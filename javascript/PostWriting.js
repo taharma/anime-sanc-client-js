@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    //노트작성
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // memberId의 유효성 검사
         const memberId = localStorage.getItem("memberId");
-        const longMemberId = parseInt(memberId, 10); // 10진수로 변환 Long type
+        // const longMemberId = parseInt(memberId, 10); // 10진수로 변환 Long type
         if (!memberId) {
             alert('ログインが必要です。');
             return;
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: title,
             contents: content,
             categoryId: selectedCategoryId,
-            memberId: longMemberId
+            memberId: memberId
         });
         console.log('Request Data:', requestData);
 
