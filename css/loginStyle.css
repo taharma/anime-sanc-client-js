@@ -1,8 +1,12 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,65 +14,51 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 350px;
 }
 
-.logo {
-    font-size: 2rem;
+.aniSanLogIn {
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
 .login-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    
-}
-
-.social-login {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.social-login button {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 32%;
-    padding: 10px;
-    cursor: pointer;
+    flex-direction: column;
 }
 
 .form-group {
     margin-bottom: 15px;
-    text-align: left;
 }
 
 .form-group label {
-    display: block;
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 14px;
     margin-bottom: 5px;
+    text-align: left;
+    display: block;
 }
 
 .form-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .form-group a {
-    font-size: 0.8rem;
-    color: #007BFF;
+    font-size: 12px;
+    color: #007bff;
     text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    text-align: right;
 }
 
 .form-group a:hover {
@@ -76,65 +66,30 @@ body {
 }
 
 .login-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
+    background-color: #007bff;
+    color: #fff;
     padding: 10px;
-    border-radius: 4px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    width: 100%;
-    font-size: 1rem;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
 }
 
 .signup-link {
     margin-top: 15px;
-    font-size: 0.9rem;
-    color: #007BFF;
 }
 
 .signup-link a {
-    color: #007BFF;
+    color: #007bff;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .signup-link a:hover {
     text-decoration: underline;
 }
-
-.illustrations {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
-}
-
-.illustrations img {
-    width: 18%;
-}
-
-.aniSanLogIn {
-    font-size: 2rem;
-    font-weight: bold;
-    color: black;
-}
-.gender-selection {
-    margin: 10px 0;
-    display: flex; /* Flexbox 사용하여 가로 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-    gap: 20px; /* 남성과 여성 사이의 간격 */
-}
-
-/* 체크박스와 텍스트 정렬 */
-.gender-option {
-    display: flex; /* 가로 정렬 */
-    align-items: center; /* 텍스트와 체크박스 수직 가운데 정렬 */
-    gap: 5px; /* 텍스트와 체크박스 사이의 간격 */
-}
-
-/* 체크박스 수직 정렬 */
-.gender-option input[type="radio"] {
-    vertical-align: middle; /* 체크박스를 텍스트와 중간 정렬 */
-    margin: 0; /* 기본 여백 제거 */
-}
-

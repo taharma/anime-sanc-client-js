@@ -12,50 +12,34 @@
         <br>
         <!-- 로그인 폼 -->
         <form id="loginForm" class="login-form">
-            <div class="social-login">
-                <button type="button" onclick="redirectToGoogle()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
-                        <path fill="#4285F4" d="M44.5 20H24v8.5h11.8c-1.3 3.5-4.2 6.5-7.9 7.7l6.4 5c3.8-3.4 6-8.5 6-14.2c0-1.4-.2-2.8-.6-4z"/>
-                        <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.4-4.8l-6.4-5c-1.8 1.2-4.1 1.9-7 1.9c-5.4 0-9.9-3.6-11.5-8.5l-6.6 5.1C9.7 39.5 16.4 44 24 44z"/>
-                        <path fill="#FBBC05" d="M12.5 27.5c-.4-1.2-.7-2.5-.7-3.7c0-1.3.3-2.6.7-3.8l-6.7-5C4.5 17.6 4 19.7 4 22s.5 4.4 1.8 6.3l6.7-5z"/>
-                        <path fill="#EA4335" d="M24 13.5c3 0 5.7 1 7.8 3l5.8-5.8C34.1 7.8 29.5 6 24 6c-7.6 0-14.3 4.5-17.5 11.7l6.7 5C14.1 17.1 18.6 13.5 24 13.5z"/>
-                    </svg>
-                </button>
-                <button type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32"><path fill="#03A9F4" d="M32 6.1a13 13 0 0 1-3.7 1A6.4 6.4 0 0 0 31.1 4a13.1 13.1 0 0 1-4.1 1.6a6.6 6.6 0 0 0-11.1 6c-5.5-.3-10.3-2.9-13.5-6.8a6.7 6.7 0 0 0 2 8.8a6.5 6.5 0 0 1-3-.9v.1a6.6 6.6 0 0 0 5.3 6.5a6.9 6.9 0 0 1-3 .1a6.7 6.7 0 0 0 6.2 4.6a13.3 13.3 0 0 1-8.3 2.9c-.5 0-1.1 0-1.6-.1a18.8 18.8 0 0 0 10.2 3c12.3 0 19-10.1 19-18.9l-.1-.9A13.5 13.5 0 0 0 32 6.1z"/></svg>
-                </button>
-            </div>
             <div class="form-group">
-                <label for="usernameOrEmail">EmailまたはID</label>
+                <label for="usernameOrEmail">Email 또는 ID</label>
                 <input type="text" id="usernameOrEmail" placeholder="mail@example.com or Username" required>
             </div>
             <div class="form-group">
-                <label for="password">パスワード</label>
+                <label for="password">비밀번호</label>
                 <input type="password" id="password" placeholder="Password" required>
-                <a href="#">パスワードを忘れた方</a> 
-                <a href="#">ログインでお困りの方</a>
+                <a href="#">비밀번호를 잊으신 분</a> 
+                <a href="#">로그인으로 곤란한 분</a>
             </div>
             <!-- 로그인 버튼 -->
-            <button type="submit" id="loginButton" class="login-button">ログイン</button>
+            <button type="submit" id="loginButton" class="login-button">로그인</button>
             <div class="signup-link">
-                <a href="./register.html">会員登録</a>
+                <a href="./register.html">회원등록</a>
             </div>
         </form>
     </div>
 
     <script>
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
         async function handleLogin(event) {
             event.preventDefault(); // 폼 기본 새로고침 방지
 
-            const usernameOrEmail = document.getElementById('usernameOrEmail').value;
-            const password = document.getElementById('password').value;
-
             const requestData = {
-                usernameOrEmail: usernameOrEmail,
-                password: password
+                usernameOrEmail: document.getElementById('usernameOrEmail').value,
+                password: document.getElementById('password').value
             };
-
-            console.log("Login Request Data:", requestData); // 요청 데이터 로그
 
             try {
                 const response = await fetch('http://localhost:9000/api/members/login', {
@@ -66,49 +50,46 @@
 
                 const contentType = response.headers.get("content-type");
                 if (response.ok) {
-                    if (contentType && contentType.includes("application/json")) {
-                        const data = await response.json();
-                        console.log('로그인 성공:', data);
-                        alert('ログインに成功しました。');
-                        // 로그인 상태를 localStorage에 저장
-                        localStorage.setItem("isLoggedIn", "true");
-                        localStorage.setItem("memberId", data.id);
-
-                        // 로그인 성공 후 index.html로 이동
-                        window.location.href = 'index.html';
-                    } else {
-                        const successText = await response.text();
-                        console.log('로그인 성공:', successText);
-                        alert('ログインに成功しました。');
-                        // 로그인 상태를 localStorage에 저장
-                        localStorage.setItem("isLoggedIn", "true");
-                        localStorage.setItem("memberId", requestData.usernameOrEmail); // Assuming usernameOrEmail is unique
-
-                        // 로그인 성공 후 index.html로 이동
-                        window.location.href = 'index.html';
-                    }
+                    await handleLoginSuccess(response, contentType, requestData);
                 } else {
-                    if (contentType && contentType.includes("application/json")) {
-                        const errorData = await response.json();
-                        alert(`로그인 실패: ${errorData.message}`);
-                    } else {
-                        const errorText = await response.text();
-                        alert(`로그인 실패: ${errorText}`);
-                    }
+                    await handleLoginError(response, contentType);
                 }
             } catch (error) {
                 console.error('로그인 중 오류 발생:', error);
-                alert('로그인에 エラーが発生しました。');
+                alert('로그인에 에러가 발생했습니다.');
             }
         }
 
-        function redirectToGoogle() {
-            // Google OAuth2 인증을 위한 엔드포인트로 리다이렉트
-            window.location.href = 'http://localhost:9000/oauth2/authorization/google';
+        async function handleLoginSuccess(response, contentType, requestData) {
+            let message;
+            if (contentType && contentType.includes("application/json")) {
+                const data = await response.json();
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("memberId", data.id);
+                message = '로그인에 성공했습니다.';
+            } else {
+                const successText = await response.text();
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("memberId", requestData.usernameOrEmail);
+                message = successText;
+            }
+            console.log('로그인 성공:', message);
+            alert(message);
+            window.location.href = 'index.html';
         }
 
-        // 로그인 폼 제출 이벤트 리스너 추가
-        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+        async function handleLoginError(response, contentType) {
+            let errorMessage;
+            if (contentType && contentType.includes("application/json")) {
+                const errorData = await response.json();
+                errorMessage = `로그인 실패: ${errorData.message}`;
+            } else {
+                const errorText = await response.text();
+                errorMessage = `로그인 실패: ${errorText}`;
+            }
+            console.error(errorMessage);
+            alert(errorMessage);
+        }
     </script>
 </body>
 </html>
