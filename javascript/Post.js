@@ -14,6 +14,8 @@
                 const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
                 const post = await response.json();
                 console.log(post)
+                localStorage.setItem('postTitle' , post.title);
+                localStorage.setItem('postContents' , post.contents);
                 displayPost(post);
             } catch (error) {
                 console.error("Error fetching post:", error);
@@ -36,6 +38,35 @@
         window.addEventListener('DOMContentLoaded', function() {
             fetchPost(); // 페이지가 로드되면 즉시 fetchPost 함수 호출
         });
+
+        //postEditing으로 title contents 전달
+        document.addEventListener("DOMContentLoaded", function() {
+            const editLink = document.getElementById('edit-post-link');
+            
+            // 링크 클릭 시 이벤트 리스너 추가
+            editLink.addEventListener('click', function(event) {
+                event.preventDefault(); // 기본 동작 방지 (링크 클릭 시 페이지 이동 막기)
+                setEditPostLink(); // setEditPostLink 함수 호출
+            });
+        });
+    
+        //postEditing으로 title, contents 전달
+        function setEditPostLink() {
+            // URL에서 noteId 추출
+            const urlParams = new URLSearchParams(window.location.search);
+            const noteId = urlParams.get('id');
+            
+            if (noteId) {
+                // noteId가 있을 경우 해당 ID를 URL에 추가하여 페이지 이동
+                const newHref = `/PostEditing.html?id=${noteId}`;
+                
+                // 페이지 이동 처리
+                window.location.href = newHref; // 새 URL로 이동
+            } else {
+                alert('Note ID가 없습니다.');
+            }
+        }
+
         //  GPT 내용 요약 Chatbot feature!
         async function summarizeNote() {
             try {
