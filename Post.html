@@ -73,7 +73,7 @@
                     <div id="summary"></div>
                 </div>
 
-                <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2>
+                <!-- <h2 class="title">あなたは中学校の国語の教師です。生成AIが書いた読書感想文を見破れますか？</h2> -->
                 <div class="dropdown-menu">
                     <button>目標</button>
                     <div class="dropdown-menu-content">
@@ -93,7 +93,17 @@
                     <div class="like-number">432</div>
                     <img src="/icon/free-icon-share-157960.png" alt="Share Icon" class="post-icon share" onclick="toggleIconColor(this, 'share')">
                     <img src="/icon/bookmark-plus-fill.svg" alt="Bookmark Icon" class="post-icon bookmark" onclick="toggleIconColor(this, 'bookmark')">
-                    <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
+                    <!-- <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')"> -->
+                    
+                    <!-- 드롭다운 메뉴 추가 -->
+                    <div class="dropdown">
+                        <img src="/icon/etc.svg" alt="More Icon" class="post-icon more" onclick="toggleIconColor(this, 'more')">
+                        <div class="dropdown-menu" style="display: none;">
+                            <a href="/PostEditing.html">編集</a>
+                            <a href="#" onclick="deleteNote(); return false;">削除</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -203,16 +213,14 @@
     </main>
 
     <script>
-        // URL에서 noteId 추출하기
-        function getNoteIdFromURL() {
-            const urlParams = new URLSearchParams(window.location.search); // 현재 URL에서 쿼리 매개변수 추출
-            return urlParams.get('id'); // 'id' 값 가져오기
-        }
         //내용 가져오기 fetch
         async function fetchPost() {
             try {
                 // URL에서 noteId 추출하기
-                const noteId = getNoteIdFromURL();
+                console.log(window.location.search); // 쿼리 문자열 확인
+                const urlParams = new URLSearchParams(window.location.search);
+                const noteId = urlParams.get('id');
+
                 //null검사
                 if (!noteId) {
                     console.error("noteId가 존재하지 않습니다.");
@@ -351,8 +359,22 @@
             if (type === 'bookmark') {
                 showTooltip(iconElement, iconElement.classList.contains('active') ? "북마크되었습니다" : "북마크가 취소되었습니다");
             }
-        }
 
+            if (type === 'more') {
+                //드롭다운 메뉴
+                const dropdownMenu = iconElement.nextElementSibling; // 드롭다운 메뉴 요소
+                dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none'; // 토글
+            }
+        }
+        // 페이지의 다른 곳을 클릭하면 드롭다운을 닫는 기능 추가
+        document.addEventListener('click', function(event) {
+                const isClickInsideDropdown = event.target.closest('.dropdown');
+                if (!isClickInsideDropdown) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.style.display = 'none';
+                    });
+                }
+            });
         // 클립보드 복사 기능
         function copyToClipboard(text) {
             const tempInput = document.createElement('input');
@@ -442,6 +464,32 @@
             dropdown.classList.toggle('show'); // 'show' 클래스를 토글하여 드롭다운을 열고 닫음
         }
 
+
+        //post delete 
+        function deleteNote() {
+            console.log(window.location.search); // 쿼리 문자열 확인
+            const urlParams = new URLSearchParams(window.location.search);
+            const noteId = urlParams.get('id'); // URL에서 noteId 가져오기
+            
+            fetch(`http://localhost:9000/api/notes/${noteId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('노트가 삭제되었습니다.');
+                    // 성공 시 필요한 다른 동작을 추가하세요 (예: 페이지 새로고침)
+                } else {
+                    alert('삭제 중 문제가 발생했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('서버와의 연결에 문제가 발생했습니다.');
+            });
+        }
     </script>
 </body>
 
