@@ -237,7 +237,7 @@ function login() {
   console.log("로그인 함수 호출됨");
   localStorage.setItem("isLoggedIn", "true");
   // 예시로 memberId를 설정합니다. 실제 구현 시 서버에서 받아온 값을 사용하세요.
-  localStorage.setItem("memberId", "12345");
+//   localStorage.setItem("memberId", );
   alert("로그인에 성공했습니다.");
   checkLoginStatus();
   console.log("로그인 상태 확인 완료");
