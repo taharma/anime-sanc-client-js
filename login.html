@@ -65,14 +65,17 @@
             if (contentType && contentType.includes("application/json")) {
                 const data = await response.json();
                 localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("memberId", data.id);
+                localStorage.setItem("memberId", data.userId);
+                console.log('data :', data);
                 message = '로그인에 성공했습니다.';
             } else {
                 const successText = await response.text();
+                console.log('requestData :', requestData);
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("memberId", requestData.usernameOrEmail);
                 message = successText;
             }
+            
             console.log('로그인 성공:', message);
             alert(message);
             window.location.href = 'index.html';
