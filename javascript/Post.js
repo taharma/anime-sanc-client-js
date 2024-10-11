@@ -16,6 +16,8 @@
                 console.log(post)
                 localStorage.setItem('postTitle' , post.title);
                 localStorage.setItem('postContents' , post.contents);
+                localStorage.setItem('postCategoryId' , post.categoryId);
+                console.log(post);
                 displayPost(post);
             } catch (error) {
                 console.error("Error fetching post:", error);
@@ -50,7 +52,7 @@
             });
         });
     
-        //postEditing으로 title, contents 전달
+        //postEditing으로 moteId
         function setEditPostLink() {
             // URL에서 noteId 추출
             const urlParams = new URLSearchParams(window.location.search);
@@ -280,13 +282,17 @@
         }
 
 
+        
+
         //post delete 
         function deleteNote() {
             console.log(window.location.search); // 쿼리 문자열 확인
             const urlParams = new URLSearchParams(window.location.search);
             const noteId = urlParams.get('id'); // URL에서 noteId 가져오기
+            const memberId =  localStorage.getItem("memberId");
+            console.log("memberId : ",memberId);
             
-            fetch(`http://localhost:9000/api/notes/${noteId}`, {
+            fetch(`http://localhost:9000/api/notes/${noteId}?memberId=${memberId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

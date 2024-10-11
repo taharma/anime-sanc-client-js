@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(title);
     const contents = localStorage.getItem('postContents');
     console.log(contents);
-
+    const categoryId = localStorage.getItem('postCategoryId');
+    console.log(categoryId);
 
     // URL에서 noteId 추출하기
     const urlParams = new URLSearchParams(window.location.search);
@@ -90,6 +91,8 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('Content after removing <p> tags:', content);
 
         // 상세한 유효성 검사
+        const selectedCategoryId = localStorage.getItem("postCategoryId");
+        console.log(selectedCategoryId);
         if (!title || !content || content === defaultEditorPlaceholder || selectedCategoryId === null) {
             alert('タイトル、内容、およびカテゴリは必須です。');
             console.log('Title, content, or category is missing.');
@@ -142,9 +145,35 @@ document.addEventListener("DOMContentLoaded", function() {
             alert('エラーが発生しました: ' + error.message);
         }
     });
-
+    const navbarPublish = document.getElementById("navbar-publish");
+    if (navbarPublish) {
+        navbarPublish.addEventListener("click", function() {
+            // 폼 내의 公開に進む 버튼 클릭 트리거
+            document.getElementById("submit-post").click();
+        });
+    } else {
+        console.warn('navbar-publish 버튼을 찾을 수 없습니다。');
+    }
 
 });
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const navbarPublish = document.getElementById("navbar-publish");
+    
+    if (navbarPublish) {
+        navbarPublish.addEventListener("click", function() {
+            const submitPostButton = document.getElementById("submit-post");
+            
+            if (submitPostButton) {
+                // submit-post 버튼이 존재하는 경우 클릭 이벤트 트리거
+                submitPostButton.click();
+            } else {
+                console.warn('submit-post 버튼을 찾을 수 없습니다。');
+            }
+        });
+    } else {
+        console.warn('navbar-publish 버튼을 찾을 수 없습니다。');
+    }
+});
