@@ -72,8 +72,9 @@
                         alert('ログインに成功しました。');
                         // 로그인 상태를 localStorage에 저장
                         localStorage.setItem("isLoggedIn", "true");
-                        localStorage.setItem("memberId", data.id);
-
+                        localStorage.setItem("memberId", data.userId);
+                        const memberId = localStorage.getItem("memberId");
+                        console.log('memberId : ', memberId);
                         // 로그인 성공 후 index.html로 이동
                         window.location.href = 'index.html';
                     } else {
@@ -82,8 +83,9 @@
                         alert('ログインに成功しました。');
                         // 로그인 상태를 localStorage에 저장
                         localStorage.setItem("isLoggedIn", "true");
-                        localStorage.setItem("memberId", requestData.usernameOrEmail); // Assuming usernameOrEmail is unique
-
+                        localStorage.setItem("memberId", requestData.data.userId); // Assuming usernameOrEmail is unique
+                        const memberId = localStorage.getItem("memberId");
+                        console.log('memberId : ', memberId);
                         // 로그인 성공 후 index.html로 이동
                         window.location.href = 'index.html';
                     }
