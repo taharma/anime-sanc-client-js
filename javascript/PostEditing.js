@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('Request Data:', requestData);
 
         try {
-            const response = await fetch(`http://localhost:9000/api/notes/${noteId}`, {
+            const response = await fetch(`http://localhost:49000/api/notes/${noteId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

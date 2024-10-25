@@ -25,7 +25,7 @@ const currentIndexes = Array(categoryNames.length).fill(0);
 // 서버에서 게시물 데이터를 가져오는 함수
 async function fetchPosts() {
   try {
-      const response = await fetch("http://localhost:9000/api/notes");
+      const response = await fetch("http://localhost:49000/api/notes");
       if (!response.ok) {
           throw new Error("Failed to fetch posts");
       }

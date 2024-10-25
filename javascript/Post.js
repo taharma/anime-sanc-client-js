@@ -11,7 +11,7 @@
                     console.error("noteId가 존재하지 않습니다.");
                     return;
                 }
-                const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
+                const response = await fetch(`http://localhost:49000/api/notes/${noteId}`);
                 const post = await response.json();
                 console.log(post)
                 localStorage.setItem('postTitle' , post.title);
@@ -82,7 +82,7 @@
                 }
 
                 // Fetch note data from backend
-                const response = await fetch(`http://localhost:9000/api/notes/${noteId}`);
+                const response = await fetch(`http://localhost:49000/api/notes/${noteId}`);
 
                 console.log(response);
 
@@ -292,7 +292,7 @@
             const memberId =  localStorage.getItem("memberId");
             console.log("memberId : ",memberId);
             
-            fetch(`http://localhost:9000/api/notes/${noteId}?memberId=${memberId}`, {
+            fetch(`http://localhost:49000/api/notes/${noteId}?memberId=${memberId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

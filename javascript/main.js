@@ -13,7 +13,7 @@ async function handleLogin(event) {
 
   try {
     console.log("로그인 요청 준비됨"); // 로그 추가
-    const response = await fetch('http://localhost:9000/api/members/login', {
+    const response = await fetch('http://localhost:49000/api/members/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ usernameOrEmail: username, password })
@@ -49,7 +49,7 @@ function login() {
 
 async function fetchPosts() {
   try {
-    const response = await fetch("http://localhost:8080/api/posts");
+    const response = await fetch("http://localhost:49000/api/posts");
     const posts = await response.json();
     displayPosts(posts);
   } catch (error) {
