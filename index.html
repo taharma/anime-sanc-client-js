@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AS/board</title>
+  <title>Anime-Sanctuary</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/indexStyle.css">
 </head>
+
 <body>
-  
+
   <!-- 네비게이션 바 /로그인 회원등록 -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/index.html">Anime Sanctuary</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
+
       <ul class="navbar-nav ml-auto" id="auth-buttons">
         <!-- 로그인 및 등록 버튼은 JavaScript에서 동적으로 변경됩니다 -->
       </ul>
+
     </div>
+    <!-- 알림버튼 -->
+    <button type="button" aria-haspopup="true" class="m-navbarNotifButton svelte-181qbyy" aria-label="通知"
+      aria-controls="notifications" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M18 16V11C18 7.93 16.37 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.64 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16ZM12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22ZM8 17H16V11C16 8.52 14.49 6.5 12 6.5C9.51 6.5 8 8.52 8 11V17Z"
+          fill="currentColor"></path>
+      </svg></button>
   </nav>
 
   <!-- 검색 바 추가 및 중앙 고정 -->
-  <form class="form-inline" id="search-form">
-    <input class="form-control" type="search" placeholder="キーワードやクリエイターで検索" aria-label="Search" id="search-input">
-    <button class="btn btn-outline-success" type="submit" id="search-button">検索</button>
+  <form class="form-inline" id="search-form" action="/search" role="search">
+    <button class="o-navbarSearchForm__submit svelte-c307ds" type="submit" aria-label="検索">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M14.71 14H15.5L20.49 19L19 20.49L14 15.5V14.71L13.73 14.43C12.59 15.41 11.11 16 9.5 16C5.91 16 3 13.09 3 9.5C3 5.91 5.91 3 9.5 3C13.09 3 16 5.91 16 9.5C16 11.11 15.41 12.59 14.43 13.73L14.71 14ZM5 9.5C5 11.99 7.01 14 9.5 14C11.99 14 14 11.99 14 9.5C14 7.01 11.99 5 9.5 5C7.01 5 5 7.01 5 9.5Z"
+          fill="currentColor"></path>
+      </svg>
+    </button>
+    <input type="search" placeholder="キーワードやクリエイターで検索" aria-label="キーワードやクリエイターで検索" name="search" class="form-control"
+      id="search-input" autocomplete="off" role="combobox" aria-expanded="false">
+    <!-- <button class="btn btn-outline-success" type="submit" id="search-button">検索</button> -->
   </form>
   <!-- 검색 바 끝 -->
 
@@ -33,12 +55,26 @@
   <div class="sidebar">
     <h5>メインリスト</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">アニメ</li>
-      <li class="list-group-item">漫画</li>
-      <li class="list-group-item">人気作品</li>
-      <li class="list-group-item">キャラクター</li>
-      <li class="list-group-item">フォーラム</li>
-    </ul> 
+      <li><a href="/" class="list-group-item">すべて </a></li>
+      <li><a href="/following" class="list-group-item">フォロー中</a></li>
+      <li><a href="" class="list-group-item">注目</a></li>
+      <li class="list-group-item"><a href="">投稿企画</a></li>
+      <li>
+        <h5>おすすめ </h5>
+      </li>
+      <li><a href="" class="list-group-item">キャリア </a></li>
+      <li><a href="" class="list-group-item">AI</a></li>
+      <li>
+        <h5>やってみた </h5>
+      </li>
+      <li><a href="" class="list-group-item">くらし</a></li>
+      <li><a href="" class="list-group-item">まなび</a></li>
+      <li><a href="" class="list-group-item">しごと</a></li>
+      <li><a href="" class="list-group-item">社会</a></li>
+      <li><a href="" class="list-group-item">エンタメ</a></li>
+      <li><a href="" class="list-group-item">テクノロジー</a></li>
+      <li><a href="" class="list-group-item">カルチャー</a></li>
+    </ul>
   </div>
 
   <!-- 메인 콘텐츠 -->
@@ -58,4 +94,5 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
