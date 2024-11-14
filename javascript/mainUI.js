@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   checkLoginStatus(); // 페이지 로드 시 로그인 상태 확인
   initialize(); // 초기화 함수 호출
 });
@@ -25,56 +25,56 @@ const currentIndexes = Array(categoryNames.length).fill(0);
 // 서버에서 게시물 데이터를 가져오는 함수
 async function fetchPosts() {
   try {
-      const response = await fetch("http://localhost:9000/api/notes");
-      if (!response.ok) {
-          throw new Error("Failed to fetch posts");
-      }
-      posts = await response.json();
-      console.log("Fetched posts:", posts);
-      displayPosts();
+    const response = await fetch("http://3.35.207.148/:9000/api/notes");
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    posts = await response.json();
+    console.log("Fetched posts:", posts);
+    displayPosts();
   } catch (error) {
-      console.error("Error fetching posts:", error);
-      alert("게시물을 가져오는 중 오류가 발생했습니다.");
+    console.error("Error fetching posts:", error);
+    alert("게시물을 가져오는 중 오류가 발생했습니다.");
   }
 }
 
 // 게시물 데이터를 카드로 표시하는 함수
 function displayPosts() {
   if (posts.length === 0) {
-      document.getElementById("card-rows").innerHTML = "<p>게시물이 없습니다.</p>";
-      return;
+    document.getElementById("card-rows").innerHTML = "<p>게시물이 없습니다.</p>";
+    return;
   }
 
   const cardRows = [];
   for (let i = 0; i < categoryNames.length; i++) {
-      const cards = [];
-      for (let j = 0; j < 5; j++) {
-          const index = (currentIndexes[i] + j) % posts.length;
-          const post = posts[index];
-          if (!post) continue;
-          cards.push(
-              createCard(
-                  images[index % images.length],
-                  escapeHTML(post.title) || "Default Title",
-                  escapeHTML(post.contents) || "Default Content",
-                  `Author ${index + 1}`,
-                  `Date ${index + 1}`,
-                  post.id
-              )
-          );
-      }
-      cardRows.push(createCardRow(i, cards, categoryNames[i]));
+    const cards = [];
+    for (let j = 0; j < 5; j++) {
+      const index = (currentIndexes[i] + j) % posts.length;
+      const post = posts[index];
+      if (!post) continue;
+      cards.push(
+        createCard(
+          images[index % images.length],
+          escapeHTML(post.title) || "Default Title",
+          escapeHTML(post.contents) || "Default Content",
+          `Author ${index + 1}`,
+          `Date ${index + 1}`,
+          post.id
+        )
+      );
+    }
+    cardRows.push(createCardRow(i, cards, categoryNames[i]));
   }
 
   document.getElementById("card-rows").innerHTML = cardRows.join("");
 
   // 카드의 스타일 조정
   for (let i = 0; i < categoryNames.length; i++) {
-      const container = document.querySelector(`#wrapper-${i} .card-container`);
-      const cards = container.querySelectorAll(".card");
-      if (cards[2]) {
-          cards[2].style.transform = "scale(1.1)";
-      }
+    const container = document.querySelector(`#wrapper-${i} .card-container`);
+    const cards = container.querySelectorAll(".card");
+    if (cards[2]) {
+      cards[2].style.transform = "scale(1.1)";
+    }
   }
 }
 
@@ -114,7 +114,7 @@ function createCardRow(rowId, cards, categoryName) {
   return `
       <h3>${categoryName}</h3>
       <div class="card-wrapper" id="wrapper-${rowId}">
-          <a class="carousel-control-prev" href="javascript:void(0);" role="button" 
+          <a class="carousel-control-prev" href="javascript:void(0);" role="button"
              onclick="rotateCarousel(${rowId}, -1)" aria-label="Previous">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -122,7 +122,7 @@ function createCardRow(rowId, cards, categoryName) {
           <div class="card-container">
               ${cards.join("")}
           </div>
-          <a class="carousel-control-next" href="javascript:void(0);" role="button" 
+          <a class="carousel-control-next" href="javascript:void(0);" role="button"
              onclick="rotateCarousel(${rowId}, 1)" aria-label="Next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
@@ -137,14 +137,14 @@ function rotateCarousel(rowId, direction) {
   const container = document.querySelector(`#wrapper-${rowId} .card-container`);
   const cards = container.querySelectorAll(".card");
   cards.forEach((card) => {
-      card.classList.remove("scaled");
-      card.classList.remove("card-normal");
+    card.classList.remove("scaled");
+    card.classList.remove("card-normal");
   });
   if (cards[1]) {
-      cards[1].classList.add("card-normal");
+    cards[1].classList.add("card-normal");
   }
   if (cards[2]) {
-      cards[2].classList.add("scaled");
+    cards[2].classList.add("scaled");
   }
 }
 
@@ -174,13 +174,13 @@ function checkLoginStatus() {
   const authButtons = document.getElementById("auth-buttons");
 
   if (authButtons) {
-      if (isLoggedIn === "true") {
-          showProfileWriteLogoutButtons(); // 프로필 아이콘, 글쓰기, 로그아웃 버튼 표시
-      } else {
-          showLoginAndRegisterButtons(); // 로그인, 등록 버튼 표시
-      }
+    if (isLoggedIn === "true") {
+      showProfileWriteLogoutButtons(); // 프로필 아이콘, 글쓰기, 로그아웃 버튼 표시
+    } else {
+      showLoginAndRegisterButtons(); // 로그인, 등록 버튼 표시
+    }
   } else {
-      console.warn('auth-buttons 요소를 찾을 수 없습니다.');
+    console.warn('auth-buttons 요소를 찾을 수 없습니다.');
   }
 }
 
@@ -188,7 +188,7 @@ function showProfileWriteLogoutButtons() {
   const authButtons = document.getElementById("auth-buttons");
   authButtons.innerHTML = `
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" 
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="/icon/user.png" alt="プロファイルアイコン" class="profile-icon">
           </a>
@@ -214,10 +214,10 @@ function showProfileWriteLogoutButtons() {
   // 로그아웃 버튼 이벤트 리스너 추가
   const logoutButtons = document.querySelectorAll("#logout-button");
   logoutButtons.forEach(button => {
-      button.addEventListener("click", function(event) {
-          event.preventDefault();
-          logout();
-      });
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      logout();
+    });
   });
 }
 
@@ -237,7 +237,7 @@ function login() {
   console.log("로그인 함수 호출됨");
   localStorage.setItem("isLoggedIn", "true");
   // 예시로 memberId를 설정합니다. 실제 구현 시 서버에서 받아온 값을 사용하세요.
-//   localStorage.setItem("memberId", );
+  //   localStorage.setItem("memberId", );
   alert("로그인에 성공했습니다.");
   checkLoginStatus();
   console.log("로그인 상태 확인 완료");
